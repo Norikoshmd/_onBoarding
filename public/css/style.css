@@ -1,0 +1,13 @@
+.navbar {
+    background-color: #000066 !important;
+    color: white; /* Optional: Set text color to white for better contrast */
+    padding: 10px; /* Optional: Adjust padding for better spacing */
+  }
+
+  body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/css/background.jpg'); 
+    background-size: cover;
+}
