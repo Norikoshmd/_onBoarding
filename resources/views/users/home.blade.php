@@ -1,23 +1,36 @@
 @extends('layouts.app')
 
+@section('title','Home')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <table class="table table-hover align-middle bg-white border-text-secondary">
+        <thead class="opacity-75">
+            <tr>
+                <th></th>
+                <th>Document Name</th>
+                <th>Due Date</th>
+                <th></th>
+                <th><a href="#"><i class="fa-solid fa-question"></i></a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{-- tasks should be updated here --}}
+        {{-- @forelse ($collection as $item)
+        <tr>
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+        </tr>
+            
+        @empty
+        <div class="mb-3">
+            <p class="h3">All documents are submitted!</p>
         </div>
-    </div>
-</div>
+            
+        @endforelse --}}
+      
+
+        </tbody>
+        
+    </table>
+
 @endsection

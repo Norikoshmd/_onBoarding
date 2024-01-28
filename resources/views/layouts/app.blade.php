@@ -79,8 +79,28 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main class="py-5">
+            <div class="container p-3">
+                <div class="row justify-content-center">
+                    {{-- user side bar *need if for users--}}
+                    <div class="col-3">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa-solid fa-pen-to-square"></i>&nbsp; Documents to Submit
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa-solid fa-circle-check"></i>&nbsp; Documents Submitted
+                                </a>
+                            </div>
+                    </div>
+                    <div class="col-9">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
+
+
+            
         </main>
     </div>
 </body>
