@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,19 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [HomeController::class, 'index'])->name('index');
+
+    #HR
+    Route::group(['prefix' => 'hr', 'as' => 'hr.'], function(){
+        Route::get('/index',[TaskController::class, 'index'])->name('index'); //hr.index
+        Route::get('/create',[TaskController::class, 'create'])->name('create'); //hr.create
+
+
+
+    });
+
+
+
+
+    
 });
 

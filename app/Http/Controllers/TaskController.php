@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Task;
+
+class TaskController extends Controller
+{
+    private $task;
+
+    public function __construct(Task $task)
+    {
+        $this->task = $task;
+    }
+
+    public function index()
+    {
+        return view('hr.index');
+    }
+
+    public function create()
+    {
+        return view('hr.create');
+    }
+}
