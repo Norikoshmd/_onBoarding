@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,16 @@ use App\Http\Controllers\TaskController;
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
+    #User
     Route::get('/', [HomeController::class, 'index'])->name('index');
+
+
+    #Recruiter
+    Route::group(['prefix' => 'recruiter', 'as' => 'recruiter.'], function(){
+        Route::get('/index',[UsersController::class,'index'])->name('index'); //recruiter.index
+        Route::get('/create',[UsersController::class,'create'])->name('create'); //recruiter.create
+
+    });
 
     #HR
     Route::group(['prefix' => 'hr', 'as' => 'hr.'], function(){

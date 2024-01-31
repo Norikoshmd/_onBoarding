@@ -43,7 +43,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function tasks(){
-        return $this->hasMany(Task::class);
-    }
+    const RECRUITER_ROLE_ID = 1;
+    const HR_ROLE_ID = 2;
+    const USER_ROLE_ID = 3;
+
+    
 }

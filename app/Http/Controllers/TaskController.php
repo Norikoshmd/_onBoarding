@@ -14,10 +14,7 @@ class TaskController extends Controller
         $this->task = $task;
     }
 
-    public function index()
-    {
-        return view('hr.index');
-    }
+   
 
     public function create()
     {
