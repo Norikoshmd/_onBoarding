@@ -49,16 +49,28 @@
                                     <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-
+                            {{-- need to unable user acccess --}}
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                            @endif
+
+                        @else
+                            @if(Auth::user()->role_id == 1)
+                                @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="{{ route('hr.register') }}">{{ __('Register') }}</a>
+                                </li>
+                                @endif
+                            @endif
+                            {{-- <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('hr.index')}}">HR</a>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('recruiter.index')}}">Recruiter</a>
+                            </li> --}}
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -86,40 +98,60 @@
         <main class="py-5">
             <div class="container p-3">
                 <div class="row justify-content-center">
-                    {{-- user side bar *need if for users--}}
-                    <div class="col-3">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa-solid fa-pen-to-square"></i>&nbsp; Documents to Submit
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa-solid fa-circle-check"></i>&nbsp; Documents Submitted
-                                </a>
+                    {{-- user side bar --}}
+                    @auth
+                        @if (Auth::user()->role_id == 2)
+                            <div class="col-3">
+                                    <div class="list-group">
+                                        <a href="{{route('index')}}" class="list-group-item {{ request()->is('index') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>&nbsp; Documents to Submit
+                                        </a>
+                                        <a href="{{ route('show') }}" class="list-group-item {{ request()->is('show') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-circle-check"></i>&nbsp; Documents Submitted
+                                        </a>
+                                    </div>
                             </div>
-                    </div>
-                   {{-- HR side bar *need if for users--}}
-                   {{-- <div class="col-3">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
-                            <i class="fa-solid fa-user"></i>&nbsp; New Employee
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa-solid fa-file-circle-check"></i>&nbsp; Documents Requested 
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa-solid fa-bell"></i>&nbsp; Reminders
-                        </a>
-                    </div> --}}
-    
+                       
+
+                         {{-- Recruiter side bar --}}
+                        @elseif (Auth::user()->role_id == 3)
+                        <div class="col-3">
+                            <div class="list-group">
+                                <a href="{{ route('recruiter.index')}}" class="list-group-item {{ request()->is('recruiter/index') ? 'active' : '' }}">
+                                    <i class="fa-solid fa-user"></i>&nbsp; Registered Employee
+                                </a>
+                                <a href="{{ route('recruiter.create')}}" class="list-group-item {{ request()->is('recruiter/create') ? 'active' : '' }}">
+                                    <i class="fa-solid fa-file-circle-check"></i>&nbsp; Assign new employees 
+                                </a>
+                            </div> 
+                        </div>
+                     
+
+
+                        {{-- HR side bar --}}
+                        @elseif (Auth::user()->role_id == 1)
+                                <div class="col-3">
+                                    <div class="list-group">
+                                        <a href="{{ route('hr.index')}}" class="list-group-item {{ request()->is('hr/index') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-user"></i>&nbsp; New Employees
+                                        </a>
+                                        
+                                        <a href="{{ route('hr.create') }}"  class="list-group-item {{ request()->is('hr/create') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-file-circle-plus"></i>&nbsp; Assign Requests 
+                                        </a>
+                                        <a href="{{ route('hr.show')}}" class="list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-file-circle-check"></i>&nbsp; Requested items
+                                        </a>
+                                    </div>
+                                </div>
+                        @endif
+                    @endauth
 
                     <div class="col-9">
                         @yield('content')
                     </div>
                 </div>
             </div>
-
-
-            
         </main>
     </div>
 </body>

@@ -28,7 +28,9 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+
+    protected $redirectTo = '/hr/index';
+    // protected $redirectTo = {{ (hr.index) }};
 
     /**
      * Create a new controller instance.
@@ -60,13 +62,44 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\Models\User
+     * 
      */
-    protected function create(array $data)
+
+     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => User::USER_ROLE_ID,
         ]);
+
+        $this->redirectTo = '/hr/index/' . $user->id;
+
+        return $user;
     }
+
+    // protected function create(array $data)
+    // {
+    //     $user = User::create([
+    //         'name' => $data['name'],
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //         'role_id' => User::USER_ROLE_ID ,
+    //     ]);
+
+        // return User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        //     'role_id' => User::USER_ROLE_ID ,
+        // ]);
+
+        // $this->redirectTo = '/hr/index/' . $user->id;
+
+        // return $user;
+
+
+        
+    
 }
