@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="container bg-white rounded-3 opacity-90 p-3">
-    <div class="row">
-        <div class="col-8">
+    <div class="row justify-content-center">
+        <div class="col-10">
             <p class="fw-bold fs-5">Registered Employee</p>
         </div>
         <div class="col-auto ms-auto">
@@ -16,50 +16,42 @@
 
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">
-            <tr class="text-center">
-                <th></th>
+            <tr class="text-center table table-secondary">
+                <th>id</th>
                 <th>Employee Name</th>
                 <th>Start Date</th>
+                <th>Visa Status</th>
                 <th>Work at</th>
-                <th>Remarks</th>
+                <th>Registered at</th>
+                
             </tr>
         </thead>
+        
         <tbody>
-            {{-- list of new employee should be here --}}
-        {{-- @forelse ($collection as $item)
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><a href="{{ route('hr.create')}}" class="btn btn-secondary">Assign</a></td>
-            {{-- Modal? to assign task --}}
-            {{-- <td></td>
-    
-    
-        </tr>
-            
+        @forelse ($employees as $employee)
+            <tr class="text-center">
+                <td>{{ $employee->id}}</td>
+                <td>{{ $employee->name }}</td>
+                <td>{{ $employee->startday }}</td>
+                <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
+                <td>{{ $employee->workat }}</td>
+                <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
+               
+            </tr>
+                
         @empty
-        <div class="mb-3">
-            <p class="h3">All documents are submitted!</p>
-        </div>
-            
-        @endforelse --}}
-      
+            <div class="mb-3">
+                <div class="rounded bg-warning-subtle">
+                    <p class="h5 text-center p-3">New employee hasn't registered yet.</p>
+                </div>
+                
+            </div>
+                
+        @endforelse
     
         </tbody>
         
     </table>
-
-    <hr>
-
-
-   
-   
-   
-    
-    
-   
 
 </div>
 

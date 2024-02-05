@@ -15,13 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->longText('avatar')->nullable();
-            // $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default(Hash::make('default_password'));
             $table->unsignedBigInteger('role_id')
                     ->default(2)
-                    ->comment('1:HR, 2:User, 3:IT Support, 4:Recruiter');
+                    ->comment('1:HR, 2:User, 3:Recruiter');
             // $table->rememberToken();
+            $table->boolean('has_seen_welcome')->default(false);
             $table->timestamps();
         });
     }

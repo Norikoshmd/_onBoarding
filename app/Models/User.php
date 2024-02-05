@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
+    const HR_ROLE_ID = 1;
+    const USER_ROLE_ID = 2;
+    const RECRUITER_ROLE_ID = 3;
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -43,9 +47,15 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    const RECRUITER_ROLE_ID = 1;
-    const HR_ROLE_ID = 2;
-    const USER_ROLE_ID = 3;
+    // public function getHasSeenWelcomeAttribute()
+    // {
+    //     return $this->attributes['has_seen_welcome'];
+    // }
+
+    
+
+   
+
 
     
 }
