@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -15,6 +16,8 @@ class User extends Authenticatable
     const USER_ROLE_ID = 2;
     const RECRUITER_ROLE_ID = 3;
     use HasApiTokens, HasFactory, Notifiable;
+
+    // , SoftDeletes
 
     /**
      * The attributes that are mass assignable.
@@ -51,6 +54,7 @@ class User extends Authenticatable
     // {
     //     return $this->attributes['has_seen_welcome'];
     // }
+
 
     
 

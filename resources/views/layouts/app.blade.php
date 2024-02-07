@@ -64,14 +64,7 @@
                                 </li>
                                 @endif
                             @endif
-                            {{-- <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('hr.index')}}">HR</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('recruiter.index')}}">Recruiter</a>
-                            </li> --}}
-
+                    
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -95,7 +88,7 @@
             </div>
         </nav>
 
-        <main class="py-5">
+        <main class="py-3">
             <div class="container p-3">
                 <div class="row justify-content-center">
                     {{-- user side bar --}}
@@ -114,7 +107,7 @@
                        
 
                          {{-- Recruiter side bar --}}
-                        @elseif (Auth::user()->role_id == 3)
+                        {{-- @elseif (Auth::user()->role_id == 3)
                         <div class="col-3">
                             <div class="list-group">
                                 <a href="{{ route('recruiter.index')}}" class="list-group-item {{ request()->is('recruiter/index') ? 'active' : '' }}">
@@ -124,7 +117,7 @@
                                     <i class="fa-solid fa-file-circle-check"></i>&nbsp; Assign new employees 
                                 </a>
                             </div> 
-                        </div>
+                        </div> --}}
                      
 
 

@@ -30,7 +30,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'recruiter', 'as' => 'recruiter.'], function(){
         Route::get('/index',[EmployeeController::class,'index'])->name('index'); //recruiter.index
         Route::get('/create',[EmployeeController::class,'create'])->name('create'); //recruiter.create
-        Route::post('/store',[EmployeeController::class,'store'])->name('store'); //recruiter.create
+        Route::post('/store',[EmployeeController::class,'store'])->name('store'); //recruiter.store
+        Route::get('/{id}/show',[EmployeeController::class,'show'])->name('show');//recruiter.show
+        Route::get('/{id}/edit',[EmployeeController::class,'edit'])->name('edit');//recruiter.edit
+        Route::patch('/{id}/update',[EmployeeController::class,'update'])->name('update');//recruiter.update
+        Route::delete('/{id}/destroy',[EmployeeController::class,'destroy'])->name('destroy');//recruiter.destroy
+        Route::delete('/{id}/deactivate',[EmployeeController::class,'deactivate'])->name('deactivate');//recruiter.deactivate
+        // Route::patch('/{id}/activate',[EmployeeController::class,'activate'])->name('activate');//recruiter.activate
 
     });
 
@@ -42,6 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/register',[TaskController::class, 'register'])->name('register'); //hr.register
         // Route::get('/registerUser',[TaskController::class, 'registerUser'])->name('registerUser'); //hr.registerUser
         Route::get('/show',[TaskController::class, 'show'])->name('show'); //hr.show
+        Route::get('/{id}/showEndorsed',[TaskController::class, 'showEndorsed'])->name('showEndorsed'); //hr.showEndorsed
 
 
 
