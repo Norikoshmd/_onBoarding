@@ -79,5 +79,13 @@ public function show()
     return view('hr.show')->with('tasks',$tasks);
 }
 
+public function showEndorsed($id)
+{
+    $employee = $this->employee->findOrFail($id);
+
+    return view('hr.showEndorsed')->with('employee', $employee);
+
+}
+
 }
    
