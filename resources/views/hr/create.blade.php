@@ -7,22 +7,34 @@
 {{-- to assign --}}
 
     <div class="container bg-white rounded-3 opacity-90 p-3">
-        <p class="fw-bold fs-5">Assign Request</p>
+        <p class="fw-bold fs-5 mt-3 ">Documents request to</p>
+        <div class="card">
+            <div class="card-header bg-secondary-subtle">
+              <p class="fw-bold fs-5 p-2">{{$employee->name}}</p>
+            </div>
+            <div class="card-body">
+                
+
+            </div>
+            
+        </div>
+
+
         <form action="{{ route('hr.store') }}" method="post">
             @csrf
-            <div class="row mb-3">
+            {{-- <div class="row mb-3">
                 <div class="col-3 text-end"> 
                     <label for="Select_request" class="form-label fw-bold">Assign to</label>
                 </div>
                 <div class="col-4">
                     <select name="assigned_to" id="assigned_to" class="form-select-sm">
-                        @foreach ( $employees as $employee)
+                         @foreach ( $employees as $employee)
                             <option value="{{ $employee->name}}">{{ $employee->name}}</option>
-                            {{-- <option value="{{ $employee->id}}:{{ $employee->name}}">{{ $employee->id}}:{{ $employee->name}}</option> --}}
+                            <option value="{{ $employee->id}}:{{ $employee->name}}">{{ $employee->id}}:{{ $employee->name}}</option> 
                         @endforeach
                     </select>
                 </div>
-            </div>
+            </div> --}}
     
             <hr>
 
