@@ -21,17 +21,17 @@ class TaskController extends Controller
 
     public function index()
     {
-        $employees = $this->employee->all();
+        $employees = $this->employee->latest()->paginate(2);
 
         return view('hr.index')->with('employees',$employees);
     }
    
 
-    public function create()
+    public function create($id)
     {
-        $employees = $this->employee->all();
+        $employee = $this->employee->findOrFail($id);
 
-        return view('hr.create')->with('employees',$employees);
+        return view('hr.create')->with('employee',$employee);
     }
 
     public function store(Request $request)

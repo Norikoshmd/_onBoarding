@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function(){
     #HR
     Route::group(['prefix' => 'hr', 'as' => 'hr.'], function(){
         Route::get('/index',[TaskController::class, 'index'])->name('index'); //hr.index
-        Route::get('/create',[TaskController::class, 'create'])->name('create'); //hr.create
+        Route::get('/{id}/create',[TaskController::class, 'create'])->name('create'); //hr.create
         Route::post('/store',[TaskController::class, 'store'])->name('store'); //hr.store
         Route::get('/register',[TaskController::class, 'register'])->name('register'); //hr.register
         // Route::get('/registerUser',[TaskController::class, 'registerUser'])->name('registerUser'); //hr.registerUser

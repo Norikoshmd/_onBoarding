@@ -94,7 +94,7 @@
                     {{-- user side bar --}}
                     @auth
                         @if (Auth::user()->role_id == 2)
-                            <div class="col-3">
+                            <div class="col-1">
                                     <div class="list-group">
                                         <a href="{{route('index')}}" class="list-group-item {{ request()->is('index') ? 'active' : '' }}">
                                             <i class="fa-solid fa-pen-to-square"></i>&nbsp; Documents to Submit
@@ -123,13 +123,13 @@
 
                         {{-- HR side bar --}}
                         @elseif (Auth::user()->role_id == 1)
-                                <div class="col-3">
+                                <div class="col-1">
                                     <div class="list-group">
                                         <a href="{{ route('hr.index')}}" class="list-group-item {{ request()->is('hr/index') ? 'active' : '' }}">
                                             <i class="fa-solid fa-user"></i>&nbsp; New Employees
                                         </a>
                                         
-                                        <a href="{{ route('hr.create') }}"  class="list-group-item {{ request()->is('hr/create') ? 'active' : '' }}">
+                                        <a href="#"  class="list-group-item {{ request()->is('hr/create') ? 'active' : '' }}">
                                             <i class="fa-solid fa-file-circle-plus"></i>&nbsp; Assign Requests 
                                         </a>
                                         <a href="{{ route('hr.show')}}" class="list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
@@ -140,7 +140,7 @@
                         @endif
                     @endauth
 
-                    <div class="col-9">
+                    <div class="col-11">
                         @yield('content')
                     </div>
                 </div>
