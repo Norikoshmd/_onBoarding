@@ -33,9 +33,16 @@
             <tr class="text-center">
                 <td>
                     <div class="dropdown">
-                        <button class="btn btn-sm" data-bs-toggle="dropdown">
-                            <i class="fa-regular fa-circle-check"></i>
-                        </button>
+                        @if($employee->trashed())
+                            <button class="btn btn-sm" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-ban fa-2x text-secondary"></i>
+                            </button>
+                        
+                        @else
+                            <button class="btn btn-sm" data-bs-toggle="dropdown">
+                                <i class="fa-solid fa-circle-check fa-2x text-primary"></i>
+                            </button>
+                        @endif
 
                         @if($employee->trashed())
                             <div class="dropdown-menu">
@@ -63,8 +70,10 @@
                 <td>{{ $employee->user->name}}</td>
                 
                 <td>
-                    <a href="{{ route('recruiter.edit',$employee->id)}}" class="btn btn-outline-warning"><i class="fa-solid fa-pen"></i></a>
-                    <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-employee-{{ $employee->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
+                    @if(Auth::user()->id == $employee->user_id )
+                        <a href="{{ route('recruiter.edit',$employee->id)}}" class="btn btn-outline-warning"><i class="fa-solid fa-pen"></i></a>
+                        <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-employee-{{ $employee->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
+                    @endif
                     
                 <td>
                     @Include('recruiter.modal.delete')
