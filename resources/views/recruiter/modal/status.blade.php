@@ -34,12 +34,12 @@
                 </div>
             </div>
             <div class="modal-footer border-0">
-                {{-- <form action="{{ route('recruiter.activate',$employee->id)}}" method="post">
+                <form action="{{ route('recruiter.activate',$employee->id)}}" method="post">
                     @csrf
                     @method('PATCH')
                     <button type="button" class="btn btn-outline-primary btn-sm" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary btn-sm">Activate</button>
-                </form> --}}
+                </form>
             </div>
         </div>
     </div>

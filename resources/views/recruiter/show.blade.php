@@ -67,10 +67,12 @@
         <div class="row mb-5">
             <label for="remarks" class="form-label">Remarks</label>
             <p>{{ $employee->remarks }}</p>
+        </div>
+        <hr>
         <div class="row mx-auto justify-content-center">
             <div class="col-4 gx-3">
                <a href="{{ route('recruiter.index')}}" class="btn btn-outline-warning btn-sm"> Cancel</a>
-               <button type="submit" class="btn btn-secondary btn-sm"> Submit</button>
+              
             </div>
         </div>
     </form>

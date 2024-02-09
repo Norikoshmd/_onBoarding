@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::patch('/{id}/update',[EmployeeController::class,'update'])->name('update');//recruiter.update
         Route::delete('/{id}/destroy',[EmployeeController::class,'destroy'])->name('destroy');//recruiter.destroy
         Route::delete('/{id}/deactivate',[EmployeeController::class,'deactivate'])->name('deactivate');//recruiter.deactivate
-        // Route::patch('/{id}/activate',[EmployeeController::class,'activate'])->name('activate');//recruiter.activate
+        Route::patch('/{id}/activate',[EmployeeController::class,'activate'])->name('activate');//recruiter.activate
 
     });
 

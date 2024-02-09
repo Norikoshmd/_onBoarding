@@ -21,7 +21,7 @@ class TaskController extends Controller
 
     public function index()
     {
-        $employees = $this->employee->latest()->paginate(2);
+        $employees = $this->employee->latest()->paginate(5);
 
         return view('hr.index')->with('employees',$employees);
     }
