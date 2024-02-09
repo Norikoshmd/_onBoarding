@@ -1,23 +1,23 @@
-@extends('layouts.app-v2')
+@extends('layouts.app')
 
 @section('title','Recruiter')
 
 @section('content')
 
 <div class="container bg-white rounded-3 opacity-90 p-3">
-    <div class="row justify-content-center">
-            <p class="fw-bold fs-5">Registered Employee</p>
-        {{-- <div class="col-auto ms-auto">
-            <a href="{{ route('recruiter.create')}}" class="btn btn-outline-primary"><i class="fa-solid fa-user-plus"></i></a>
-        </div> --}}
+    <div class="row mt-3 justify-content-center">
+            <p class="fw-bold fs-4"><i class="fa-solid fa-user fa-lg img-thumbnail rounded-circle text-secondary"></i> Registered Employees</p>
     </div>
+
+    <hr>
 
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">
             <tr class="text-center table table-secondary">
-                <th></th>
+                <th>Status</th>
                 <th>id</th>
                 <th>Employee Name</th>
+                <th></th>
                 <th>Start Date</th>
                 <th>Visa Status</th>
                 <th>Work at</th>
@@ -63,6 +63,7 @@
                 </td>
                 <td>{{ $employee->id}}</td>
                 <td><a href="{{ route('recruiter.show',$employee->id)}}" class="text-decoration-none text-dark">{{ $employee->name }}</a></td>
+                <td><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></td>
                 <td>{{ $employee->startday }}</td>
                 <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
                 <td>{{ $employee->workat }}</td>
@@ -88,7 +89,6 @@
         @endforelse
         </tbody>
     </table>
-
 </div>
 <div class="d-flex justify-content-center mt-2">
     {{ $employees->links() }}

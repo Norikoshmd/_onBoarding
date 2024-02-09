@@ -20,7 +20,7 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employees = $this->employee->withTrashed()->latest()->paginate(2);
+        $employees = $this->employee->withTrashed()->latest()->paginate(5);
         $users = $this->user->all();
 
         return view('recruiter.index')
@@ -84,64 +84,63 @@ class EmployeeController extends Controller
         $request->validate([
             'name'          =>'min:1|max:50', 
             'gender'        =>'min:1|max:50', 
-            'email'         =>'email|max:50', 
+            'email'         =>'email|max:50',
             'visa_status'   =>'min:1|max:100', 
             'startday'      =>'date|after:today',
             'workat'        =>'min:1|max:30', 
-            'visa_f'        =>'mimes:jpeg,jpg,png,gif|max:1048' ,
-            'visa_b'        =>'mimes:jpeg,jpg,png,gif|max:1048' ,
-            'passport'      =>'mimes:jpeg,jpg,png,gif|max:1048' ,
+            'visa_f'        =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
+            'visa_b'        =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
+            'passport'      =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
         ]);
 
-        
-        $this->employee->name        = $request->name;
-        $this->employee->gender      = $request->gender;
-        $this->employee->email       = $request->email;
-        $this->employee->visa_status = $request->visa_status;
-        $this->employee->startday    = $request->startday;
-        $this->employee->workat      = $request->workat;
-        $this->employee->remarks     = $request->remarks;
+        $employee = $this->employee->findOrFail($id);
 
-        if($request->visa_f){
-            $this->employee->visa_f = 'data:image/' . $request->visa_f->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_f));
-        }
-        if($request->visa_b){
-            $this->employee->visa_b = 'data:image/' . $request->visa_b->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_b));
-        }
-        if($request->passport){
-            $this->employee->passport = 'data:image/' . $request->passport->extension() . ';base64,' . base64_encode(file_get_contents($request->passport));
-        }
+        $employee->user_id     = Auth::user()->id;
+        $employee->name        = $request->name;
+        $employee->gender      = $request->gender;
+        $employee->email       = $request->email;
+        $employee->visa_status = $request->visa_status;
+        $employee->startday    = $request->startday;
+        $employee->workat      = $request->workat;
+        $employee->remarks     = $request->remarks;
+       
 
-        $this->employee->save();
+        if($request->hasFile('visa_f')){
+            $this->employee->visa_f = 'data:image/' . $request->file('visa_f')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('visa_f')));
+        }
+        if($request->hasFile('visa_b')){
+            $this->employee->visa_b = 'data:image/' . $request->file('visa_b')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('visa_b')));
+        }
+        if($request->hasFile('passport')){
+            $this->employee->passport = 'data:image/' . $request->file('passport')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('passport')));
+        }
+               
+        $employee->save();
 
         return redirect()->route('recruiter.index');
     }
 
-    // public function destroy($id)
-    // {
-    //     $this->employee->destroy($id);
-    //     return redirect()->back();
+    public function destroy($id)
+    {
+        $employee = $this->employee->findOrFail($id);
+        $employee->forceDelete();
 
-    // }
+        return redirect()->route('recruiter.index');
+
+    }
 
     public function deactivate($id)
     {
+        $employee = $this->employee->findOrFail($id);
         $this->employee->destroy($id);
         return redirect()->back();
     }
 
-    // public function deactivate($id)
-    // {
-    //     $employee=$this->employee->findOrFail($id);
-    //     $employee->delete();
-    //     return redirect()->route('recruiter.index');
-    // }
-
-    // public function activate($id)
-    // {
-    //    $this->user->onlyTrashed()->findOrFail($id)->restore();
-    //     return redirect()->back();
-    // }
+    public function activate($id)
+    {
+       $this->employee->onlyTrashed()->findOrFail($id)->restore();
+        return redirect()->back();
+    }
 
 
 

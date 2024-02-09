@@ -107,18 +107,17 @@
                        
 
                          {{-- Recruiter side bar --}}
-                        {{-- @elseif (Auth::user()->role_id == 3)
-                        <div class="col-3">
-                            <div class="list-group">
-                                <a href="{{ route('recruiter.index')}}" class="list-group-item {{ request()->is('recruiter/index') ? 'active' : '' }}">
-                                    <i class="fa-solid fa-user"></i>&nbsp; Registered Employee
-                                </a>
-                                <a href="{{ route('recruiter.create')}}" class="list-group-item {{ request()->is('recruiter/create') ? 'active' : '' }}">
-                                    <i class="fa-solid fa-file-circle-check"></i>&nbsp; Assign new employees 
-                                </a>
-                            </div> 
-                        </div> --}}
-                     
+                        @elseif (Auth::user()->role_id == 3)
+                            <div class="col-md-1">
+                                <div class="list-group text-center">
+                                    <a href="{{ route('recruiter.index')}}" class="list-group-item {{ request()->is('recruiter/index') ? 'active' : '' }}">
+                                        <i class="fa-solid fa-list fa-2x"></i> &nbsp;
+                                    </a>
+                                    <a href="{{ route('recruiter.create')}}" class="list-group-item {{ request()->is('recruiter/create') ? 'active' : '' }}">
+                                        <i class="fa-solid fa-user-plus fa-2x"></i>&nbsp;
+                                    </a>
+                                </div> 
+                            </div>
 
 
                         {{-- HR side bar --}}
