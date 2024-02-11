@@ -3,69 +3,65 @@
 @section('title','HR Home')
 
 @section('content')
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fa-regular fa-user fa-lg"></i>&nbsp;&nbsp; New Employee &nbsp;
+            <span class="badge bg-danger">Badge</span>
+            {{-- add count in badge --}}
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            @if($employees !== 0)
+                @foreach ($employees as $employee)
+                    <div class="alert alert-info" role="alert">
+                        New employee <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a> is assigned.  &nbsp;&nbsp; <span class="h6 text-muted">{{$employee->created_at}}</span>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fa-solid fa-folder fa-lg"></i></i>&nbsp;&nbsp; Documents submitted &nbsp;
+            <span class="badge bg-danger">Badge</span>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            @if($employees !== 0)
+            @foreach ($employees as $employee)
+                <div class="alert alert-warning" role="alert">
+                    Document submitted from <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a>.  &nbsp;&nbsp; <span class="h6 text-muted">{{$employee->created_at}}</span>
+                </div>
+            @endforeach
+        @endif
+        </div>
+      </div>
+    </div>
+  </div>
 
-<table class="table table-hover align-middle bg-white border-text-secondary">
-    <thead class="opacity-75">
-        <tr class="text-center table table-secondary">
-            <th></th>
-            <th>ID</th>
-            <th>Start Day</th>
-            <th>Employee Name</th>
-            <th>Visa Status</th>
-            <th>Work at</th>
-            <th>Registered at</th>
-            <th>Registered by</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse ($employees as $employee)
-            <tr class="text-center">
-                <td>
-                    @if($employee->trashed())
-                        <button class="btn btn-sm" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-ban fa-2x text-secondary"></i>
-                        </button>
-                
-                    @else
-                        <button class="btn btn-sm" data-bs-toggle="dropdown">
-                            <i class="fa-solid fa-circle-check fa-2x text-primary"></i>
-                        </button>
-                    @endif
+  {{-- badge to use --}}
+<div class="container bg-white opacity-90 p-3 rounded mb-3">
+    <p class="h4">what's new
 
-                    @if($employee->trashed())
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item text-primary" data-bs-toggle="modal" data-bs-target="#activate-employee-{{ $employee->id }}" > <i class="fa-solid fa-user-check text-primary"></i> Activate {{ $employee->name }}
-                            </button>
-                        </div>
-
-                    @else
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#deactivate-employee-{{ $employee->id }}" > <i class="fa-solid fa-user-slash"></i> Deactivate {{ $employee->name }}
-                            </button>
-                        </div>
-                    @endif
-                </td>
-                <td>{{$employee->id}}</td>
-                <td>{{$employee->startday}}</td>
-                <td><a href="{{ route('hr.showEndorsed',$employee->id) }}" class="text-decoration-none text-dark">{{$employee->name}}</a></td>
-                <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
-                <td>{{$employee->workat}}</td>
-                <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
-                <td>{{ $employee->user->name }}</td>
-                <td><a href="{{ route('hr.register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
-                <td><a href="{{ route('hr.create',$employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a></td>
-            </tr>
-        @empty
-            <div class="mb-3 p-3 bg-warning-subtle rounded">
-                <p class="h3 text-muted text-center">All New Employees submitted required information!</p>
-            </div>
-        @endforelse
-    </tbody>
     
-</table>
-<div class="d-flex justify-content-center mt-2">
-    {{ $employees->links() }}
+            <button type="button" class="btn btn-info position-relative rounded-pill">
+                Inbox
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  99+
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button></p>
+    
+    
+    
 </div>
+
+
+
 @endsection

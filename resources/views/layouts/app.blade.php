@@ -124,16 +124,27 @@
                         @elseif (Auth::user()->role_id == 1)
                                 <div class="col-1">
                                     <div class="list-group">
-                                        <a href="{{ route('hr.index')}}" class="list-group-item {{ request()->is('hr/index') ? 'active' : '' }}">
-                                            <i class="fa-solid fa-user"></i>&nbsp; New Employees
+                                        <a href="{{ route('hr.index')}}" class="py-3 text-center list-group-item {{ request()->is('hr/index') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-bell fa-2x"></i>
                                         </a>
+
+                                        <a href="{{ route('hr.employee')}}" class="py-3 text-center list-group-item {{ request()->is('hr/employee') ? 'active' : '' }}">
+                                            <i class="fa-regular fa-user fa-2x"></i>
+
+                                        </a>
+                                        <a href="{{ route('hr.show')}}" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-clipboard-list fa-2x"></i>
+                                        </a>
+                                        <a href="#" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-clipboard-check fa-2x"></i>
+                                        </a>
+                                        <a href="#" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
+                                             &nbsp;<i class="fa-solid fa-file-circle-exclamation fa-2x"></i>
+                                        </a>
+
                                         
-                                        <a href="#"  class="list-group-item {{ request()->is('hr/create') ? 'active' : '' }}">
-                                            <i class="fa-solid fa-file-circle-plus"></i>&nbsp; Assign Requests 
-                                        </a>
-                                        <a href="{{ route('hr.show')}}" class="list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
-                                            <i class="fa-solid fa-file-circle-check"></i>&nbsp; Requested items
-                                        </a>
+
+
                                     </div>
                                 </div>
                         @endif
