@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Employee;
 use App\Http\Controllers\Auth\RegistrationController;
+use Illuminate\Support\Facades\Log;
 
 class TaskController extends Controller
 {
@@ -26,6 +27,12 @@ class TaskController extends Controller
         return view('hr.index')->with('employees',$employees);
     }
    
+    public function employee()
+    {
+        $employees = $this->employee->latest()->paginate(5);
+
+        return view('hr.employee')->with('employees',$employees);
+    }
 
     public function create($id)
     {
@@ -36,19 +43,18 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
+        $assignedTo = $request->input('assigned_to');
+        $docNames = $request->input('doc_names');
 
-        $request->validate([
-            'assigned_to'       => 'required',
-            'name'              => 'required',
-
+       foreach($docNames as $docName){
+        Task::create([
+            'assigned_to' => $assignedTo,
+            'name'        => $docNames,
         ]);
-        
-      $this->task->assigned_to  =   $request->assigned_to ;
-      $this->task->name         =  $request->name;
-      $this->task->save();   
+    }
+         $this->task->save();   
 
-    return redirect()->route('hr.index');
-
+         return redirect()->route('hr.employee');
    }
 
    public function register()

@@ -5,37 +5,18 @@
 @section('content')
 
 {{-- to assign --}}
-
+<form action="{{ route('hr.store') }}" method="post">
+@csrf
     <div class="container bg-white rounded-3 opacity-90 p-3">
         <p class="fw-bold fs-5 mt-3 ">Documents request to</p>
         <div class="card">
             <div class="card-header bg-secondary-subtle">
-              <p class="fw-bold fs-5 p-2">{{$employee->name}}</p>
+              <input type="hidden" name="assigned_to" value="{{$employee->name}}"><p class="fw-bold fs-5 p-2">{{$employee->name}}</p>
             </div>
             <div class="card-body">
-                
-
+                {{-- show endorsed docs --}}
             </div>
-            
         </div>
-
-
-        <form action="{{ route('hr.store') }}" method="post">
-            @csrf
-            {{-- <div class="row mb-3">
-                <div class="col-3 text-end"> 
-                    <label for="Select_request" class="form-label fw-bold">Assign to</label>
-                </div>
-                <div class="col-4">
-                    <select name="assigned_to" id="assigned_to" class="form-select-sm">
-                         @foreach ( $employees as $employee)
-                            <option value="{{ $employee->name}}">{{ $employee->name}}</option>
-                            <option value="{{ $employee->id}}:{{ $employee->name}}">{{ $employee->id}}:{{ $employee->name}}</option> 
-                        @endforeach
-                    </select>
-                </div>
-            </div> --}}
-    
             <hr>
 
             <div class="accordion" id="mandatory">
@@ -54,28 +35,28 @@
                         <tbody>
                             <div class="form-group">
                                 <tr>
-                                    <td><input type="checkbox" name="name[]" id="checkbox1" value="Employee Information Form" class="form-check-input">
+                                    <td><input type="checkbox" name="doc_names[]" id="checkbox1" value="Employee Information Form" class="form-check-input">
                                         <label for="checkbox1" class="form-check-label"> &nbsp; Employee Information Form</label>
                                     </td>
                                     
                                 </tr>
                                 <tr>
-                                    <td><input type="checkbox" name="name[]" id="checkbox2" class="form-check-input" value="Emergency Contact Form">
+                                    <td><input type="checkbox" name="doc_names[]" id="checkbox2" class="form-check-input" value="Emergency Contact Form">
                                         <label for="checkbox2" class="form-check-label"> &nbsp; Emergency Contact Form</label>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="checkbox" name="name[]" id="checkbox3" class="form-check-input" value="Commutation Allowance Application">
+                                    <td><input type="checkbox" name="doc_names[]" id="checkbox3" class="form-check-input" value="Commutation Allowance Application">
                                         <label for="checkbox3" class="form-check-label"> &nbsp; Commutation Allowance Application</label>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="checkbox" name="name[]" id="checkbox4" class="form-check-input" value="Concent Form for bank transfer">
+                                    <td><input type="checkbox" name="doc_names[]" id="checkbox4" class="form-check-input" value="Concent Form for bank transfer">
                                         <label for="checkbox4" class="form-check-label"> &nbsp; Concent Form for bank transfer</label>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><input type="checkbox" name="name[]" id="checkbox5" class="form-check-input" value="Application for Exemption for dependents of Employment Income Earner">
+                                    <td><input type="checkbox" name="doc_names[]" id="checkbox5" class="form-check-input" value="Application for Exemption for dependents of Employment Income Earner">
                                         <label for="checkbox5" class="form-check-label"> &nbsp; Application for Exemption for dependents of Employment Income Earner</label>
                                     </td>
                                 </tr>
@@ -100,57 +81,57 @@
                                 <tbody>
                                     <div class="form-check">
                                         <tr>
-                                            <td><input type="checkbox" name="name[]"  id="checkbox6" class="form-check-input" value="Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書">
+                                            <td><input type="checkbox" name="doc_names[]"  id="checkbox6" class="form-check-input" value="Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書">
                                                 <label for="checkbox6" class="form-check-label"> &nbsp; Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書</label>
                                             </td>
                                         </tr>
                                        <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox7" class="form-check-input" value="Employment Insurance Card | 雇用保険被保険者証">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox7" class="form-check-input" value="Employment Insurance Card | 雇用保険被保険者証">
                                                 <label for="checkbox7" class="form-check-label"> &nbsp; Employment Insurance Card | 雇用保険被保険者証</label>
                                             </td>
                                        </tr>
                                        <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox8" class="form-check-input" value="Income Tax Withholing Slip | 給与所得者の現金徴収票">
-                                                <label for="checkbox8" class="form-check-label"> &nbsp; Income Tax Withholing Slip | 給与所得者の現金徴収票</label>
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox8" class="form-check-input" value="Income Tax Withholing Slip | 給与所得者の源泉徴収票">
+                                                <label for="checkbox8" class="form-check-label"> &nbsp; Income Tax Withholing Slip | 給与所得者の源泉徴収票</label>
                                             </td>
                                        </tr>
                                        <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox9" class="form-check-input" value="Certificate of Resignation | 退職証明書">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox9" class="form-check-input" value="Certificate of Resignation | 退職証明書">
                                                 <label for="checkbox9" class="form-check-label"> &nbsp; Certificate of Resignation | 退職証明書</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox10" class="form-check-input" value="Graduation Certificate of the highest education">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox10" class="form-check-input" value="Graduation Certificate of the highest education">
                                                 <label for="checkbox10" class="form-check-label"> &nbsp; Graduation Certificate of the highest education</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox11" class="form-check-input" value="Certificate of Qualification">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox11" class="form-check-input" value="Certificate of Qualification">
                                                 <label for="checkbox11" class="form-check-label"> &nbsp; Certificate of Qualification</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox12" class="form-check-input" value="Passport">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox12" class="form-check-input" value="Passport">
                                                 <label for="checkbox12" class="form-check-label"> &nbsp; Passport</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox13" class="form-check-input" value="Residence Card">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox13" class="form-check-input" value="Residence Card">
                                                 <label for="checkbox13" class="form-check-label"> &nbsp; Residence Card</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox14" class="form-check-input" value="My Number Card | マイナンバーカード">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox14" class="form-check-input" value="My Number Card | マイナンバーカード">
                                                 <label for="checkbox14" class="form-check-label"> &nbsp; My Number Card | マイナンバーカード</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox15" class="form-check-input" value="Bank book / Bank card / Bank Account information">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox15" class="form-check-input" value="Bank book / Bank card / Bank Account information">
                                                 <label for="checkbox15" class="form-check-label"> &nbsp; Bank book / Bank card / Bank Account information</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox16" class="form-check-input" value="Residence Register Certificate | 住民票の写し">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox16" class="form-check-input" value="Residence Register Certificate | 住民票の写し">
                                                 <label for="checkbox16" class="form-check-label"> &nbsp; Residence Register Certificate | 住民票の写し</label>
                                             </td>
                                         </tr>
@@ -176,37 +157,37 @@
                                 <tbody>
                                     <div class="form-check">
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox17" class="form-check-input"  value="Notification of transfer of dependents of health insurance | 健康保険被扶養者異動届">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox17" class="form-check-input"  value="Notification of transfer of dependents of health insurance | 健康保険被扶養者異動届">
                                                 <label for="checkbox17" class="form-check-label"> &nbsp; Notification of transfer of dependents of health insurance | 健康保険被扶養者異動届</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox18" class="form-check-input" value="Dependent Current Status Report | 国内居住被扶養者現況表">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox18" class="form-check-input" value="Dependent Current Status Report | 国内居住被扶養者現況表">
                                                 <label for="checkbox18" class="form-check-label"> &nbsp; Dependent Current Status Report | 国内居住被扶養者現況表</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox19" class="form-check-input" value="National pension CategoryIII Insured Person Notification  | 国民年金第3号被保険者関係届">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox19" class="form-check-input" value="National pension CategoryIII Insured Person Notification  | 国民年金第3号被保険者関係届">
                                                 <label for="checkbox19" class="form-check-label"> &nbsp; National pension CategoryIII Insured Person Notification  | 国民年金第3号被保険者関係届</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox20" class="form-check-input" value="National pension CategoryIII Romanized Name Registration | 国民年金第3号被保険者関係届">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox20" class="form-check-input" value="National pension CategoryIII Romanized Name Registration | 国民年金第3号被保険者関係届">
                                                 <label for="checkbox20" class="form-check-label"> &nbsp; National pension CategoryIII Romanized Name Registration | 国民年金第3号被保険者関係届</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox21" class="form-check-input" value="Pension book/certificate for dependent spouse">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox21" class="form-check-input" value="Pension book/certificate for dependent spouse">
                                                 <label for="checkbox21" class="form-check-label"> &nbsp; Pension book/certificate for dependent spouse</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox22" class="form-check-input" value="Dependent spouse ID copy">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox22" class="form-check-input" value="Dependent spouse ID copy">
                                                 <label for="checkbox22" class="form-check-label"> &nbsp; Dependent spouse ID copy</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><input type="checkbox" name="name[]" id="checkbox23" class="form-check-input" value="My Number Card of dependent spouse">
+                                            <td><input type="checkbox" name="doc_names[]" id="checkbox23" class="form-check-input" value="My Number Card of dependent spouse">
                                                 <label for="checkbox23" class="form-check-label"> &nbsp; My Number Card of dependent spouse</label>
                                             </td>
                                         </tr>
@@ -227,7 +208,7 @@
                         </div>
                     </div>
 
-        </form>
+</form>
     </div>   
 @endsection
 

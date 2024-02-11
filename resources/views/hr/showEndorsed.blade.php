@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title','Edit {{$employee->name}}')
+@section('title','information')
 
 @section('content')
 <div class="container bg-white rounded-3 opacity-90 p-3">
     <div class="row mt-3">
         <div class="col-8">
-            <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; {{ $employee->name }}</p>
+            <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; Info from Recruit Team</p>
         </div>
         <div class="col-auto ms-auto">
-          <a href="{{ route('hr.index')}}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> back to the list</a>
+          <a href="{{ route('hr.employee')}}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> New Employee list</a>
          </div>
     </div>
        
