@@ -14,7 +14,7 @@
     background-attachment: fixed;
   }
 
-.list-group-item.active {
+.list-group-item :active {
     background-color: rgb(228, 223, 223);
     color: rgb(8, 5, 5);
     border-color: rgb(158, 157, 157); 

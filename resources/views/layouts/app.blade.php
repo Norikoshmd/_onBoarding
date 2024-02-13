@@ -135,15 +135,18 @@
                                         <a href="{{ route('hr.show')}}" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
                                             <i class="fa-solid fa-clipboard-list fa-2x"></i>
                                         </a>
-                                        <a href="#" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
+
+                                        <a href="{{ route('hr.showSubmitted')}}" class="py-3 text-center list-group-item {{ request()->is('hr/submitted') ? 'active' : '' }}">
+                                            &nbsp;<i class="fa-solid fa-file-circle-exclamation fa-2x"></i>
+                                        </a>
+
+                                        <a href="#" class="py-3 text-center list-group-item {{ request()->is('hr/requested') ? 'active' : '' }}">
                                             <i class="fa-solid fa-clipboard-check fa-2x"></i>
                                         </a>
-                                        <a href="#" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
-                                             &nbsp;<i class="fa-solid fa-file-circle-exclamation fa-2x"></i>
+
+                                        <a href="{{ route('hr.taskPost')}}" class="py-3 text-center list-group-item {{ request()->is('hr/taskPost') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-file-import fa-2x"></i>
                                         </a>
-
-                                        
-
 
                                     </div>
                                 </div>

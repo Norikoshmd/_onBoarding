@@ -45,7 +45,7 @@ class EmployeeController extends Controller
             'visa_f'        =>'required|mimes:jpeg,jpg,png,gif|max:1048' ,
             'visa_b'        =>'required|mimes:jpeg,jpg,png,gif|max:1048' ,
             'passport'      =>'required|mimes:jpeg,jpg,png,gif|max:1048' ,
-            'remarks'       =>'max:100', 
+            'remarks'       =>'nullable|max:100', 
         ]);
 
         $this->employee->name        = $request->name;
@@ -91,6 +91,7 @@ class EmployeeController extends Controller
             'visa_f'        =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
             'visa_b'        =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
             'passport'      =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
+            'remarks'       =>'nullable',
         ]);
 
         $employee = $this->employee->findOrFail($id);
