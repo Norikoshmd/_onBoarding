@@ -4,53 +4,36 @@
 
 @section('content')
 
+<div class="container bg-white opacity-90 p-3 rounded">
+    <p class="h5">Requested items</p>
+
 
 <table class="table table-hover align-middle bg-white border-text-secondary">
     <thead class="opacity-75">
         <tr class="text-center table table-secondary">
             <th>#</th>
-            <th>Requested to</th>
-            <th>Requested form</th>
-            {{-- <th>Due Date</th>
-            <th>until Due Date</th>
-            <th>Remarks</th> --}}
+            <th>ID</th>
+            <th>Name</th>
+            <th>Requested Item</th>
+            <th>Assigned by</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tbody>
-            @forelse ($tasks as $task)
-                <tr class="text-center">
-                    <td rowspan="{{ count($task->name) + 1 }}">{{$task->id}}</td>
-                    <td rowspan="{{ count($task->name) + 1 }}">{{$task->assigned_to}}</td>
-                </tr>
-                @foreach($task->name as $name)
-                    <tr class="text-start">
-                        <td>{{$name}}</td>
-                    </tr>
-                @endforeach
-            @empty
-                <tr>
-                    <td colspan="3"><h5 class="text-muted text-center">No Assigned Task at the moment</h5></td>
-                </tr>
-            @endforelse
-        </tbody>
-        
-        {{-- @forelse ($tasks as $task)
-            <tr  class="text-center">
-                <td>{{$task->id}}</td>
-                <td>{{$task->assigned_to}}</td>
-                <td>
-                    @foreach($task->name as $name)
-                        {{ $name }}<br> <!-- Assuming $task->names is the array of names -->
-                    @endforeach
-                </td>
-            </tr>
+        @forelse ($tasks as $task)
+            {{-- <tr>
+                <td>{{ $taskPost->id }}</td>
+                <td>{{ $task->employee_id }}</td> --}}
+                {{-- <td>{{ $task->employee_id->employee->name }}</td> --}}
+                {{-- <td>{{ $task->name }}</td>
+                <td></td>
+            </tr> --}}
         @empty
-            <tr>
-                <td><h5 class="text-muted text-center">No Assigned Task at the moment</h5></td>
-            </tr>
-        @endforelse --}}
+            <p class="text-muted">No Task Assigned</p>
+        @endforelse
+           
     </tbody>
 </table>
+</div>
 
 @endsection

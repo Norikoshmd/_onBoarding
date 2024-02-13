@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Create Tasks')
+@section('title', 'Assign Requests')
 
 @section('content')
 
 {{-- to assign --}}
-<form action="{{ route('hr.store') }}" method="post">
+<form action="#" method="post">
 @csrf
     <div class="container bg-white rounded-3 opacity-90 p-3">
         <p class="fw-bold fs-5 mt-3 ">Documents request to</p>
@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <tr>
                                     <td><input type="checkbox" name="doc_names[]" id="checkbox1" value="Employee Information Form" class="form-check-input">
-                                        <label for="checkbox1" class="form-check-label"> &nbsp; Employee Information Form</label>
+                                        <label for="checkbox1" class="form-check-label"> &nbsp; </label>
                                     </td>
                                     
                                 </tr>

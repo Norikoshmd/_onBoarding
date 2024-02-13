@@ -8,12 +8,11 @@
         <div class="col-8">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; Info from Recruit Team</p>
         </div>
-        <div class="col-auto ms-auto">
-          <a href="{{ route('hr.employee')}}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> New Employee list</a>
-         </div>
+      
     </div>
        
     <hr>
+ 
         <div class="row mb-3">
             <div class="col-auto">
                 <label for="name" class="form-label">Name</label>
@@ -32,7 +31,7 @@
             </div>
             <div class="col-auto">
                 <label for="visa_status" class="form-label">Visa Status</label>
-                 <p class="fs-5">{{ $employee->visa_status }}</p>
+                <p class="fs-5">{{ $employee->visa_status }}</p>
             </div>
         </div>
         <div class="row mb-3 ">
@@ -62,8 +61,15 @@
             </div>
         </div>
         <hr>
-        <div class="row mb-5">
+        <div class="row mb-3">
             <label for="remarks" class="form-label">Remarks</label>
             <p>{{ $employee->remarks }}</p>
         </div>
+
+        <div class="text-center">
+            <a href="{{ route('hr.employee')}}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> BACK</a>
+        </div>
+
+
+        
 @endsection
