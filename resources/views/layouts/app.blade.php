@@ -94,14 +94,18 @@
                     {{-- user side bar --}}
                     @auth
                         @if (Auth::user()->role_id == 2)
-                            <div class="col-1">
-                                    <div class="list-group">
-                                        <a href="{{route('index')}}" class="list-group-item {{ request()->is('index') ? 'active' : '' }}">
-                                            <i class="fa-solid fa-pen-to-square"></i>&nbsp; Documents to Submit
+                            <div class="col-md-1">
+                                    <div class="list-group text-center">
+                                        <a href="{{ route('index') }}" class="list-group-item {{ request()->is('index') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-bell fa-2x"></i>
                                         </a>
-                                        <a href="{{ route('show') }}" class="list-group-item {{ request()->is('show') ? 'active' : '' }}">
-                                            <i class="fa-solid fa-circle-check"></i>&nbsp; Documents Submitted
+                                        <a href="{{ route('showRequested') }}" class="list-group-item {{ request()->is('showRequested') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-clipboard-list fa-2x"></i>
                                         </a>
+                                        <a href="{{ route('showSubmitted')}}" class="list-group-item {{ request()->is('showSubmitted') ? 'active' : '' }}">
+                                            <i class="fa-solid fa-clipboard-check fa-2x"></i>
+                                        </a>
+                                       
                                     </div>
                             </div>
                        

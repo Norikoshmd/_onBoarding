@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Employee;
+use App\Models\EmployeeTask;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -15,10 +17,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Task $task)
+    public function __construct(Task $task,Employee $employee,EmployeeTask $employee_task)
     {
         $this->middleware('auth');
-        $this->task = $task;
+        $this->task     = $task;
+        $this->employee = $employee;
+        $this->employee_task = $employee_task;
     }
 
     /**
@@ -60,10 +64,16 @@ class HomeController extends Controller
 //     return redirect()->route('users.home'); 
 // }
 
-    public function show()
+    public function showRequested()
     {
-        $tasks = $this->task->all();
-        return view('users.submitted')->with('tasks',$tasks);
+        $employee_tasks = $this->employee_task->paginate(10);
+        return view('users.showRequested')->with('employee_tasks',$employee_tasks);
+    }
+
+    public function showSubmitted()
+    {
+        $employee_tasks = $this->employee_task->all();
+        return view('users.showSubmitted')->with('employee_tasks',$employee_tasks);
     }
 
 

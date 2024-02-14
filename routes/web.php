@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeTaskController;
+use App\Http\Controllers\DocController;
 
 
 
@@ -26,8 +27,18 @@ Route::group(['middleware' => 'auth'], function(){
     // Route::get('/welcome', [HomeController::class, 'index'])->name('index');
     // Route::post('/mark-welcome-as-seen',[HomeController::class, 'markWelcomeAsSeen'])->name('mark-welcome-as-seen');
     Route::get('/', [HomeController::class, 'index'])->name('index');
-    Route::get('/show', [HomeController::class, 'show'])->name('show');
+    Route::get('/showRequested', [HomeController::class, 'showRequested'])->name('showRequested');
+    Route::get('/showSubmitted', [HomeController::class, 'showSubmitted'])->name('showSubmitted');
 
+    Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
+        Route::get('/showForm1', [DocController::class, 'showForm1'])->name('showForm1');//doc.showForm1
+        Route::post('/storeForm1', [DocController::class, 'storeForm1'])->name('storeForm1');//doc.storeForm1
+   
+        //Copy
+        Route::get('/showCopy1', [DocController::class, 'showCopy1'])->name('showCopy1');//doc.showCopy1
+        Route::post('/storeCopy1', [DocController::class, 'storeCopy1'])->name('storeCopy1');//doc.storeCopy1
+
+    });
 
     #Recruiter(EmployeeController)
     Route::group(['prefix' => 'recruiter', 'as' => 'recruiter.'], function(){

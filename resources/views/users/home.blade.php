@@ -1,48 +1,88 @@
-@extends('layouts.app')
+@extends('layouts.app');
 
-@section('title','Home')
+@section('title', 'Welcome');
 
 @section('content')
 
-    <table class="table table-hover align-middle bg-white border-text-secondary">
-        <thead class="opacity-75 ">
-            <tr class="text-center table table-secondary">
-                <th></th>
-                <th>Document Name</th>
-                <th></th>
-                <th></th>
-                {{-- <th>Due Date</th>
-                <th>Day(s) to Due Date</th> --}}
-                {{-- <th></th>
-                <th></th> --}}
-            </tr>
-        </thead>
-        <tbody>
-                @forelse ($tasks as $task)
-                    @if($task->assigned_to === Auth::User()->name)
-                        <tr class="text-center @if($task->daysUntilDue() <= 3) text-danger @else text-success @endif">
-                            <td></td>
-                            <td>
-                                @foreach($task->name as $name)
-                                <ul class="list-group text-start ms-3">
-                                    <li>{{ $name }} </li>
-                                </ul>
-                                @endforeach
-                            </td>
-                            <td class="text-start"><a href="{{ $task->link }}" class="btn btn-outline-primary btn-sm" target="_blank"><i class="fa-solid fa-file-signature fa-lg "></i></a></td></td> 
-                            {{-- <td>{{ $task->due_date }}</td>
-                            <td>{{ $task->daysUntilDue() }} day(s) </td>
-                             --}}
-                            <td><a href="{{ $task->link }}" class="btn btn-primary btn-sm" target="_blank"><i class="fa-solid fa-question"></i></a></td>
-                        </tr>
-                    @endif
-                @empty
-                    <div class="mb-3">
-                        <p class="h3">All documents are submitted!</p>
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="fa-solid fa-bullhorn fa-2x"></i>&nbsp;&nbsp; <p class="h5 mt-1 fw-bold">Announcement</p> &nbsp;&nbsp;
+            <span class="badge bg-danger p-2 mb-1">Badge</span>
+            {{-- add count in badge --}}
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            {{-- @if($employees !== 0)
+                @foreach ($employees as $employee)
+                    <div class="alert alert-info" role="alert">
+                        New employee <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a> is assigned.  &nbsp;&nbsp; <span class="h6 text-muted">{{$employee->created_at}}</span>
                     </div>
-                @endforelse
-        </tbody>
-        
-    </table>
+                @endforeach
+            @endif --}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          <i class="fa-solid fa-circle-exclamation fa-2x"></i>&nbsp;&nbsp; <p class="h5 mt-1 fw-bold">Notification</p> &nbsp;&nbsp; &nbsp;
+          <span class="badge bg-danger p-2 mb-1">Badge</span>
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            {{-- @if($employees !== 0)
+            @foreach ($employees as $employee)
+                <div class="alert alert-warning" role="alert">
+                    Document submitted from <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a>.  &nbsp;&nbsp; <span class="h6 text-muted">{{$employee->created_at}}</span>
+                </div>
+            @endforeach --}}
+        {{-- @endif --}}
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+          <i class="fa-solid fa-circle-info fa-2x"></i>&nbsp;&nbsp; <p class="h5 mt-1 fw-bold">Info</p> &nbsp;&nbsp;
+          <span class="badge bg-danger p-2 mb-1">Badge</span>
+            {{-- add count in badge --}}
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            {{-- @if($employees !== 0)
+                @foreach ($employees as $employee)
+                    <div class="alert alert-info" role="alert">
+                        New employee <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a> is assigned.  &nbsp;&nbsp; <span class="h6 text-muted">{{$employee->created_at}}</span>
+                    </div>
+                @endforeach
+            @endif --}}
+        </div>
+      </div>
+  </div>
+
+  {{-- badge to use --}}
+<div class="container bg-white opacity-90 p-3 rounded mb-3">
+    <p class="h4">what's new
+
+    
+            <button type="button" class="btn btn-info position-relative rounded-pill">
+                Inbox
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  99+
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button></p>
+    
+    
+    
+</div>
+
+
 
 @endsection
