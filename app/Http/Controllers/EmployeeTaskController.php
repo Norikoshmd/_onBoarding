@@ -4,24 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
-use App\Models\TaskPost;
+use App\Models\EmployeeTask;
 
-class TaskPostController extends Controller
+class EmployeeTaskController extends Controller
 {
     private $task;
-    private $task_post;
+    private $employee_task;
 
-    public function __construct(Task $task,TaskPost $task_post)
+    public function __construct(Task $task,EmployeeTask $employee_task)
     {
         $this->task = $task;
-        $this->task_post = $task_post;
+        $this->employee_task = $employee_task;
     }
 
-    public function taskPost()
+    public function employeeTask()
     {
         $all_tasks = $this->task->paginate(10);
 
-        return view('hr.taskPost')->with('all_tasks', $all_tasks);
+        return view('hr.employeeTask')->with('all_tasks', $all_tasks);
     }
     
     public function taskStore(Request $request)
@@ -34,25 +34,27 @@ class TaskPostController extends Controller
        $employee_id = $request->employee_id;
        $tasks    = $request->task;
        
-       $task_post = [];
+       $employee_task = [];
 
        foreach($tasks as $task_id){
         // $duedate = $request->input("duedate_{$task_id}"); 
         // dd($request);
 
-        $task_post[] = [
+        $employee_task[] = [
             'employee_id' => $employee_id,
             'task_id' => $task_id,
             // 'duedate' => $duedate
         ];
        }
 
-       TaskPost::insert($task_post);
+       EmployeeTask::insert($employee_task);
     //    $this->task_post->saveMany($task_post);
 
        return redirect()->route('hr.employee');
 
     }
+
+    
 
     public function destroy($id)
     {

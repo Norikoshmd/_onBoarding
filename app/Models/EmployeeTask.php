@@ -5,17 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TaskPost extends Model
+class EmployeeTask extends Model
 {
     use HasFactory;
 
-    protected $table = 'task_post';
+    protected $table = 'employee_task';
     protected $fillable = ['employee_id', 'task_id'];
     public $timestamps = false;
 
-    #To get the name of the category
     public function task()
     {
         return $this->belongsTo(Task::class);
     }
+
+    public function employee()
+    {
+        return $this->belongsToMany(Employee::class,'employee_task');
+    }
+
+    
 }

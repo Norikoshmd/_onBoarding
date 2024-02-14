@@ -12,7 +12,7 @@
     <thead class="opacity-75">
         <tr class="text-center table table-secondary">
             <th>#</th>
-            <th>ID</th>
+            <th>Employee ID</th>
             <th>Name</th>
             <th>Requested Item</th>
             <th>Assigned by</th>
@@ -20,16 +20,20 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($tasks as $task)
-            {{-- <tr>
-                <td>{{ $taskPost->id }}</td>
-                <td>{{ $task->employee_id }}</td> --}}
-                {{-- <td>{{ $task->employee_id->employee->name }}</td> --}}
-                {{-- <td>{{ $task->name }}</td>
+        @forelse ($employee_tasks as $task)
+            <tr class="text-center">
                 <td></td>
-            </tr> --}}
+                <td>{{ $task->employee_id }}</td>
+                {{-- <td>{{ $task->employee->name}}</td> --}}
+                <td class="text-start ms-2">{{ $task->task->name }}</td>
+                <td>{{ $task->name }}</td>
+                <td></td>
+                <td></td>
+            </tr>
         @empty
-            <p class="text-muted">No Task Assigned</p>
+            <div class="bg-info-subtle rounded p-2 mt-2 mb-2 ">
+                <p class="text-muted h5 text-center">No Task has Assigned yet.</p>
+            </div>
         @endforelse
            
     </tbody>

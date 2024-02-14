@@ -102,7 +102,6 @@
                     <thead>
                         <tr>
                             <th>Document Name</th>
-                            <th>Due Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,9 +128,6 @@
                                             @enderror
                                 </div>
                             </td>
-                            <td>
-                                <input type="date" name="duedate" id="duedate" class="form-control">
-                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -150,7 +146,6 @@
                     <thead>
                         <tr>
                             <th>Document Name</th>
-                            <th>Due Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -176,9 +171,6 @@
                                                 <div class="text-danger text-small">{{ $message }}</div>
                                             @enderror
                                 </div>
-                            </td>
-                            <td>
-                                <input type="date" name="duedate" id="duedate" class="form-control">
                             </td>
                         </tr>
                     </tbody>

@@ -12,9 +12,14 @@ class Task extends Model
 
    
 
-    public function taskPost()
+    public function employeeTask()
     {
-        return $this->hasMany(TaskPost::class);
+        return $this->belongsToMany(EmployeeTask::class,'employee_task');
+    }
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class,'employee_task','task_id','employee_id');
     }
 
 }

@@ -20,9 +20,14 @@ class Employee extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function taskPost()
+    public function tasks()
     {
-        return $this->hasMany(TaskPost::class);
+        return $this->belongsToMany(Task::class,'employee_task');
+    }
+
+    public function employee_tasks()
+    {
+        return $this->belongsToMany(Task::class, 'employee_task', 'employee_id','task_id');
     }
 
 
