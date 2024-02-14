@@ -34,6 +34,22 @@
   object-fit: cover;
 }
 
+.styled-img {
+  width: 300px; /* Set the width as needed */
+  height: 200px; /* Set the height as needed */
+  background-image: url('{{ asset("images/example.jpg") }}'); /* Path to your image using asset() helper */
+  background-size: cover; /* Adjust as needed */
+}
+
+.styled-iframe {
+  width: 300px; /* Set width */
+  height: 300px; /* Set height */
+  /* border: 2px solid #ccc; Set border */
+  border-radius: 8px; /* Set border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+
 
 
 
