@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Employee;
+use App\Models\EmployeeTask;
 use App\Http\Controllers\Auth\RegistrationController;
 use Illuminate\Support\Facades\Log;
 
@@ -12,11 +13,14 @@ class TaskController extends Controller
 {
     private $task;
     private $employee;
+    private $employee_task;
 
-    public function __construct(Task $task, Employee $employee)
+
+    public function __construct(Task $task, Employee $employee, EmployeeTask $employee_task)
     {
         $this->task = $task;
         $this->employee = $employee;
+        $this->employee_task = $employee_task;
 
     }
 
@@ -32,8 +36,13 @@ class TaskController extends Controller
     public function employee()
     {
         $employees = $this->employee->latest()->paginate(5);
+        $tasks = $this->task->all();
+        $employee_task = $this->employee_task->all();
 
-        return view('hr.employee')->with('employees',$employees);
+        return view('hr.employee')
+                ->with('employees',$employees)
+                ->with('tasks',$tasks)
+                ->with('employee_task',$employee_task);
     }
 
     // ii : to show items endorsed to $employee
@@ -43,7 +52,7 @@ class TaskController extends Controller
             
         return view('hr.showEndorsed')->with('employee', $employee);
     }
-
+                         
     // iii : register users - pending 
     public function register()
     {
@@ -83,11 +92,14 @@ class TaskController extends Controller
 
 
 // 3: Requested items List
-    public function show()
+    public function showAssigned()
     {
-        $tasks = $this->task->all();
-
-        return view('hr.show')->with('tasks',$tasks);
+        // $tasks = $this->task->all();
+        $employee_tasks = $this->employee_task->all();
+    
+        return view('hr.showAssigned')
+                // ->with('tasks',$tasks)
+                ->with('employee_tasks',$employee_tasks);
     }
 
 

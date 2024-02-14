@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\TaskPostController;
+use App\Http\Controllers\EmployeeTaskController;
 
 
 
@@ -55,15 +55,15 @@ Route::group(['middleware' => 'auth'], function(){
         //2-v.
 
       
-        Route::get('/show',[TaskController::class, 'show'])->name('show'); //3. hr.show
+        Route::get('/showAssigned',[TaskController::class, 'showAssigned'])->name('showAssigned'); //3. hr.showAssigned
         Route::get('/showSubmitted',[TaskController::class, 'showSubmitted'])->name('showSubmitted'); //4. hr.showSubmitted
         Route::get('/showConfirmed',[TaskController::class, 'showConfirmed'])->name('showConfirmed'); //5. hr.showConfirmed
         Route::post('/store',[TaskController::class, 'store'])->name('store'); //6. hr.store
 
-       #HR TaskPostController
-        Route::get('/taskPost',[TaskPostController::class, 'taskPost'])->name('taskPost'); //hr.taskPost
-        Route::post('/taskStore',[TaskPostController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
-        Route::delete('/{id}/destroy',[TaskPostController::class, 'destroy'])->name('task.destroy'); //hr.task.destroy
+       #HR EmployeeTaskController
+        Route::get('/employeeTask',[EmployeeTaskController::class, 'EmployeeTask'])->name('employeeTask'); //hr.employeeTask
+        Route::post('/taskStore',[EmployeeTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
+        Route::delete('/{id}/destroy',[EmployeeTaskController::class, 'destroy'])->name('task.destroy'); //hr.task.destroy
         
     });
 

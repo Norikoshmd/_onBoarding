@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('task_post', function (Blueprint $table) {
+        Schema::create('employee_task', function (Blueprint $table) {
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('task_id');
             // $table->date('duedate');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('task_post');
+        Schema::dropIfExists('employee_task');
     }
 };
