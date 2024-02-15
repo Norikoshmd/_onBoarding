@@ -36,21 +36,21 @@ class TaskController extends Controller
     public function employee()
     {
         $employees = $this->employee->latest()->paginate(5);
-        $tasks = $this->task->all();
-        $employee_task = $this->employee_task->all();
-
+       
         return view('hr.employee')
-                ->with('employees',$employees)
-                ->with('tasks',$tasks)
-                ->with('employee_task',$employee_task);
+                ->with('employees',$employees);
+              
     }
 
     // ii : to show items endorsed to $employee
     public function showEndorsed($id)
     {
         $employee  = $this->employee->findOrFail($id);
+        $employee_task = $this->employee_task->findOrFail($id);
             
-        return view('hr.showEndorsed')->with('employee', $employee);
+        return view('hr.showEndorsed')
+                ->with('employee', $employee)
+                ->with('employee_task', $employee_task);
     }
                          
     // iii : register users - pending 
@@ -94,12 +94,12 @@ class TaskController extends Controller
 // 3: Requested items List
     public function showAssigned()
     {
-        // $tasks = $this->task->all();
-        $employee_tasks = $this->employee_task->all();
+        $employees = $this->employee->all();
+        $all_tasks = $this->task->orderBy('updated_at','desc')->paginate(10);
     
         return view('hr.showAssigned')
-                // ->with('tasks',$tasks)
-                ->with('employee_tasks',$employee_tasks);
+                ->with('employees',$employees)
+                ->with('all_tasks',$all_tasks);
     }
 
 

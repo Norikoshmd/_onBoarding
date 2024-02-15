@@ -11,10 +11,6 @@ class Employee extends Model
 {
     use HasFactory,SoftDeletes;
 
-    // protected $table = "task_post";
-    // protected $fillable = ['task_id','employee_id'];
-
-
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -25,9 +21,9 @@ class Employee extends Model
         return $this->belongsToMany(Task::class,'employee_task');
     }
 
-    public function employee_tasks()
+    public function employeeTask()
     {
-        return $this->belongsToMany(Task::class, 'employee_task', 'employee_id','task_id');
+        return $this->hasMany(EmployeeTask::class);
     }
 
 

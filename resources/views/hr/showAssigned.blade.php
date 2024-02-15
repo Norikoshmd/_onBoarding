@@ -20,13 +20,13 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($employee_tasks as $task)
+        @forelse ($all_tasks as $task)
             <tr class="text-center">
                 <td></td>
-                <td>{{ $task->employee_id }}</td>
+                <td>{{ $task->id }}</td>
                 {{-- <td>{{ $task->employee->name}}</td> --}}
-                <td class="text-start ms-2">{{ $task->task->name }}</td>
-                <td>{{ $task->name }}</td>
+                <td class="text-start ms-2">{{ $task->name }}</td>
+                {{-- <td>{{ $task->name }}</td> --}}
                 <td></td>
                 <td></td>
             </tr>

@@ -61,11 +61,12 @@
                     <td>{{ $employee->user->name }}</td>
                     <td><a href="{{ route('hr.register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
                     <td>
-                            {{-- @if($employee_task->employee->isNotEmpty()) --}}
-                                <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-                            {{-- @else --}}
-                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-                            {{-- @endif --}}
+                        @if($employee->task_id == 0)
+                            <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+                        @else
+                            <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
+                        @endif
+
                     </td>
                 </tr>
             @empty
