@@ -38,15 +38,27 @@
                              {{-- depending on the  $task_id differenciate the submitpage--}}
                             <td>
                                  {{-- $task_id:1 - Form1:Employee Information Form --}}
-                                <a href="{{ route('doc.showForm1')}}" class="btn btn-outline-primary"><i class="fa-solid fa-file-import fa-lg"></i></a>
+                                @if($task->task_id == 1)
+                                    <a href="{{ route('doc.showForm1')}}" class="btn btn-outline-primary"><i class="fa-solid fa-file-import fa-lg"></i></a>
+                                
+                                {{-- $task_id:2 - Form2:Emergency Contact Form --}}
+                                {{-- @elseif($task->task_id == 2) --}}
+                                {{-- $task_id:3 - Form3:Commutation Allowance Application--}}
+                                {{-- @elseif($task->task_id == 3) --}}
+                                {{-- $task_id:4 - Form4:Concent Form for bank transfer --}}
+                                {{-- @elseif($task->task_id == 4) --}}
+                                {{-- $task_id:5 - Form5:Application for Exemption for dependents of Employment Income Earner --}}
+                                {{-- @elseif($task->task_id == 5) --}}
 
 
-
-
-                                {{-- $task_id:? - Copy1:Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書 --}}
-                                <a href="{{ route('doc.showCopy1')}}" class="btn btn-outline-primary"><i class="fa-solid fa-file-import fa-lg"></i></a>
-                               
+                                {{-- $task_id:6 - Copy1:My Number Card--}}
+                                {{-- $task_id:7 - Copy2:Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書 --}}
+                                @elseif($task->task_id == 7)
+                                  
+                                @endif
                             </td>
+
+                            <a href="{{ route('doc.showCopy1')}}" class="btn btn-outline-primary"><i class="fa-solid fa-file-import fa-lg"></i></a>
                         </tr>
                     {{-- @endif --}}
                 @empty
