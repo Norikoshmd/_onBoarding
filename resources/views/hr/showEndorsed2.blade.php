@@ -71,7 +71,7 @@
         </div>
 
         <div class="text-center">
-            <a href="{{ route('hr.employee')}}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> BACK</a>
+            <a href="{{ route('hr.assignTask',$employee->id)}}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> BACK</a>
         </div>
 
 

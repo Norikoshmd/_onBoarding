@@ -29,41 +29,50 @@
                             <td></td>
                             <td hidden>{{ $task->task_id}}</td>
                             <td class="text-start">{{ $task->task->name}}</td> 
-                             {{-- depending on the  $task_id differenciate the a--}}
-                            <td>
-                               
-                                <a href="#" target="_blank" rel="noopener noreferrer" ><i class="fa-solid fa-circle-question fa-2x text-primary"></i></a>
                            
-                            </td>
                              {{-- depending on the  $task_id differenciate the submitpage--}}
                             <td>
                                  {{-- $task_id:1 - Form1:Employee Information Form --}}
                                 @if($task->task_id == 1)
-                                    <a href="{{ route('doc.showForm1')}}" class="btn btn-outline-primary"><i class="fa-solid fa-file-import fa-lg"></i></a>
+                                    <a href="{{ route('doc.showForm1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
                                 
                                 {{-- $task_id:2 - Form2:Emergency Contact Form --}}
-                                {{-- @elseif($task->task_id == 2) --}}
-                                {{-- $task_id:3 - Form3:Commutation Allowance Application--}}
-                                {{-- @elseif($task->task_id == 3) --}}
-                                {{-- $task_id:4 - Form4:Concent Form for bank transfer --}}
-                                {{-- @elseif($task->task_id == 4) --}}
-                                {{-- $task_id:5 - Form5:Application for Exemption for dependents of Employment Income Earner --}}
-                                {{-- @elseif($task->task_id == 5) --}}
+                                 @elseif($task->task_id == 2)
+                                <a href="{{ route('doc.showForm2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                               
+                                {{-- $task_id:3 - Form3: My Number Card--}}
+                                 @elseif($task->task_id == 3)
+                                <a href="{{ route('doc.showForm3')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                               
+                                {{-- $task_id:4 - Copy1:Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書 --}}
+                                @elseif($task->task_id == 4)
+                                <a href="{{ route('doc.showCopy1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
 
+                                 {{-- $task_id:5 - Copy2:Employment Insurance Card | 雇用保険被保険者証 --}}
+                                 @elseif($task->task_id == 5)
+                                 <a href="{{ route('doc.showCopy2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
 
-                                {{-- $task_id:6 - Copy1:My Number Card--}}
-                                {{-- $task_id:7 - Copy2:Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書 --}}
-                                @elseif($task->task_id == 7)
+                                  {{-- $task_id:6 - Copy3: Income Tax Withholing Slip | 給与所得者の源泉徴収票 --}}
+                                 @elseif($task->task_id == 6)
+                                 <a href="{{ route('doc.showCopy3')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+
+                                 {{-- $task_id:7 - Dependent1: Income Tax Withholing Slip | 給与所得者の源泉徴収票 --}}
+                                 @elseif($task->task_id == 7)
+                                 <a href="{{ route('doc.showDependent1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+
+                                 {{-- $task_id:8 - Dependent2: Dependent/spouse ID copy --}}
+                                 @elseif($task->task_id == 8)
+                                 <a href="{{ route('doc.showDependent2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
                                   
                                 @endif
                             </td>
-
-                            <a href="{{ route('doc.showCopy1')}}" class="btn btn-outline-primary"><i class="fa-solid fa-file-import fa-lg"></i></a>
+                          
+                           
                         </tr>
                     {{-- @endif --}}
                 @empty
-                    <div class="mb-3">
-                        <p class="h3">Thank you <i class="fa-solid fa-face-smile"></i><br>All documents are submitted!</p>
+                    <div class="mb-3 bg-info-subtle rounded p-3">
+                        <p class="h5 text-muted">All documents are submitted!<br>Thank you very much <i class="fa-solid fa-face-smile"></i></p>
                     </div>
                 @endforelse
         </tbody>

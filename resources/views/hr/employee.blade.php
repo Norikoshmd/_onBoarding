@@ -61,17 +61,24 @@
                     <td>{{ $employee->user->name }}</td>
                     <td><a href="{{ route('hr.register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
                     <td>
-                        @if($employee->task_id == 0)
-                            <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+                        @if($employee_tasks->employee = $employee)
+                        <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
                         @else
-                            <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
+                        <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
                         @endif
 
+                        {{-- @foreach ($employee_tasks as $task)
+                            @if($task->employee == $employee)
+                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+                            @else
+                                <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
+                            @endif
+                        @endforeach --}}
                     </td>
                 </tr>
             @empty
                 <div class="mb-3 p-3 bg-warning-subtle rounded">
-                    <p class="h3 text-muted text-center">All New Employees submitted required information!</p>
+                    <p class="h text-muted text-center">No new employees has assigned yet.</p>
                 </div>
             @endforelse
         </tbody>

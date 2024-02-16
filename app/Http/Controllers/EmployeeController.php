@@ -42,6 +42,7 @@ class EmployeeController extends Controller
             'visa_status'   =>'required|min:1|max:100', 
             'startday'      =>'required|date|after:today',
             'workat'        =>'required|min:1|max:30', 
+            'dependent'     =>'required|min:1|max:5', 
             'visa_f'        =>'required|mimes:jpeg,jpg,png,gif|max:1048' ,
             'visa_b'        =>'required|mimes:jpeg,jpg,png,gif|max:1048' ,
             'passport'      =>'required|mimes:jpeg,jpg,png,gif|max:1048' ,
@@ -54,6 +55,7 @@ class EmployeeController extends Controller
         $this->employee->visa_status = $request->visa_status;
         $this->employee->startday    = $request->startday;
         $this->employee->workat      = $request->workat;
+        $this->employee->dependent   = $request->dependent;
         $this->employee->visa_f      = 'data:visa_f/' . $request->visa_f->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_f));
         $this->employee->visa_b      = 'data:visa_b/' . $request->visa_b->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_b));
         $this->employee->passport    = 'data:passport/' . $request->passport->extension() . ';base64,' . base64_encode(file_get_contents($request->passport));

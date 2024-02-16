@@ -10,7 +10,7 @@ class EmployeeTask extends Model
     use HasFactory;
 
     protected $table = 'employee_task';
-    protected $fillable = ['task_id','employee_id'];
+    protected $fillable = ['task_id','employee_id','user_id'];
     public $timestamps = false;
 
     public function task()
@@ -22,6 +22,11 @@ class EmployeeTask extends Model
     {
         return $this->belongsTo(Employee::class);
     }
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     
 }

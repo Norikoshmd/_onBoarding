@@ -20,18 +20,18 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($all_tasks as $task)
+        @forelse ($employee_tasks as $task)
             <tr class="text-center">
-                <td></td>
-                <td>{{ $task->id }}</td>
-                {{-- <td>{{ $task->employee->name}}</td> --}}
-                <td class="text-start ms-2">{{ $task->name }}</td>
-                {{-- <td>{{ $task->name }}</td> --}}
+                
+                <td>{{ $task->employee->id}}</td>
+                <td>{{ $task->employee->name}}</td>
+                <td class="text-start ms-2">{{ $task->task->name }}</td>
+                {{-- <td>{{ $task->user_id->name }}</td> --}}
                 <td></td>
                 <td></td>
             </tr>
         @empty
-            <div class="bg-info-subtle rounded p-2 mt-2 mb-2 ">
+            <div class="bg-info-subtle rounded p-3 mt-2 mb-2 ">
                 <p class="text-muted h5 text-center">No Task has Assigned yet.</p>
             </div>
         @endforelse

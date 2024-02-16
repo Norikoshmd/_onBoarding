@@ -14,8 +14,6 @@
     </div>
        
     <hr>
-    <form action="{{ route('recruiter.store')}}" method="post" enctype="multipart/form-data">
-     @csrf
         <div class="row mb-3">
             <div class="col-auto">
                 <label for="name" class="form-label">Name</label>
@@ -46,6 +44,10 @@
                 <label for="work_for" class="form-label">Work for</label>
                 <p class="fs-5">{{ $employee->workat }}</p>
             </div>
+            <div class="col-auto">
+                <label for="dependent" class="form-label">Any Dependents to apply? </label>
+                <p class="fs-5">{{ $employee->dependent }}</p>
+            </div>
         </div>
         <hr>
         <div class="row mb-3 fw-bold">
@@ -69,11 +71,7 @@
             <p>{{ $employee->remarks }}</p>
         </div>
         <hr>
-        <div class="row mx-auto justify-content-center">
-            <div class="col-4 gx-3">
-               <a href="{{ route('recruiter.index')}}" class="btn btn-outline-warning btn-sm"> Cancel</a>
-              
-            </div>
+        <div class="row">
+              <a href="{{ route('recruiter.index')}}" class="btn btn-outline-warning btn-sm mx-auto" style="width:20%;"> BACK</a>
         </div>
-    </form>
 @endsection
