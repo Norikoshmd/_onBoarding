@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\EmployeeTask;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeTaskController extends Controller
 {
@@ -29,20 +30,23 @@ class EmployeeTaskController extends Controller
        $request->validate([
         'task'          => 'required|array|between:1,30',
         'employee_id'   => 'required'
+        
        ]);
        
        $employee_id = $request->employee_id;
        $tasks    = $request->task;
+       $user_id = Auth::user()->id;
        
        $employee_task = [];
 
        foreach($tasks as $task_id){
         // $duedate = $request->input("duedate_{$task_id}"); 
-        // dd($request);
+      
 
         $employee_task[] = [
             'employee_id' => $employee_id,
             'task_id' => $task_id,
+            'user_id' => $user_id
             // 'duedate' => $duedate
         ];
        }

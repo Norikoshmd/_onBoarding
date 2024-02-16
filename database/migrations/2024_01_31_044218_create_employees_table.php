@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('visa_status',100);
             $table->date('startday');
             $table->string('workat',30);
+            $table->string('dependent',10);
             $table->longText('visa_f')->nullable();
             $table->longText('visa_b')->nullable();
             $table->longText('passport')->nullable();;

@@ -20,27 +20,101 @@ class DocController extends Controller
         return view('users.form.form1');
     }
 
-    // public function storeForm1(Request $request)
-    // {
-    //     $this->request->validate([
-    //         'firstname' => '',
-    //         'middlename' => '',
-    //         'lastname' => '',
-    //         'namae' => '',
-    //         'middlename_kana' => '',
-    //         'myouji' => '',
-    //         'dob' => '',
-    //         'maritalStatus' => '',
-    //         'phone' => '',
-    //         'c_postal' => '',
-    //         'c_address' => '',
-    //         'homecountry' => '',
-    //         'h_address' => '',
-    //         'h_postal' => '',
-    //     ]);
+    public function storeForm1(Request $request)
+    {
+        $request->validate([
+            'firstname'         => 'required|min:1|max:50',
+            'middlename'        => 'nullable|min:1|max:50',
+            'lastname'          => 'required|min:1|max:50',
+            'namae'             => 'nullable|min:1|max:50',
+            'middlename_kana'   => 'nullable',
+            'myouji'            => 'nullable|min:1|max:50',
+            'dob'               => 'required|date',
+            'maritalStatus'     => 'required|max:10',
+            'phone'             => 'required|min:1|max:50',
+            'email'             => 'required|min:1|max:50',
+            'c_postal'          => 'required|min:1|max:50',
+            'c_address'         => 'required|min:1|max:50',
+            'homecountry'       => 'required|min:1|max:50',
+            'h_address'         => 'required|min:1|max:50',
+            'h_postal'          => 'required|min:1|max:50',
+        ]);
 
-    //     $this->doc->save();
-    // }
+        $this->doc->firstname = $request->firstname;
+        $this->doc->middlename = $request->middlename;
+        $this->doc->lastname = $request->lastname;
+        $this->doc->namae = $request->namae;
+        $this->doc->middlename_kana = $request->middlename_kana;
+        $this->doc->myouji = $request->myouji;
+        $this->doc->dob = $request->dob;
+        $this->doc->marital_status = $request->maritalStatus;
+        $this->doc->phone = $request->phone;
+        $this->doc->email = $request->email;
+        $this->doc->c_postal = $request->c_postal;
+        $this->doc->c_address = $request->c_address;
+        $this->doc->c_address = $request->c_address;
+        $this->doc->homecountry = $request->homecountry;
+        $this->doc->h_address = $request->h_address;
+        $this->doc->h_postal = $request->h_postal;
+    
+        $this->doc->save();
+
+        return redirect()->route('showRequested');
+    }
+
+    public function showForm2()
+    {
+        return view('users.form.form2');
+    }
+
+    //NOT WORKING
+    public function storeForm2(Request $request)
+    {
+        $request->validate([
+            'firstname1'         => 'required|min:1|max:30',
+            'lastname1'          => 'required|min:1|max:30',
+            'relationship1'      => 'required|min:1|max:100',
+            'postal1'            => 'nullable|min:1|max:30',
+            'address1'           => 'nullable|min:1|max:100',
+            'email1'             => 'required|min:1|max:50',
+            'phone1'             => 'required|min:1|max:30',
+            'firstname2'         => 'nullable|min:1|max:30',
+            'lastname2'          => 'nullable|min:1|max:30',
+            'relationship2'      => 'nullable|min:1|max:100',
+            'postal2'            => 'nullable|min:1|max:30',
+            'address2'           => 'nullable|min:1|max:100',
+            'email2'             => 'nullable|min:1|max:30',
+            'phone2'             => 'nullable|min:1|max:30',
+        ]);
+      
+        $this->form2->firstname1 = $request->firstname1;
+        $this->form2->lastname1 = $request->lastname1;
+        $this->form2->relationship1 = $request->relationship1;
+        $this->form2->postal1 = $request->postal1;
+        $this->form2->address1 = $request->address1;
+        $this->form2->email1 = $request->email1;
+        $this->form2->phone1 = $request->phone1;
+        $this->form2->firstname2 = $request->firstname2;
+        $this->form2->lastname2 = $request->lastname2;
+        $this->form2->relationship2 = $request->relationship2;
+        $this->form2->postal2 = $request->postal2;
+        $this->form2->address2 = $request->address2;
+        $this->form2->email2 = $request->email2;
+        $this->form2->phone2 = $request->phone2;
+
+     
+        $this->form2->save();
+
+        return redirect()->route('showRequested');
+    }
+
+    public function showForm3()
+    {
+        return view('users.form.form3');
+    }
+
+
+    // copy
 
 
     public function showCopy1()
@@ -52,4 +126,28 @@ class DocController extends Controller
     // {
 
     // }
+
+    public function showCopy2()
+    {
+        return view('users.copies.copy2');
+    }
+
+
+    public function showCopy3()
+    {
+        return view('users.copies.copy3');
+    }
+
+
+    //Dependent
+    public function showDependent1()
+    {
+        return view('users.dependent.dependent1');
+    }
+
+    public function showDependent2()
+    {
+        return view('users.dependent.dependent2');
+    }
+
 }

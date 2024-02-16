@@ -10,74 +10,74 @@
     </div>
     <hr>
     <div class="bg-secondary-subtle rounded p-3">
-        <p class="h5 fw-bold">How it looks like?</p>
+        <p class="h5 fw-bold">Submission</p>
     </div>
-    <p class="h5 mt-3 ms-5"> 2 types exists depending on when your pension number is issued. <br>
-    <span class="h6 text-danger ms-5">("2. Basic Pension Number Book" has been abolished in 2022 March and no longer issued after that.)</span>
-
-    <div class="row mb-3">
-        <div class="col-6">
-            <div class="card rounded p-3">
-                <p class="h5 fw-bold mx-auto">1. Basic Pension Number Notice <span class="h6">( "基礎年金番号通知書" in Japanese )</span></p>
-                <hr>
-                <img src="{{asset('css/BasicPensionNumberNotice.png')}}" alt="pensionNumber" class="styled-img mx-auto">
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card rounded p-3">
-                <p class="h5 fw-bold mx-auto">2. Basic Pension Number Book <span class="fs-6 text-danger">*Abolished</span>
-                    <span class="h6">( "年金手帳" in Japanese ) </span></p>
-              
-                <hr>
-                <img src="{{asset('css/BasicPensionNumberBook.png')}}" alt="pensionNumber" class="styled-img mx-auto">
-            </div>
-        </div>
-    </div>
-    <div class="bg-secondary-subtle rounded p-3 mb-3">
-        <p class="h5 fw-bold ms-2 ">Submit &nbsp;<span class=" h6 text-danger">*Please make sure the data has your pension number (10 digits) </span></p>
-    </div>
-    
     <div class="row justify-content-center">
         <div class="col-11">
-            <p class="h5 mb-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>"
+            <p class="h5 mb-4 mt-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>"</p>
         </div>
     </div>
-    
-    <div class="row mb-3">
-        <form action="#" method="post">
-            @csrf
-            <div class="row mb-3 justify-content-center">
-                <div class="col-3">
-                    <input type="file" name="pension" id="pension" class="form-control">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+    <form action="#" method="post">
+        @csrf
+        <div class="row mb-2 justify-content-center">
+            <div class="col-6">
+                <p class="h6 text-danger ms-5">*Please make sure the data has your pension number printed (10 digits) </p>
             </div>
-            <hr>
-            <div class="row justify-content-center">
-                <div class="col-11">
-                    <p class="h5 mb-3">*In case "<span class="fw-bold">you are new to Japan(no work experience)</span>", 
-                        or "<span class="fw-bold">you only know your basic pension number</span>"
-                </div>
+        </div>
+        <div class="row mb-5 justify-content-center">
+            <div class="col-3">
+                <input type="file" name="pension" id="pension" class="form-control">
             </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
 
-            <div class="row mb-3 justify-content-center">
-                <div class="col-5">
-                    <input type="number" name="pensionnumber" class="form-control" placeholder="ONLY For you who 1. is new to Japan, 2. lost pension notice/book ">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="row mb-3">
+            <div class="col-6">
+                <div class="card rounded p-3">
+                    <p class="h5 fw-bold mx-auto">1. Basic Pension Number Notice <span class="h6">( "基礎年金番号通知書" in Japanese )</span></p>
+                    <hr>
+                    <img src="{{asset('css/BasicPensionNumberNotice.png')}}" alt="pensionNumber" class="styled-img mx-auto">
                 </div>
             </div>
-        </form>
-    </div>
+            <div class="col-6">
+                <div class="card rounded p-3">
+                    <p class="h5 fw-bold mx-auto">2. Basic Pension Number Book <span class="fs-6 text-danger">*Abolished</span>
+                        <span class="h6">( "年金手帳" in Japanese ) </span>
+                    </p>
+                <hr>
+                    <img src="{{asset('css/BasicPensionNumberBook.png')}}" alt="pensionNumber" class="styled-img mx-auto">
+                </div>
+            </div>
+        </div>
+      
+        <p class="h6 text-secondary text-end mb-5"> ("2. Basic Pension Number Book" has been abolished in 2022 March and no longer issued after that.)</p>
+                
+        <div class="bg-secondary-subtle rounded p-3 mb-3">
+            <p class="h5 mb-3">*In case "<span class="fw-bold">you are new to Japan(no work experience)</span>", 
+                or "<span class="fw-bold">you only know your basic pension number</span>"
+            </p>
+        </div>
+
+        <div class="row mb-5 justify-content-center">
+            <div class="col-5">
+                <input type="number" name="pensionnumber" class="form-control" placeholder="ONLY For you who 1. is new to Japan, 2. lost pension notice/book ">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        
+        
+    </form>
+
     
     {{-- Accordion Start --}}
-    <div class="accordion" id="accordionExample">
+    <div class="accordion" id="accordion">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 <p class="h5 fw-bold"><span class="badge bg-white text-secondary">Reference</span> Q : I
                     don't have such notice or book. Where can I get it?</p> 
             </button>
@@ -128,16 +128,20 @@
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <iframe width="500" height="250" src="https://www.youtube.com/embed/X9gvaCcb5_k?si=IFIUPWsIWLHYLXaS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="styled-iframe"></iframe>
+                <iframe width="750" height="500" src="https://www.youtube.com/embed/X9gvaCcb5_k?si=IFIUPWsIWLHYLXaS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="styled-iframe"></iframe>
 
                 <p>For more languages <br>
                 <a href="https://www.nenkin.go.jp/service/learn/shitteokitai_gaikoku.html">https://www.nenkin.go.jp/service/learn/shitteokitai_gaikoku.html</a>
                 </p>
             </div>
           </div>
-        </div>
+        </div>    {{-- Acordion End --}}
+        <hr>
+           <div class="text-center">
+               <a href="{{route('showRequested')}}" class="mt-3 form-control btn btn-secondary" style="width:30%;">Back</a>
+           </div>
     </div>
-    {{-- Acordion End --}}
+   
 </div>
 
 @endsection

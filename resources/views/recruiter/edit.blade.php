@@ -53,7 +53,7 @@
                 <select name="visa_status" id="visa_status" class="form-select">
                     <option name="engineer" value="Engineer/Specialist in Humanities/International services | 技術・人文・知識・国際業務"{{ $employee->visa_status =='Engineer/Specialist in Humanities/International services | 技術・人文・知識・国際業務' ? 'selected':'' }}>Engineer/Specialist in Humanities/International services | 技術・人文・知識・国際業務</option>
                     <option name="student" value="Student | 留学"{{$employee->visa_status =='Student | 留学' ? 'selected':'' }}>Student | 留学</option>
-                    <option name="spouse_japanese" value="Spouse or child of Japanese national | 日本人の配偶者等"{{ $employee->visa_status == 'Student | 留学' ? 'selected' :'' }}>Spouse or child of Japanese national | 日本人の配偶者等</option>
+                    <option name="spouse_japanese" value="Spouse or child of Japanese national | 日本人の配偶者等"{{ $employee->visa_status == 'Spouse or child of Japanese national | 日本人の配偶者等' ? 'selected' :'' }}>Spouse or child of Japanese national | 日本人の配偶者等</option>
                     <option name="pr" value="Parmanent Resident | 定住者" {{$employee->visa_status == 'Parmanent Resident | 定住者' ? 'selected':'' }}>Parmanent Resident | 定住者</option>
                     <option name="spouse_pr" value="Spouse of parmanent resident | 永住者の配偶者等" {{ $employee->visa_status == 'Spouse of parmanent resident | 永住者の配偶者等' ? 'selected':'' }}>Spouse of parmanent resident | 永住者の配偶者等</option>
                 </select>
@@ -77,6 +77,16 @@
                     <p class="text-danger small">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="col-3">
+                <label for="dependent" class="form-label">Any Dependents to apply? </label>
+                <select name="dependent" id="dependent" class="form-select">
+                    <option name="yes" value="Yes"{{ $employee->dependent =='Yes' ? 'selected':'' }}>Yes</option>
+                    <option name="no" value="No"{{ $employee->dependent =='No' ? 'selected':'' }}>No</option>
+                </select>
+                @error('dependent')
+                    <p class="text-danger small">{{ $message }}</p>
+                @enderror
+            </div>
         </div>
         <hr>
         <div class="row mb-3 fw-bold">
@@ -88,6 +98,7 @@
                 @error('visa_f')
                     <p class="text-danger small">{{ $message }}</p>
                 @enderror
+               
             </div>
             <div class="col-4">
                 <label for="visa_b" class="form-label">Residence Card (Back)</label>

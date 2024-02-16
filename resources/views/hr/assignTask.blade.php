@@ -7,40 +7,37 @@
 {{-- <div class="container bg-white opacity-90 rounded p-3">
     @include('hr.showEndorsed')
 </div> --}}
+{{-- {{ dd($tasks) }} --}}
 
 <div class="container bg-white opacity-90 rounded p-3 mb-3">
-    <p class="h5">Send Request to </p>
+<form action="{{ route('hr.taskStore')}}" method="post">
+    @csrf
+    <p class="h5 fw-bold">Send Request to </p>
     <div class="card">
         <div class="card-header bg-secondary-subtle">
             <div class="row">
                 <div class="col-auto">
                    <img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm">
                 </div>
-                
-<form action="{{ route('hr.taskStore')}}" method="post">
-@csrf
                 <div class="col-auto">
-                    <a href="#" class="text-decoration-none text-dark">
-                        <input type="text" name="employee_id" hidden value="{{ $employee->id }}">
+                    <input type="hidden" value="{{$employee->id}}">
+                    <a href="{{route('hr.showEndorsed2',$employee->id)}}" class="text-decoration-none text-dark">
                          <p class="h3 mt-3">{{$employee->name}}</p>
                     </a>
                 </div>
+                <div class="col-auto">
+                    @if($employee->dependent == "yes")
+                        <span class="badge bg-danger p-2 fs-6 mt-3">Dependent</span>
+                    @endif
+                </div>
             </div>
-           
-            
-        </div>
-        <div class="card-body">
-            {{-- badges --}}
-            <span class="badge bg-dark">Passport</span>
-            <span class="badge bg-dark">Residence Card</span>
-            <span class="badge bg-danger">Badge</span>
-
         </div>
     </div>
 
 </div>
 
 <div class="container bg-white opacity-90 rounded p-3">
+
     <div class="accordion" id="accordionfortask">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">

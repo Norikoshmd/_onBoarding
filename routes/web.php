@@ -33,10 +33,25 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
         Route::get('/showForm1', [DocController::class, 'showForm1'])->name('showForm1');//doc.showForm1
         Route::post('/storeForm1', [DocController::class, 'storeForm1'])->name('storeForm1');//doc.storeForm1
+
+        Route::get('/showForm2', [DocController::class, 'showForm2'])->name('showForm2');//doc.showForm2
+        Route::post('/storeForm2', [DocController::class, 'storeForm2'])->name('storeForm2');//doc.storeForm2
+
+        Route::get('/showForm3', [DocController::class, 'showForm3'])->name('showForm3');//doc.showForm3
+      
    
         //Copy
         Route::get('/showCopy1', [DocController::class, 'showCopy1'])->name('showCopy1');//doc.showCopy1
         // Route::post('/storeCopy1', [DocController::class, 'storeCopy1'])->name('storeCopy1');//doc.storeCopy1
+
+        Route::get('/showCopy2', [DocController::class, 'showCopy2'])->name('showCopy2');//doc.showCopy2
+        
+        Route::get('/showCopy3', [DocController::class, 'showCopy3'])->name('showCopy3');//doc.showCopy3
+
+        //Dependent
+        Route::get('/showDependent1', [DocController::class, 'showDependent1'])->name('showDependent1');//doc.showDependent1
+        Route::get('/showDependent2', [DocController::class, 'showDependent2'])->name('showDependent2');//doc.showDependent2
+     
 
     });
 
@@ -60,6 +75,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::get('/employee',[TaskController::class, 'employee'])->name('employee'); //2-i.hr.employee
         Route::get('/{id}/showEndorsed',[TaskController::class, 'showEndorsed'])->name('showEndorsed'); //2-ii.hr.showEndorsed
+        Route::get('/{id}/showEndorsed2',[TaskController::class, 'showEndorsed2'])->name('showEndorsed2'); //2-ii.hr.showEndorsed
         Route::get('/register',[TaskController::class, 'register'])->name('register'); //2-iii. hr.register
         // Route::get('/registerUser',[TaskController::class, 'registerUser'])->name('registerUser'); //2-iii. hr.registerUser
         Route::get('/{id}/assignTask',[TaskController::class, 'assignTask'])->name('assignTask'); //2-iv.hr.assignTask

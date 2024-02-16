@@ -9,6 +9,7 @@ use App\Models\EmployeeTask;
 use App\Http\Controllers\Auth\RegistrationController;
 use Illuminate\Support\Facades\Log;
 
+
 class TaskController extends Controller
 {
     private $task;
@@ -36,21 +37,23 @@ class TaskController extends Controller
     public function employee()
     {
         $employees = $this->employee->latest()->paginate(5);
+        $employee_tasks = $this->employee_task->all();
        
         return view('hr.employee')
-                ->with('employees',$employees);
+                ->with('employees',$employees)
+                ->with('employee_tasks',$employee_tasks);
               
     }
 
-    // ii : to show items endorsed to $employee
+    // ii : to show items endorsed by recruiter to each $employee
     public function showEndorsed($id)
     {
         $employee  = $this->employee->findOrFail($id);
-        $employee_task = $this->employee_task->findOrFail($id);
+        // $employee_task = $this->employee_task->all;
             
         return view('hr.showEndorsed')
-                ->with('employee', $employee)
-                ->with('employee_task', $employee_task);
+                ->with('employee', $employee);
+                // ->with('employee_task', $employee_task);
     }
                          
     // iii : register users - pending 
@@ -77,6 +80,16 @@ class TaskController extends Controller
                 ->with('employee',$employee)
                 ->with('tasks',$tasks);
     }
+            //for checking endorsed info and return to assign Task
+            public function showEndorsed2($id)
+            {
+                $employee  = $this->employee->findOrFail($id);
+                // $employee_task = $this->employee_task->all;
+                    
+                return view('hr.showEndorsed2')
+                        ->with('employee', $employee);
+                        // ->with('employee_task', $employee_task);
+            }
 
     // v : (if requests are assigned to $employee) - pending 
     //      show assigned requests to $employee
@@ -95,11 +108,11 @@ class TaskController extends Controller
     public function showAssigned()
     {
         $employees = $this->employee->all();
-        $all_tasks = $this->task->orderBy('updated_at','desc')->paginate(10);
+        $employee_tasks = $this->employee_task->all();
     
         return view('hr.showAssigned')
                 ->with('employees',$employees)
-                ->with('all_tasks',$all_tasks);
+                ->with('employee_tasks',$employee_tasks);
     }
 
 

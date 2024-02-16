@@ -11,7 +11,7 @@
     <hr>
 
     <div class="px-3">
-        <form action="#" method="post">
+        <form action="{{ route('doc.storeForm1')}}" method="post">
             @csrf
             <div class="container bg-secondary-subtle rounded shadow-sm p-3 mb-2">
                 <div class="row justify-content-center mb-3">

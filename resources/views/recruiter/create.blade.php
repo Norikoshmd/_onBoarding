@@ -75,6 +75,17 @@
                     <p class="text-danger small">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="col-3">
+                <label for="dependent" class="form-label">Any Dependents to apply? </label>
+                <select name="dependent" id="dependent" class="form-select">
+                    <option value=""hidden>Select</option>
+                    <option name="yes" value="yes">Yes</option>
+                    <option name="no" value="no">No</option>
+                </select>
+                @error('dependent')
+                    <p class="text-danger small">{{ $message }}</p>
+                @enderror
+            </div>
         </div>
         <hr>
         <div class="row mb-3 fw-bold">
