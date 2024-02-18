@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container bg-white opacity-90 rounded p-3">
-    <h1 class="h3 mt-2 mb-3"><i class="fa-solid fa-user text-secondary"></i> New Employees</h1>
+    <h1 class="h3 mt-2 mb-3 p-3"><i class="fa-solid fa-user text-secondary fa-lg"></i> &nbsp;&nbsp;New Employees</h1>
 
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">

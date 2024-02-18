@@ -28,9 +28,10 @@ class TaskController extends Controller
 // 1:Notification
     public function index()
     {
-        $employees = $this->employee->latest()->paginate(5);
+        $employees = $this->employee->latest()->paginate(3);
         return view('hr.index')->with('employees',$employees);
     }
+
 // 2:New Employee List
 
     // i : to show the list
@@ -91,6 +92,17 @@ class TaskController extends Controller
                         // ->with('employee_task', $employee_task);
             }
 
+            //for checking endorsed info and return to index
+            public function showEndorsed3($id)
+            {
+                $employee  = $this->employee->findOrFail($id);
+                // $employee_task = $this->employee_task->all;
+                    
+                return view('hr.showEndorsed3')
+                        ->with('employee', $employee);
+                        // ->with('employee_task', $employee_task);
+            }
+
     // v : (if requests are assigned to $employee) - pending 
     //      show assigned requests to $employee
     // public function taskAssigned($id)
@@ -108,7 +120,7 @@ class TaskController extends Controller
     public function showAssigned()
     {
         $employees = $this->employee->all();
-        $employee_tasks = $this->employee_task->all();
+        $employee_tasks = $this->employee_task->paginate(6);
     
         return view('hr.showAssigned')
                 ->with('employees',$employees)
@@ -143,6 +155,35 @@ class TaskController extends Controller
 
         return redirect()->back();
     }
+
+    // public function update(Request $request,$id)
+    // {
+    //     $request->validate([
+    //         'name'       => 'required|min:5|max:100|unique:tasks,name',
+    //         'category'   => 'required'
+    //     ]);
+
+    //     $task           = $this->task->findOrFail($id);
+    //     $task->name     = ucwords(strtolower($request->name));
+    //     $task->save();
+
+    //     $task->employeeTask()->delete();
+
+    //     foreach($request->category as $category)
+    //     {
+    //         $employee_task[] = ['category' => $category];
+    //     }
+    //     $task->categoryPost()->createMany($category);
+
+    //     return redirect()->back();
+    // }
+
+    // public function destroy($id)
+    // {
+    //     $this->task->destroy($id);
+
+    //     return redirect()->back();
+    // }
 
 
 }
