@@ -22,6 +22,11 @@ class Task extends Model
         return $this->belongsToMany(Employee::class,'employee_task','task_id','employee_id');
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }
 
 

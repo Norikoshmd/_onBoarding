@@ -5,9 +5,10 @@
 @section('content')
 
 <div class="container bg-white opacity-90 p-3 rounded">
+    <p class="h3 p-3"><i class="fa-solid fa-list fa-lg text-secondary"></i>&nbsp;&nbsp; Items to Request</p>
     <form action="{{ route('hr.store')}}" method="post">
         @csrf
-        <div class="row p-3 justify-content-center">
+        <div class="row p-3 justify-content-center mb-3">
             <input type="text" name="name" class="form-control w-50" placeholder="Add new request to the lists...">
            <select name="category" id="category" class="form-select ms-2" style="width:20%;">
                 <option value=""hidden>Select</option>
@@ -43,22 +44,20 @@
                     <td class="text-start">{{$task->name}}</td>
                     <td>{{$task->category}}</td>
                     <td>{{date('M d, Y', strtotime($task->updated_at))}}</td>
-                    <td>
-                        <div class="row justify-content-center">
-                            <div class="col-auto">
-                                <a href="#" class="btn btn-outline-warning"><i class="fa-solid fa-pen"></i></a>
-                            </div>
-                            <div class="col-auto">
-                                <form action="{{ route('hr.task.destroy',$task->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger ms-2" onclick="return confirm('Are you sure you want to delete this task?')"><i class="fa-solid fa-trash-can"></i></button>
-                                </form>
-                            </div>
-                        </div>
-                    </td>
                     <td></td>
+                    <td>
+                        {{-- Edit Button --}}
+                        <button class="btn btn-outline-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit-request-{{ $task->id }}" title="Edit">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        {{-- Delete Button --}}
+                        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete-request-{{ $task->id }}" title="Delete">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
                 </tr>
+                @include('hr.modal.action')
                 @endforeach
                 
             </tbody>
