@@ -18,6 +18,7 @@
             <div class="col-auto">
                 <label for="name" class="form-label">Name</label>
                 <p class="fs-bold fs-4">{{ $employee->name }}</p>
+                
             </div>
             <div class="col-auto">
                 <label for="gender" class="form-label">Gender</label>

@@ -106,18 +106,20 @@ class EmployeeController extends Controller
         $employee->startday    = $request->startday;
         $employee->workat      = $request->workat;
         $employee->remarks     = $request->remarks;
-       
 
-        if($request->hasFile('visa_f')){
-            $this->employee->visa_f = 'data:image/' . $request->file('visa_f')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('visa_f')));
+
+       if($request->visa_f){
+            $employee->visa_f = 'data:image/' . $request->visa_f->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_f));
         }
-        if($request->hasFile('visa_b')){
-            $this->employee->visa_b = 'data:image/' . $request->file('visa_b')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('visa_b')));
+
+        if($request->visa_b){
+            $employee->visa_b = 'data:image/' . $request->visa_b->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_b));
         }
-        if($request->hasFile('passport')){
-            $this->employee->passport = 'data:image/' . $request->file('passport')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('passport')));
+
+        if($request->passport){
+            $employee->passport = 'data:image/' . $request->passport->extension() . ';base64,' . base64_encode(file_get_contents($request->passport));
         }
-               
+
         $employee->save();
 
         return redirect()->route('recruiter.index');
