@@ -6,6 +6,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeTaskController;
 use App\Http\Controllers\DocController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -20,7 +22,17 @@ use App\Http\Controllers\DocController;
 |
 */
 
-Auth::routes();
+// Auth::routes();
+// Route::get('register',[RegisterController::class,'showRegisterationForm'])->name('register');
+Route::post('register',[RegisterController::class,'register']);
+Route::get('login', [LoginController::class,'showLoginForm'])->name('login'); // view は auth.login
+Route::post('login', [LoginController::class,'login']);
+Route::post('logout', [LoginController::class,'logout'])->name('logout');
+
+
+Route::group(['middleware' => ['auth', 'can:hr']], function () {
+    Route::get('/register',[TaskController::class, 'register'])->name('register'); //2-iii. hr.register
+  });
 
 Route::group(['middleware' => 'auth'], function(){
     #User
@@ -29,10 +41,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/showRequested', [HomeController::class, 'showRequested'])->name('showRequested');
     Route::get('/showSubmitted', [HomeController::class, 'showSubmitted'])->name('showSubmitted');
-
+    
+   
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
         Route::get('/showForm1', [DocController::class, 'showForm1'])->name('showForm1');//doc.showForm1
         Route::post('/storeForm1', [DocController::class, 'storeForm1'])->name('storeForm1');//doc.storeForm1
+        Route::get('/{id}/showSubmitForm1', [DocController::class, 'showSubmitForm1'])->name('showSubmitForm1');//doc.showSubmitForm1
 
         Route::get('/showForm2', [DocController::class, 'showForm2'])->name('showForm2');//doc.showForm2
         Route::post('/storeForm2', [DocController::class, 'storeForm2'])->name('storeForm2');//doc.storeForm2
@@ -71,26 +85,32 @@ Route::group(['middleware' => 'auth'], function(){
 
     #HR
     Route::group(['prefix' => 'hr', 'as' => 'hr.'], function(){
+        Route::get('/test',[TaskController::class, 'test'])->name('test'); //test
+
         Route::get('/index',[TaskController::class, 'index'])->name('index'); //1.hr.index
 
         Route::get('/employee',[TaskController::class, 'employee'])->name('employee'); //2-i.hr.employee
         Route::get('/{id}/showEndorsed',[TaskController::class, 'showEndorsed'])->name('showEndorsed'); //2-ii.hr.showEndorsed
-        Route::get('/{id}/showEndorsed2',[TaskController::class, 'showEndorsed2'])->name('showEndorsed2'); //2-ii.hr.showEndorsed
-        Route::get('/register',[TaskController::class, 'register'])->name('register'); //2-iii. hr.register
+        Route::get('/{id}/showEndorsed2',[TaskController::class, 'showEndorsed2'])->name('showEndorsed2'); //2-ii.hr.showEndorsed2
+        Route::get('/{id}/showEndorsed3',[TaskController::class, 'showEndorsed3'])->name('showEndorsed3'); //2-ii.hr.showEndorsed3
+        
         // Route::get('/registerUser',[TaskController::class, 'registerUser'])->name('registerUser'); //2-iii. hr.registerUser
         Route::get('/{id}/assignTask',[TaskController::class, 'assignTask'])->name('assignTask'); //2-iv.hr.assignTask
         //2-v.
 
       
         Route::get('/showAssigned',[TaskController::class, 'showAssigned'])->name('showAssigned'); //3. hr.showAssigned
+        Route::get('/{id}/showIndividuallyAssigned',[TaskController::class, 'showIndividuallyAssigned'])->name('showIndividuallyAssigned'); //3. hr.showAssigned
         Route::get('/showSubmitted',[TaskController::class, 'showSubmitted'])->name('showSubmitted'); //4. hr.showSubmitted
         Route::get('/showConfirmed',[TaskController::class, 'showConfirmed'])->name('showConfirmed'); //5. hr.showConfirmed
         Route::post('/store',[TaskController::class, 'store'])->name('store'); //6. hr.store
+        Route::patch('/{id}/update', [TaskController::class, 'update'])->name('update');//6-1 hr.update
+        Route::delete('/{id}/destroy', [TaskController::class, 'destroy'])->name('destroy');//6-2 hr.destroy
 
        #HR EmployeeTaskController
         Route::get('/employeeTask',[EmployeeTaskController::class, 'EmployeeTask'])->name('employeeTask'); //hr.employeeTask
         Route::post('/taskStore',[EmployeeTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
-        Route::delete('/{id}/destroy',[EmployeeTaskController::class, 'destroy'])->name('task.destroy'); //hr.task.destroy
+        Route::delete('/{id}/destroyAssigned',[EmployeeTaskController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
         
     });
 

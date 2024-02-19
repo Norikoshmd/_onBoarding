@@ -15,13 +15,13 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-            {{-- @if($employees !== 0)
-                @foreach ($employees as $employee)
-                    <div class="alert alert-info" role="alert">
-                        New employee <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a> is assigned.  &nbsp;&nbsp; <span class="h6 text-muted">{{$employee->created_at}}</span>
-                    </div>
-                @endforeach
-            @endif --}}
+          @if($employee_tasks !== 0)
+            @foreach ($tasks as $task)
+                <div class="alert alert-info" role="alert">
+                  <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->name }}</a>  &nbsp;&nbsp; </p>
+                </div>
+            @endforeach
+          @endif
         </div>
       </div>
     </div>

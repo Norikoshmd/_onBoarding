@@ -62,6 +62,15 @@ class DocController extends Controller
         return redirect()->route('showRequested');
     }
 
+    public function showSubmitForm1($id)
+    {  
+        $doc = $this->form1->findOrFail($id);
+
+        return view('users.form.submitForm1')
+        ->with('doc',$doc);
+
+    }
+
     public function showForm2()
     {
         return view('users.form.form2');

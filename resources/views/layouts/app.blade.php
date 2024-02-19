@@ -60,7 +60,7 @@
                             @if(Auth::user()->role_id == 1)
                                 @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="{{ route('hr.register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                                 @endif
                             @endif

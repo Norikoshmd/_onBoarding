@@ -25,6 +25,10 @@ class TaskController extends Controller
 
     }
 
+    public function test(){
+        return view('hr.simple');
+    }
+
 // 1:Notification
     public function index()
     {
@@ -36,8 +40,19 @@ class TaskController extends Controller
     // i : to show the list
     public function employee()
     {
+       
         $employees = $this->employee->latest()->paginate(5);
         $employee_tasks = $this->employee_task->all();
+        $employee_task_done = [];
+        // $employee_taskの中に$employee_idを変数として表示する。
+        // foreach($employee_tasks as $task)
+        // {
+        //     if$task
+        // }
+        // $employee_task_done[] = ;
+        logger('employees',$employees->toArray());
+
+
        
         return view('hr.employee')
                 ->with('employees',$employees)
@@ -91,6 +106,17 @@ class TaskController extends Controller
                         // ->with('employee_task', $employee_task);
             }
 
+             //for checking endorsed info and return to index
+             public function showEndorsed3($id)
+             {
+                 $employee  = $this->employee->findOrFail($id);
+                 // $employee_task = $this->employee_task->all;
+ 
+                 return view('hr.showEndorsed3')
+                         ->with('employee', $employee);
+                         // ->with('employee_task', $employee_task);
+             }
+
     // v : (if requests are assigned to $employee) - pending 
     //      show assigned requests to $employee
     // public function taskAssigned($id)
@@ -108,11 +134,21 @@ class TaskController extends Controller
     public function showAssigned()
     {
         $employees = $this->employee->all();
-        $employee_tasks = $this->employee_task->all();
+        $employee_tasks = $this->employee_task->paginate(6);
     
         return view('hr.showAssigned')
                 ->with('employees',$employees)
                 ->with('employee_tasks',$employee_tasks);
+    }
+
+    public function showIndividuallyAssigned($id)
+    {
+        $employee = $this->employee->findOrFail($id);
+        $employee_tasks = $this->employee_task->paginate(10);
+
+        return view('hr.showIndividuallyAssigned')
+        ->with('employee',$employee)
+        ->with('employee_tasks',$employee_tasks);
     }
 
 
@@ -144,6 +180,33 @@ class TaskController extends Controller
         return redirect()->back();
     }
 
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'name'       => 'required|min:5|max:100|unique:tasks,name',
+            'category'   => 'required'
+        ]);
 
+        $task           = $this->task->findOrFail($id);
+        $task->name     = ucwords(strtolower($request->name));
+        $task->save();
+
+        $task->employeeTask()->delete();
+
+        foreach($request->category as $category)
+        {
+            $employee_task[] = ['category' => $category];
+        }
+        $task->categoryPost()->createMany($category);
+
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $this->task->destroy($id);
+
+        return redirect()->back();
+    }
 }
    
