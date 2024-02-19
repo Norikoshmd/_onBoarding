@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('user_id');
-            $table->date('duedate');
             $table->timestamps();
             
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');

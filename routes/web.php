@@ -25,6 +25,7 @@ use App\Http\Controllers\Auth\LoginController;
 // Auth::routes();
 // Route::get('register',[RegisterController::class,'showRegisterationForm'])->name('register');
 Route::post('register',[RegisterController::class,'register']);
+// Route::post('register2',[RegisterController::class,'register2']);
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login'); // view は auth.login
 Route::post('login', [LoginController::class,'login']);
 Route::post('logout', [LoginController::class,'logout'])->name('logout');

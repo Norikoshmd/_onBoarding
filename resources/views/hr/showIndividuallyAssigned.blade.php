@@ -10,7 +10,7 @@
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">
             <tr class="text-center table table-secondary">
-                <th>No.</th>
+                <th>Requested Date</th>
                 <th>Name</th>
                 <th>Requested Item</th>
                 <th>Assigned by</th>
@@ -21,13 +21,14 @@
             @forelse ($employee_tasks as $task)
                 @if ($task->employee == $employee )
                     <tr class="text-center">
-                        <td>{{$task->employee->count()}}</td>
+                        
+                        <td>{{date('M d, Y', strtotime($task->created_at))}}</td>
                         <td><a href="{{route('hr.showIndividuallyAssigned',$task->employee->id)}}" class="text-decoration-none text-dark">{{ $task->employee->name}}</a></td>
                         <td class="text-start ms-2">{{ $task->task->name }}</td>
                         <td>{{ $task->user->name }}</td>
                         <td>
                             @if( $task->user->id == Auth::user()->id)
-                                <a href="#" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
+                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
                                 <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-request-{{ $task->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
                             @endif
                         </td>

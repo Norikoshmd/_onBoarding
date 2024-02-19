@@ -10,7 +10,7 @@
 <table class="table table-hover align-middle bg-white border-text-secondary">
     <thead class="opacity-75">
         <tr class="text-center table table-secondary">
-            <th>No.</th>
+            <th>Date Requested</th>
             <th>Employee ID</th>
             <th>Name</th>
             <th></th>
@@ -22,7 +22,7 @@
     <tbody>
         @forelse ($employee_tasks as $task)
             <tr class="text-center">
-                <td></td>
+                <td>{{date('M d, Y', strtotime($task->created_at))}}</td>
                 <td>{{ $task->employee->id}}</td>
                 <td><a href="{{route('hr.showIndividuallyAssigned',$task->employee->id)}}" class="text-decoration-none text-dark">{{ $task->employee->name}}</a></td>
                 <td><img src="{{$task->employee->passport}}" alt="{{$task->employee->name}}" class="rounded-circle avatar-sm" ></td>

@@ -51,7 +51,6 @@
                     <thead>
                         <tr>
                             <th>Document Name</th>
-                            {{-- <th>Due Date</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -78,9 +77,6 @@
                                             @enderror
                                 </div>
                             </td>
-                            {{-- <td>
-                                <input type="date" name="duedate{{ $task->id}}" class="form-control">
-                            </td> --}}
                         </tr>
                     </tbody>
                 </table>

@@ -49,6 +49,7 @@
                                 </button>
                             </div>
                         @endif
+                        @include('recruiter.modal.status')
                     </td>
                     <td>{{$employee->id}}</td>
                     <td>{{$employee->startday}}</td>
@@ -56,17 +57,19 @@
                     <td><a href="{{ route('hr.showEndorsed',$employee->id) }}" class="text-decoration-none text-dark">{{$employee->name}}</a></td>
                     <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
                     <td>{{$employee->workat}}</td>
-                    <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
+                    <td>{{ \Carbon\Carbon::createFromTimeString($employee->created_at)->format('Y/m/d H:i') }}</td>
+                    {{-- <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td> --}}
                     <td>{{ $employee->user->name }}</td>
                     <td><a href="{{ route('register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
                     <td>
-                            {{-- @if( $employee->id == $employee_tasks && $employee_tasks> 1 ) --}}
-                                <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-                            {{-- @elseif( $task->employee_id !== $employee->id) --}}
+                            {{-- @if( $employee_task_assigned == $employee->id ) --}}
                                 <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-                            
+                            {{-- @else --}}
+                                <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
                             {{-- @endif --}}
-               
+                            
+                      
+                            
                     </td>
                 </tr>
             @empty
