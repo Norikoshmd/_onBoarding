@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\EmployeeTask;
 use App\Http\Controllers\Auth\RegistrationController;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 
 class TaskController extends Controller
@@ -25,14 +26,11 @@ class TaskController extends Controller
 
     }
 
-    public function test(){
-        return view('hr.simple');
-    }
 
 // 1:Notification
     public function index()
     {
-        $employees = $this->employee->latest()->paginate(5);
+        $employees = $this->employee->latest()->paginate(3);
         return view('hr.index')->with('employees',$employees);
     }
 // 2:New Employee List
@@ -40,20 +38,16 @@ class TaskController extends Controller
     // i : to show the list
     public function employee()
     {
-       
-        $employees = $this->employee->latest()->paginate(5);
+        $employees = $this->employee->withTrashed()->latest()->paginate(5);
         $employee_tasks = $this->employee_task->all();
-        $employee_task_done = [];
-        // $employee_taskの中に$employee_idを変数として表示する。
+        // $employee_task_assigned = $employee_task->employee_id;
+        // $assigned = [];
+
+        //get all assigned tasks
         // foreach($employee_tasks as $task)
         // {
-        //     if$task
+        //     $employee_tasks_assigned[] =  $task->employee_id;
         // }
-        // $employee_task_done[] = ;
-        logger('employees',$employees->toArray());
-
-
-       
         return view('hr.employee')
                 ->with('employees',$employees)
                 ->with('employee_tasks',$employee_tasks);

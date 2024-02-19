@@ -27,45 +27,40 @@ class EmployeeTaskController extends Controller
     
     public function taskStore(Request $request)
     {
-        
        $request->validate([
+        'employee_id'   => 'required',
         'task'          => 'required|array|between:1,30',
-        'employee_id'   => 'required'
-        
+     
        ]);
     //    return response()->json('success');
        
-       $employee_id = $request->employee_id;
-       $tasks    = $request->task;
-       $user_id = Auth::user()->id;
+       $employee_id     = $request->employee_id;
+       $tasks           = $request->task;
+       $user_id         = Auth::user()->id;
+     
        
        $employee_task = [];
 
        foreach($tasks as $task_id){
-        // $duedate = $request->input("duedate_{$task_id}"); 
       
-
         $employee_task[] = [
             'employee_id' => $employee_id,
             'task_id' => $task_id,
-            'user_id' => $user_id
-            // 'duedate' => $duedate
+            'user_id' => $user_id,
         ];
        }
 
        EmployeeTask::insert($employee_task);
-    //    $this->task_post->saveMany($task_post);
-
+ 
        return redirect()->route('hr.employee');
-
     }
 
     
 
     public function destroyAssigned($id)
     {
-        $employee_task = $this->employee_task->task_id->findOrFail($id);
-        $this->$employee_task->delete();
+        $employee_task = $this->employee_task->findOrFail($id);
+        $employee_task->delete();
 
         return redirect()->back();
     }

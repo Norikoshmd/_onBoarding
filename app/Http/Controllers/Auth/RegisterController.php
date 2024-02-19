@@ -40,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        logger('register_construct');
+        // logger('register_construct');
         // $this->middleware('guest');
     }
 
@@ -52,7 +52,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        logger('register_validator');
+        // logger('register_validator');
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -72,8 +72,8 @@ class RegisterController extends Controller
 
      protected function create(array $data)
     {
-        // Log::debug('test', ['foo' => 'bar']);
-        logger('register_create');
+        // Log::debug('register');
+        // logger('register_create');
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -81,7 +81,7 @@ class RegisterController extends Controller
             'role_id' => $data['role_id']
         ]);
 
-        // $this->redirectTo = '/hr/index/' . $user->id;
+        $this->redirectTo = '/hr/index/' . $user->id;
 
         return $user;
     }
