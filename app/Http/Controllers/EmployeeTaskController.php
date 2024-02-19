@@ -20,7 +20,7 @@ class EmployeeTaskController extends Controller
 
     public function employeeTask()
     {
-        $all_tasks = $this->task->paginate(10);
+        $all_tasks = $this->task->paginate(6);
 
         return view('hr.employeeTask')->with('all_tasks', $all_tasks);
     }

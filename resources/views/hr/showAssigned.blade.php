@@ -33,8 +33,8 @@
          
 
         @empty
-            <div class="bg-info-subtle rounded p-3 mt-2 mb-2 ">
-                <p class="text-muted h5 text-center">No Task has Assigned yet.</p>
+            <div class="bg-secondary-subtle rounded p-3 mt-2 mb-3 ">
+                <p class="text-muted h5 ms-3 mt-2">No Task has Assigned yet.</p>
             </div>
         @endforelse
            

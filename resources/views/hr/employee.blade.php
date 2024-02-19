@@ -70,8 +70,8 @@
                     </td>
                 </tr>
             @empty
-                <div class="mb-3 p-3 bg-warning-subtle rounded">
-                    <p class="h text-muted text-center">No new employees has assigned yet.</p>
+                <div class="mb-3 p-3 bg-secondary-subtle rounded">
+                    <p class="h5 text-muted ms-3 mt-2 ">No new employees has assigned yet.</p>
                 </div>
             @endforelse
         </tbody>

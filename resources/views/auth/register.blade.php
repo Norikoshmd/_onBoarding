@@ -71,9 +71,8 @@
                                 <select name="role_id" id="role_id" class="form-select">
                                     <option value=""hidden>Select</option>
                                     <option value="1">1 : HR</option>
-                                    <option value="2">2 : USER</option>
-                                    <option value="3">3 : RECRUITER</option>
-                                    <option value="4">4 : Dummy</option>
+                                    <option value="2">2 : User</option>
+                                    <option value="3">3 : Recruiter</option>
                                     {{old('role_id')}}
                                 </select>
                                 @error('role_id')

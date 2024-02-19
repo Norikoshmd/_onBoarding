@@ -16,30 +16,30 @@
 
                             <div class="col-md-6">
                                 @if("value=")
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $employee->name }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 @endif
 
-                                {{-- @error('name')
+                                @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                    --}}
+                                   
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
-                          <div class="col-md-6">
+                            <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                {{-- @error('email')
+                                @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror --}}
-                            </div> 
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="row mb-3">
@@ -64,20 +64,22 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-
-                        {{-- Role_id --}}
                         <div class="row mb-3">
-                            <label for="role_id" class="col-md-4 col-form-label text-md-end">{{ __('Role ID') }}</label>
+                            <label for="role_id" class="col-md-4 col-form-label text-md-end">Select role_id</label>
 
                             <div class="col-md-6">
-                                <input id="number" type="number" class="form-control" name="role_id" required autocomplete="role_id">
+                                <select name="role_id" id="role_id" class="form-select">
+                                    <option value=""hidden>Select</option>
+                                    <option value="1">1 : HR</option>
+                                    <option value="2">2 : User</option>
+                                    <option value="3">3 : Recruiter</option>
+                                    {{old('role_id')}}
+                                </select>
+                                @error('role_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
