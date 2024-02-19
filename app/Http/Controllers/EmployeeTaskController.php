@@ -20,18 +20,20 @@ class EmployeeTaskController extends Controller
 
     public function employeeTask()
     {
-        $all_tasks = $this->task->paginate(10);
+        $all_tasks = $this->task->paginate(6);
 
         return view('hr.employeeTask')->with('all_tasks', $all_tasks);
     }
     
     public function taskStore(Request $request)
     {
+        
        $request->validate([
         'task'          => 'required|array|between:1,30',
         'employee_id'   => 'required'
         
        ]);
+    //    return response()->json('success');
        
        $employee_id = $request->employee_id;
        $tasks    = $request->task;
@@ -60,10 +62,10 @@ class EmployeeTaskController extends Controller
 
     
 
-    public function destroy($id)
+    public function destroyAssigned($id)
     {
-        $task = $this->task->findOrFail($id);
-        $task->delete();
+        $employee_task = $this->employee_task->task_id->findOrFail($id);
+        $this->$employee_task->delete();
 
         return redirect()->back();
     }

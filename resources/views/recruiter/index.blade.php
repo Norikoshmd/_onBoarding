@@ -82,8 +82,8 @@
             
         @empty
             <div class="mb-3">
-                <div class="rounded bg-warning-subtle">
-                    <p class="h5 text-center p-3">New employee hasn't registered yet.</p>
+                <div class="rounded bg-secondary-subtle">
+                    <p class="h5 p-3">New employee hasn't registered yet.</p>
                 </div>
             </div>
         @endforelse

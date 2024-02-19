@@ -5,7 +5,6 @@
 @section('content')
 <div class="container bg-white opacity-90 rounded p-3">
     <h1 class="h3 mt-2 mb-3 p-3"><i class="fa-solid fa-user text-secondary fa-lg"></i> &nbsp;&nbsp;New Employees</h1>
-
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">
             <tr class="text-center table table-secondary">
@@ -59,26 +58,20 @@
                     <td>{{$employee->workat}}</td>
                     <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
                     <td>{{ $employee->user->name }}</td>
-                    <td><a href="{{ route('hr.register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
+                    <td><a href="{{ route('register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
                     <td>
-                        @if($employee_tasks->employee = $employee)
-                        <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-                        @else
-                        <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-                        @endif
-
-                        {{-- @foreach ($employee_tasks as $task)
-                            @if($task->employee == $employee)
-                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-                            @else
+                            {{-- @if( $employee->id == $employee_tasks && $employee_tasks> 1 ) --}}
                                 <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-                            @endif
-                        @endforeach --}}
+                            {{-- @elseif( $task->employee_id !== $employee->id) --}}
+                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+                            
+                            {{-- @endif --}}
+               
                     </td>
                 </tr>
             @empty
-                <div class="mb-3 p-3 bg-warning-subtle rounded">
-                    <p class="h text-muted text-center">No new employees has assigned yet.</p>
+                <div class="mb-3 p-3 bg-secondary-subtle rounded">
+                    <p class="h5 text-muted ms-3 mt-2 ">No new employees has assigned yet.</p>
                 </div>
             @endforelse
         </tbody>

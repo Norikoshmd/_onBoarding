@@ -8,11 +8,11 @@
         <div class="col-8">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; Info from Recruit Team</p>
         </div>
-      
+
     </div>
-       
+
     <hr>
- 
+
         <div class="row mb-3">
             <div class="col-auto">
                 <label for="name" class="form-label">Name</label>
@@ -23,7 +23,7 @@
                 <p class="fs-bold fs-4">{{ $employee->gender }}</p>
             </div>
         </div>
-        
+
         <div class="row mb-3">
             <div class="col-auto">
                 <label for="email_address" class="form-label">Email Address</label>
@@ -75,5 +75,5 @@
         </div>
 
 
-        
+
 @endsection

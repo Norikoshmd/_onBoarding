@@ -22,7 +22,7 @@
         </thead>
         <tbody>
                 @forelse ($employee_tasks as $task)
-                    {{-- @if($task->employee_id === Auth::User()) --}}
+                    @if($task->employee->name === Auth::user()->name)
                     {{-- need to connect user info to employee --}}
                         <tr class="text-center h5">
                          {{-- @if($task->daysUntilDue() <= 3) text-danger @else text-success @endif"> --}}
@@ -34,8 +34,10 @@
                             <td>
                                  {{-- $task_id:1 - Form1:Employee Information Form --}}
                                 @if($task->task_id == 1)
+                                    @if($task->employee->name)
                                     <a href="{{ route('doc.showForm1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                                
+                                    <a href="#" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a>
+                                    {{-- {{ route('doc.showSubmitForm1',$id)}} --}}
                                 {{-- $task_id:2 - Form2:Emergency Contact Form --}}
                                  @elseif($task->task_id == 2)
                                 <a href="{{ route('doc.showForm2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
@@ -66,10 +68,8 @@
                                   
                                 @endif
                             </td>
-                          
-                           
                         </tr>
-                    {{-- @endif --}}
+                    @endif
                 @empty
                     <div class="mb-3 bg-info-subtle rounded p-3">
                         <p class="h5 text-muted">All documents are submitted!<br>Thank you very much <i class="fa-solid fa-face-smile"></i></p>

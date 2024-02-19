@@ -64,6 +64,25 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="role_id" class="col-md-4 col-form-label text-md-end">Select role_id</label>
+
+                            <div class="col-md-6">
+                                <select name="role_id" id="role_id" class="form-select">
+                                    <option value=""hidden>Select</option>
+                                    <option value="1">1 : HR</option>
+                                    <option value="2">2 : User</option>
+                                    <option value="3">3 : Recruiter</option>
+                                    {{old('role_id')}}
+                                </select>
+                                @error('role_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

@@ -20,7 +20,7 @@
                    <img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm">
                 </div>
                 <div class="col-auto">
-                    <input type="hidden" value="{{$employee->id}}">
+                    <input type="hidden" name="employee_id" value="{{$employee->id}}">
                     <a href="{{route('hr.showEndorsed2',$employee->id)}}" class="text-decoration-none text-dark">
                          <p class="h3 mt-3">{{$employee->name}}</p>
                     </a>

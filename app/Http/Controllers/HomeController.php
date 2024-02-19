@@ -50,7 +50,11 @@ class HomeController extends Controller
                 // if(auth()->user()->has_seen_welcome){
 
                 $tasks = $this->task->all();
-                return view('users.home')->with('tasks',$tasks);
+                $employee_tasks = $this->employee_task->all();
+
+                return view('users.home')
+                ->with('employee_tasks',$employee_tasks)
+                ->with('tasks',$tasks);
             // }
             // return view('users.welcome');
         }

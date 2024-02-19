@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Log;
 
 class RegisterController extends Controller
 {
@@ -39,7 +40,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        logger('register_construct');
+        // $this->middleware('guest');
     }
 
     /**
@@ -50,10 +52,13 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        logger('register_validator');
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role_id' => ['required', 'string', 'regex:/^[1-3]$/'],
+
         ]);
     }
 
@@ -67,39 +72,18 @@ class RegisterController extends Controller
 
      protected function create(array $data)
     {
+        // Log::debug('test', ['foo' => 'bar']);
+        logger('register_create');
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'role_id' => User::USER_ROLE_ID,
+            'role_id' => $data['role_id']
         ]);
-
-        $this->redirectTo = '/hr/index/' . $user->id;
-
-        return $user;
-    }
-
-    // protected function create(array $data)
-    // {
-    //     $user = User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),
-    //         'role_id' => User::USER_ROLE_ID ,
-    //     ]);
-
-        // return User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        //     'role_id' => User::USER_ROLE_ID ,
-        // ]);
 
         // $this->redirectTo = '/hr/index/' . $user->id;
 
-        // return $user;
-
-
-        
+        return $user;
+    }
     
 }
