@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Form2 extends Model
 {
+    use HasFactory;
+    
     protected $table = 'form2';
 
     protected $fillable = [
@@ -26,5 +28,5 @@ class Form2 extends Model
             'phone2'
     ];
 
-    use HasFactory;
+ 
 }

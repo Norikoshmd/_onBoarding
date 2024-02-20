@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use App\Models\Doc;
 use App\Models\Employee;
 use App\Models\EmployeeTask;
 use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\DocController;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -16,13 +18,17 @@ class TaskController extends Controller
     private $task;
     private $employee;
     private $employee_task;
+    private $doc;
+    
 
 
-    public function __construct(Task $task, Employee $employee, EmployeeTask $employee_task)
+    public function __construct(Task $task, Employee $employee, EmployeeTask $employee_task, Doc $doc)
     {
         $this->task = $task;
         $this->employee = $employee;
         $this->employee_task = $employee_task;
+        $this->doc = $doc;
+
 
     }
 

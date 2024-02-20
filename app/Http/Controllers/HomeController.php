@@ -8,10 +8,17 @@ use App\Models\User;
 use App\Models\Task;
 use App\Models\Employee;
 use App\Models\EmployeeTask;
+// use App\Models\Doc;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+   
+    private $task;
+    private $employee;
+    private $employeeTask;
+    // private $doc;
+
     /**
      * Create a new controller instance.
      *
@@ -23,6 +30,7 @@ class HomeController extends Controller
         $this->task     = $task;
         $this->employee = $employee;
         $this->employee_task = $employee_task;
+        // $this->doc = $doc;
     }
 
     /**
@@ -49,11 +57,13 @@ class HomeController extends Controller
                 // return redirect()->route('index');
                 // if(auth()->user()->has_seen_welcome){
 
-                $tasks = $this->task->all();
-                $employee_tasks = $this->employee_task->all();
+                $tasks = $this->task->all(); 
+                $employees =$this->employee->all();
+                $employee_tasks = $this->employee_task->paginate(3);
 
                 return view('users.home')
                 ->with('employee_tasks',$employee_tasks)
+                ->with('employees',$employees)
                 ->with('tasks',$tasks);
             // }
             // return view('users.welcome');
@@ -71,7 +81,11 @@ class HomeController extends Controller
     public function showRequested()
     {
         $employee_tasks = $this->employee_task->paginate(10);
-        return view('users.showRequested')->with('employee_tasks',$employee_tasks);
+        // $doc = $this->doc->findOrFail($id);
+
+        return view('users.showRequested')
+        ->with('employee_tasks',$employee_tasks);
+        // ->with('doc',$doc);
     }
 
     public function showSubmitted()

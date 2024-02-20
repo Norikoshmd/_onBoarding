@@ -8,8 +8,8 @@
     <h1 class="h4 mb-3 mt-2 fw-bold">Submitted Documents/Data</h1>
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75 ">
-            <tr class="text-center table table-secondary">
-                <th>No.</th>
+            <tr class="text-center table table-secondary h5">
+                <th>Requested Date</th>
                 <th>Document/Data Name</th>
                 <th>Date Submitted</th>
                 <th>Status</th>

@@ -28,5 +28,8 @@ class EmployeeTask extends Model
         return $this->belongsTo(User::class);
     }
 
-    
+    // public function doc()
+    // {
+    //     return $this->belongsTo(Doc::class);
+    // }
 }

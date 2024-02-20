@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Doc;
+use App\Models\Form2;
+use App\Models\Employee;
 
 class DocController extends Controller
 {
     private $doc;
 
-    public function __construct(Doc $doc)
+    public function __construct(Doc $doc, Employee $employee)
     {
        $this->doc = $doc;
+       $this->employee =$employee;
 
     }
 
@@ -64,11 +67,11 @@ class DocController extends Controller
 
     public function showSubmitForm1($id)
     {  
-        $doc = $this->form1->findOrFail($id);
-
+        $doc = $this->doc->findOrFail($id);
+      
         return view('users.form.submitForm1')
         ->with('doc',$doc);
-
+      
     }
 
     public function showForm2()
@@ -85,34 +88,36 @@ class DocController extends Controller
             'relationship1'      => 'required|min:1|max:100',
             'postal1'            => 'nullable|min:1|max:30',
             'address1'           => 'nullable|min:1|max:100',
-            'email1'             => 'required|min:1|max:50',
+            'email1'             => 'required|min:1|max:255|email',
             'phone1'             => 'required|min:1|max:30',
             'firstname2'         => 'nullable|min:1|max:30',
             'lastname2'          => 'nullable|min:1|max:30',
             'relationship2'      => 'nullable|min:1|max:100',
             'postal2'            => 'nullable|min:1|max:30',
             'address2'           => 'nullable|min:1|max:100',
-            'email2'             => 'nullable|min:1|max:30',
+            'email2'             => 'nullable|min:1|max:255|email',
             'phone2'             => 'nullable|min:1|max:30',
         ]);
+
+        $form2 =new Form2();
       
-        $this->form2->firstname1 = $request->firstname1;
-        $this->form2->lastname1 = $request->lastname1;
-        $this->form2->relationship1 = $request->relationship1;
-        $this->form2->postal1 = $request->postal1;
-        $this->form2->address1 = $request->address1;
-        $this->form2->email1 = $request->email1;
-        $this->form2->phone1 = $request->phone1;
-        $this->form2->firstname2 = $request->firstname2;
-        $this->form2->lastname2 = $request->lastname2;
-        $this->form2->relationship2 = $request->relationship2;
-        $this->form2->postal2 = $request->postal2;
-        $this->form2->address2 = $request->address2;
-        $this->form2->email2 = $request->email2;
-        $this->form2->phone2 = $request->phone2;
+        $form2->firstname1 = $request->firstname1;
+        $form2->lastname1 = $request->lastname1;
+        $form2->relationship1 = $request->relationship1;
+        $form2->postal1 = $request->postal1;
+        $form2->address1 = $request->address1;
+        $form2->email1 = $request->email1;
+        $form2->phone1 = $request->phone1;
+        $form2->firstname2 = $request->firstname2;
+        $form2->lastname2 = $request->lastname2;
+        $form2->relationship2 = $request->relationship2;
+        $form2->postal2 = $request->postal2;
+        $form2->address2 = $request->address2;
+        $form2->email2 = $request->email2;
+        $form2->phone2 = $request->phone2;
 
      
-        $this->form2->save();
+        $form2->save();
 
         return redirect()->route('showRequested');
     }

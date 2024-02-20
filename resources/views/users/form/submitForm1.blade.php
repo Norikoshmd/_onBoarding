@@ -3,28 +3,26 @@
 @section('title','Submitted Information')
 
 @section('content')
-Test
-{{-- 
-<div class="container bg-white opacity-90 rounded p-3 shadow-lg">
-    <div class="h1 h5 mt-2 fw-bold">
-        <i class="fa-solid fa-pen-to-square fa-lg"></i> &nbsp;&nbsp;Submitted Employee Information Form of {{$doc->user->name}}
-    </div>
-    <hr>
 
-    <div class="px-3">
+<div class="container bg-white opacity-90 rounded p-3 shadow-lg">
+
+    @forelse ($docs as $doc)
+    <div class="h1 h5 mt-2 fw-bold">
+        <i class="fa-solid fa-pen-to-square fa-lg"></i> &nbsp;&nbsp;Submitted Employee Information Form of {{$doc->firstname}}
+        <div class="px-3">
             <div class="container bg-secondary-subtle rounded shadow-sm p-3 mb-2">
                 <div class="row justify-content-center mb-3">
                     <div class="col-4">
                         <label for="firstname" class="form-label mb-0 ms-1">First Name</label>
-                        <input type="text" name="firstname" class="form-control" value="{{old('firstname')}}">
+                        <p class="h6">{{$doc->firstname}}</p>
                     </div>
                     <div class="col-4">
                         <label for="middlename" class="form-label mb-0 ms-1">Middle Name <span class="text-secondary">*</span></label>
-                        <input type="text" name="middlename" class="form-control" value="{{old('middlename')}}">
+                        <p class="h6">{{$doc->middlename}}</p>
                     </div>
                     <div class="col-4">
                         <label for="lastname" class="form-label mb-0 ms-1">Last Name</label>
-                        <input type="text" name="lastname" class="form-control" value="{{old('lastname')}}">
+                        <p class="h6">{{$doc->lastname}}</p>
                     </div>
                 </div>
                 
@@ -32,15 +30,16 @@ Test
                 <div class="row justify-content-center mb-3">
                     <div class="col-4">
                         <label for="namae" class="form-label mb-0 ms-1">First Name</label>
-                        <input type="text" name="namae" class="form-control" value="{{old('namae')}}">
+                        <p class="h6">{{$doc->namae}}</p>
                     </div>
                     <div class="col-4">
                         <label for="middlename_kana" class="form-label mb-0 ms-1">Middle Name <span class="text-secondary">*</span></label>
-                        <input type="text" name="middlename_kana" class="form-control" value="{{old('middlename_kana')}}">
+                        <p class="h6">{{$doc->middlename_kana}}</p>
                     </div>
                     <div class="col-4">
                         <label for="myouji" class="form-label mb-0 ms-1">Last Name</label>
                         <input type="text" name="myouji" class="form-control" value="{{old('myouji')}}">
+                        <p class="h6">{{$doc->myouji}}</p>
                     </div>
                 </div>
             </div>
@@ -48,7 +47,7 @@ Test
                 <div class="row mb-3">
                     <div class="col-3">
                         <label for="dob" class="form-label mb-0 ms-1"> Date of Birth</label>
-                        <input type="date" name="dob" class="form-control" value="{{old('dob')}}">
+                        <p class="h6">{{$doc->dob}}</p>
                     </div>
                     <div class="col-2">
                         <label for="maritalStatus" class="form-label mb-0 ms-1">Marital Status</label>
@@ -57,16 +56,16 @@ Test
                             <option value="single">Single</option>
                             <option value="married">Married</option>
                             <option value="married">Divorsed</option>
-                            {{old('maritalStatus')}}
+                            {{$doc->maritalStatus}}
                         </select>
                     </div>
                     <div class="col-3">
                         <label for="phone" class="form-label mb-0 ms-1">Phone Number</label>
-                        <input type="text" name="phone" class="form-control" value="{{old('phone')}}">
+                        <p class="h6">{{$doc->phone}}</p>
                     </div>
                     <div class="col-4">
                         <label for="email" class="form-label mb-0 ms-1">Email Address <span class="text-danger">Personal</span></label>
-                        <input type="email" name="email" class="form-control" value="{{old('email')}}">
+                        <p class="h6">{{$doc->email}}</p>
                     </div>
                 </div>
             </div>
@@ -76,11 +75,11 @@ Test
                 <div class="row mb-3">
                     <div class="col-4">
                         <label for="c_postal" class="form-label mb-0 ms-1">Postal Code</label>
-                        <input type="text" name="c_postal" class="form-control" value="{{old('c_postal')}}">
+                        <p class="h6">{{$doc->c_postal}}</p>
                     </div>
                     <div class="col-8">
                         <label for="c_address" class="form-label mb-0 ms-1">Address</label>
-                        <input type="text" name="c_address" class="form-control" value="{{old('c_address')}}">
+                        <p class="h6">{{$doc->c_address}}</p>
                     </div>
                 </div>
     
@@ -88,22 +87,30 @@ Test
                 <div class="row">
                     <div class="col-3">
                         <label for="homecountry" class="form-label mb-0 ms-1">Country</label>
-                        <input type="text" name="homecountry" class="form-control" value="{{old('homecountry')}}">
+                        <p class="h6">{{$doc->homecountry}}</p>
                     </div>
                     <div class="col-6">
                         <label for="h_address" class="form-label mb-0 ms-1">Address</label>
-                        <input type="text" name="h_address" class="form-control" value="{{old('h_address')}}">
+                        <p class="h6">{{$doc->h_address}}</p>
                     </div>
                     <div class="col-3">
                         <label for="h_postal" class="form-label mb-0 ms-1">Postal Code</label>
-                        <input type="text" name="h_postal" class="form-control" value="{{old('h_postal')}}">
+                        <p class="h6">{{$doc->h_postal}}</p>
                     </div>
                 </div>
             </div>
-            <hr>
-            <div class="mt-2 text-center">
-                <a href="{{ route('showRequested')}}" class="btn btn-secondary">Cancel</a>
-            </div>
     </div>
-</div> --}}
+    <hr>
+  
+        <div class="mt-2 text-center">
+            <a href="{{ route('showRequested')}}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+        
+    @empty
+        <div class="bg-secondary-subtle p-3">
+            <p class="h5">Form has not been submitted yet</p>
+        </div>
+    @endforelse
+</div> 
 @endsection

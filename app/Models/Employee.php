@@ -26,6 +26,11 @@ class Employee extends Model
         return $this->hasMany(EmployeeTask::class);
     }
 
+    public function docs()
+    {
+        return $this->hasMany(Doc::class);
+    }
+
 
    
 }
