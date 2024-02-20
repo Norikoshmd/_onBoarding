@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('form2', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('firstname1',30);
             $table->string('lastname1',30);
             $table->string('relationship1',100);
@@ -28,6 +29,8 @@ return new class extends Migration
             $table->string('email2',255)->nullable();
             $table->string('phone2',30)->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

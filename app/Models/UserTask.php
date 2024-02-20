@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class EmployeeTask extends Model
+class UserTask extends Model
 {
     use HasFactory;
 
-    protected $table = 'employee_task';
-    protected $fillable = ['task_id','employee_id','user_id'];
+    protected $table = 'user_task';
+    protected $fillable = ['task_id','user_id','asignee_id'];
     public $timestamps = true;
 
     public function task()
@@ -27,9 +29,4 @@ class EmployeeTask extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    // public function doc()
-    // {
-    //     return $this->belongsTo(Doc::class);
-    // }
 }

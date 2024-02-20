@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Employee;
-use App\Models\EmployeeTask;
+use App\Models\UserTask;
 // use App\Models\Doc;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +16,7 @@ class HomeController extends Controller
    
     private $task;
     private $employee;
-    private $employeeTask;
+    private $userTask;
     // private $doc;
 
     /**
@@ -24,12 +24,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Task $task,Employee $employee,EmployeeTask $employee_task)
+    public function __construct(Task $task,Employee $employee,UserTask $user_task)
     {
         $this->middleware('auth');
         $this->task     = $task;
         $this->employee = $employee;
-        $this->employee_task = $employee_task;
+        $this->user_task = $user_task;
         // $this->doc = $doc;
     }
 

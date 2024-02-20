@@ -148,7 +148,7 @@
                                             <i class="fa-solid fa-clipboard-check fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.employeeTask')}}" class="py-3 text-center list-group-item {{ request()->is('hr/taskPost') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.userTask')}}" class="py-3 text-center list-group-item {{ request()->is('hr/taskPost') ? 'active' : '' }}">
                                             <i class="fa-solid fa-file-import fa-2x"></i>
                                         </a>
 

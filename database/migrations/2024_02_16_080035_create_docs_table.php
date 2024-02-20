@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('docs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('firstname',50);       
             $table->string('middlename',50)->nullable();
             $table->string('lastname',50);
@@ -29,6 +30,8 @@ return new class extends Migration
             $table->string('h_address',50);
             $table->string('h_postal',50);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

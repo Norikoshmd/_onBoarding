@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
-use App\Models\EmployeeTask;
+use App\Models\UserTask;
 // use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -52,9 +52,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function employeeTask()
+    public function userTask()
     {
-        return $this->hasMany(EmployeeTask::class);
+        return $this->hasMany(Task::class);
     }
 
 

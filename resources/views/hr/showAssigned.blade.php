@@ -20,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        @forelse ($employee_tasks as $task)
+        @forelse ($user_tasks as $task)
             <tr class="text-center">
                 <td>{{date('M d, Y', strtotime($task->created_at))}}</td>
                 <td>{{ $task->employee->id}}</td>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="d-flex justify-content-center mt-2">
-    {{ $employee_tasks->links() }}
+    {{ $user_tasks->links() }}
 </div>
 
 @endsection

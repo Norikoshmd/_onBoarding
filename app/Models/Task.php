@@ -12,9 +12,9 @@ class Task extends Model
 
    
 
-    public function employeeTask()
+    public function userTask()
     {
-        return $this->hasMany(EmployeeTask::class);
+        return $this->hasMany(UserTask::class);
     }
 
     public function employees()
