@@ -50,7 +50,7 @@ class UserTaskController extends Controller
         ];
        }
 
-       UserTask::insert($employee_task);
+       UserTask::insert($user_task);
  
        return redirect()->route('hr.employee');
     }

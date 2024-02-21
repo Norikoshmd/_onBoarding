@@ -6,7 +6,7 @@
 <div class="col-12 container bg-white rounded-3 opacity-90 p-3">
     <div class="row mt-3">
         <div class="col-8">
-            <p class="fw-bold fs-4"><i class="fa-solid fa-user-plus text-secondary fa-lg img-thumbnail rounded-circle"></i>&nbsp; Register New Employee</p>
+            <p class="fw-bold fs-4"><i class="fa-solid fa-user-plus text-secondary fa-lg img-thumbnail rounded-circle"></i> Register New Employee</p>
         </div>
         <div class="col-auto ms-auto">
           <a href="{{ route('recruiter.index')}}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> back to the list</a>

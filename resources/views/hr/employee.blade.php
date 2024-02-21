@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="container bg-white opacity-90 rounded p-3">
-    <h1 class="h3 mt-2 mb-3 p-3"><i class="fa-solid fa-user text-secondary fa-lg"></i> &nbsp;&nbsp;New Employees</h1>
+    <h1 class="h3 mt-2 mb-3 p-3"><i class="fa-solid fa-user text-secondary fa-lg"></i> &nbsp;&nbsp;Registered New Employees</h1>
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">
             <tr class="text-center table table-secondary">
                 <th></th>
-                <th>ID</th>
+                <th>E-ID</th>
                 <th>Start Day</th>
                 <th></th>
                 <th>Name</th>
@@ -17,7 +17,7 @@
                 <th>Work at</th>
                 <th>Registered at</th>
                 <th>Registered by</th>
-                <th></th>
+                <th>Account</th>
                 <th>Request</th>
             </tr>
         </thead>
@@ -52,25 +52,53 @@
                         @include('recruiter.modal.status')
                     </td>
                     <td>{{$employee->id}}</td>
+                    {{-- <td style="width:15%;">
+                        @if($employee->user_id="null")
+                            <form action="{{ route('hr.storeUserID')}}" method="post">
+                            @csrf
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="col-6 ms-0">
+                                    <button type="submit" class="btn btn-primary text-small p-2"><h1 class="h6 text-center">Save</h1></button>
+                                </div>
+                            </div>
+                            </form>
+                        @else
+                        {{$employee->user_id}}
+                        @endif          
+                    </td> --}}
                     <td>{{$employee->startday}}</td>
                     <td><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></td>
-                    <td><a href="{{ route('hr.showEndorsed',$employee->id) }}" class="text-decoration-none text-dark">{{$employee->name}}</a></td>
+                    <td>
+                        <a href="{{ route('hr.showEndorsed',$employee->id) }}" class="text-decoration-none text-dark">{{$employee->name}}</a>
+                    </td>
+                  
                     <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
                     <td>{{$employee->workat}}</td>
-                    <td>{{ \Carbon\Carbon::createFromTimeString($employee->created_at)->format('Y/m/d H:i') }}</td>
-                    {{-- <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td> --}}
-                    <td>{{ $employee->user->name }}</td>
-                    <td><a href="{{ route('register', $employee->id) }}" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus"></i> </a></td>
+                    {{-- <td>{{ \Carbon\Carbon::createFromTimeString($employee->created_at)->format('Y/m/d H:i') }}</td> --}}
+                    <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
+                    <td>{{$employee->user->name}}</td>
                     <td>
-                            {{-- @if( $employee_task_assigned == $employee->id ) --}}
-                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+                        {{-- @foreach($registered_users as $registered_user)
+                            @if($employee == $registered_user) --}}
+                                <button class="btn btn-rounded-circle btn-primary p-2">user ID:{{$employee->user_id}}</button>
+                                {{-- @break --}}
                             {{-- @else --}}
-                                <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-                            {{-- @endif --}}
-                            
-                      
-                            
+                                <a href="{{ route('register', $employee->id)}}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus fa-lg text-center"></i> &nbsp;<h6 class="mt-2 text-center">Register</h6> </a></td>
+                                {{-- @break --}}
+                            {{-- @endif
+                        @endforeach --}}
                     </td>
+                    <td>                  
+                        {{-- @if( $employee_task_assigned == $employee->id ) --}}
+                            <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+                        {{-- @else --}}
+                            <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
+                        {{-- @endif --}}
+                    </td>
+                   
                 </tr>
             @empty
                 <div class="mb-3 p-3 bg-secondary-subtle rounded">

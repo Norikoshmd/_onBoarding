@@ -134,8 +134,8 @@
 
                                         <a href="{{ route('hr.employee')}}" class="py-3 text-center list-group-item {{ request()->is('hr/employee') ? 'active' : '' }}">
                                             <i class="fa-regular fa-user fa-2x"></i>
-
                                         </a>
+
                                         <a href="{{ route('hr.showAssigned')}}" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
                                             <i class="fa-solid fa-clipboard-list fa-2x"></i>
                                         </a>
@@ -148,7 +148,7 @@
                                             <i class="fa-solid fa-clipboard-check fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.userTask')}}" class="py-3 text-center list-group-item {{ request()->is('hr/taskPost') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.employeeTask')}}" class="py-3 text-center list-group-item {{ request()->is('hr/taskPost') ? 'active' : '' }}">
                                             <i class="fa-solid fa-file-import fa-2x"></i>
                                         </a>
 

@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserTask;
+use App\Models\EmployeeTask;
+use App\Models\Employee;
+
 // use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -26,6 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'employee_id',
         'name',
         'email',
         'password',
@@ -52,22 +55,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function userTask()
+    public function employee()
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Employee::class,'employee_id');
     }
-
-
-    // public function getHasSeenWelcomeAttribute()
-    // {
-    //     return $this->attributes['has_seen_welcome'];
-    // }
-
-
-    
-
-   
-
 
     
 }

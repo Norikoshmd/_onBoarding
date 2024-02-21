@@ -7,9 +7,27 @@
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
+               
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <div class="row mb-3">
+                            <label for="role_id" class="col-md-4 col-form-label text-md-end">Employee ID</label>
+        
+                            <div class="col-md-6">
+                                @if("value=")
+                                    <input id="employee_id" type="text" class="form-control @error('name') is-invalid @enderror" name="employee_id" value="{{ old('employee_id') }}" required autocomplete="employee_id" autofocus>
+                                @endif
+        
+                                @error('employee_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                   
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -94,6 +112,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
 @endsection

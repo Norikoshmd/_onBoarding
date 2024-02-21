@@ -5,8 +5,12 @@
 @section('content')
 <div class="container bg-white rounded-3 opacity-90 p-3">
     <p class="h3 p-3"><i class="fa-regular fa-folder-open fa-lg text-secondary"></i>&nbsp;&nbsp; Item(s) requested to</p>
-    <p class="h3 p-3">&nbsp;&nbsp;<img src="{{$employee->passport}}" alt=" {{$employee->name}}" class="rounded-circle avatar-sm"> {{$employee->name}} <span class="h5">(Employee ID : {{ $employee->id}})</span></p>
-    <hr>
+
+    <div class="bg-primary-subtle rounded p-3 mb-3">
+        <p class="h3 p-3">&nbsp;&nbsp;<img src="{{$employee->passport}}" alt=" {{$employee->name}}" class="rounded-circle avatar-sm"> {{$employee->name}} <span class="h5">(Employee ID : {{ $employee->id}})</span></p>
+    </div>
+   
+    
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75">
             <tr class="text-center table table-secondary">

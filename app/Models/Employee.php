@@ -13,7 +13,7 @@ class Employee extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class,'employee_id');
     }
 
     public function tasks()
@@ -21,9 +21,9 @@ class Employee extends Model
         return $this->belongsToMany(Task::class,'employee_task');
     }
 
-    public function userTask()
+    public function employeeTask()
     {
-        return $this->hasMany(UserTask::class);
+        return $this->hasMany(EmployeeTask::class);
     }
 
     public function docs()

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('employee_id')->nullable;
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password')->default(Hash::make('default_password'));
@@ -20,7 +21,7 @@ return new class extends Migration
                     ->default(2)
                     ->comment('1:HR, 2:User, 3:Recruiter');
             // $table->rememberToken();
-            $table->boolean('has_seen_welcome')->default(false);
+            // $table->boolean('has_seen_welcome')->default(false);
             $table->timestamps();
         });
     }

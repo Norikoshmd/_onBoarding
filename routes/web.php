@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UserTaskController;
+use App\Http\Controllers\EmployeeTaskController;
 use App\Http\Controllers\DocController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -89,10 +89,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/index',[TaskController::class, 'index'])->name('index'); //1.hr.index
 
         Route::get('/employee',[TaskController::class, 'employee'])->name('employee'); //2-i.hr.employee
+        Route::post('/storeUserID',[TaskController::class, 'storeUserID'])->name('storeUserID'); //2-i.hr.storeUserID
         Route::get('/{id}/showEndorsed',[TaskController::class, 'showEndorsed'])->name('showEndorsed'); //2-ii.hr.showEndorsed
         Route::get('/{id}/showEndorsed2',[TaskController::class, 'showEndorsed2'])->name('showEndorsed2'); //2-ii.hr.showEndorsed2
         Route::get('/{id}/showEndorsed3',[TaskController::class, 'showEndorsed3'])->name('showEndorsed3'); //2-ii.hr.showEndorsed3
         
+        // Route::get('/showRegisteredAccount',[TaskController::class,'showRegisteredAccount'])->name('showRegisteredAccount'); //2-iv.hr.showRegisteredAccount
         // Route::get('/registerUser',[TaskController::class, 'registerUser'])->name('registerUser'); //2-iii. hr.registerUser
         Route::get('/{id}/assignTask',[TaskController::class, 'assignTask'])->name('assignTask'); //2-iv.hr.assignTask
         //2-v.
@@ -106,10 +108,10 @@ Route::group(['middleware' => 'auth'], function(){
         Route::patch('/{id}/update', [TaskController::class, 'update'])->name('update');//6-1 hr.update
         Route::delete('/{id}/destroy', [TaskController::class, 'destroy'])->name('destroy');//6-2 hr.destroy
 
-       #HR UserTaskController
-        Route::get('/userTask',[UserTaskController::class, 'userTask'])->name('userTask'); //hr.userTask
-        Route::post('/taskStore',[UserTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
-        Route::delete('/{id}/destroyAssigned',[UserTaskController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
+       #HR EmployeeTaskController
+        Route::get('/employeeTask',[EmployeeTaskController::class, 'employeeTask'])->name('employeeTask'); //hr.EmployeeTask
+        Route::post('/taskStore',[EmployeeTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
+        Route::delete('/{id}/destroyAssigned',[EmployeeTaskController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
         
     });
 

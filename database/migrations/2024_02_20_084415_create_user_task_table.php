@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('task_id');
-            $table->unsignedBigInteger('assignee_id');
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
-            $table->foreign('assignee_id')->references('id')->on('users');
+           
         });
     }
 

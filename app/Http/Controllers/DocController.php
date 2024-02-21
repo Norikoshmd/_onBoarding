@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Doc;
 use App\Models\Form2;
 use App\Models\Employee;
+use App\Models\Task;
+use Illuminate\Support\Facades\Auth;
 
 class DocController extends Controller
 {
     private $doc;
 
-    public function __construct(Doc $doc, Employee $employee)
+    public function __construct(Doc $doc, Employee $employee,Task $task)
     {
        $this->doc = $doc;
        $this->employee =$employee;
+       $this->task =$task;
 
     }
 
@@ -43,7 +46,9 @@ class DocController extends Controller
             'h_postal'          => 'required|min:1|max:50',
         ]);
 
+        $this->doc->user_id = Auth::user()->id;
         $this->doc->firstname = $request->firstname;
+        $this->doc->middlename = $request->middlename;
         $this->doc->middlename = $request->middlename;
         $this->doc->lastname = $request->lastname;
         $this->doc->namae = $request->namae;
@@ -67,10 +72,10 @@ class DocController extends Controller
 
     public function showSubmitForm1($id)
     {  
-        $doc = $this->doc->findOrFail($id);
+        $docs = $this->doc->findOrFail($id);
       
-        return view('users.form.submitForm1')
-        ->with('doc',$doc);
+        return view('users.form.submitF1')
+        ->with('docs',$docs);
       
     }
 

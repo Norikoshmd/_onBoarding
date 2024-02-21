@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Employee;
-use App\Models\UserTask;
-// use App\Models\Doc;
+use App\Models\EmployeeTask;
+use App\Models\Doc;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -16,21 +16,21 @@ class HomeController extends Controller
    
     private $task;
     private $employee;
-    private $userTask;
-    // private $doc;
+    private $employeeTask;
+    private $doc;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Task $task,Employee $employee,UserTask $user_task)
+    public function __construct(Task $task,Employee $employee,EmployeeTask $employee_task, Doc $doc)
     {
         $this->middleware('auth');
         $this->task     = $task;
         $this->employee = $employee;
-        $this->user_task = $user_task;
-        // $this->doc = $doc;
+        $this->employee_task = $employee_task;
+        $this->doc = $doc;
     }
 
     /**
@@ -81,11 +81,11 @@ class HomeController extends Controller
     public function showRequested()
     {
         $employee_tasks = $this->employee_task->paginate(10);
-        // $doc = $this->doc->findOrFail($id);
+        $doc = $this->doc->all();
 
         return view('users.showRequested')
-        ->with('employee_tasks',$employee_tasks);
-        // ->with('doc',$doc);
+        ->with('employee_tasks',$employee_tasks)
+        ->with('doc',$doc);
     }
 
     public function showSubmitted()

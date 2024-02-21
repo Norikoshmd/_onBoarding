@@ -20,10 +20,11 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->user->name       =   'The Admin';
-        $this->user->email      =   'admin@onboarding.com';
-        $this->user->password   =   Hash::make('admin12345');
-        $this->user->role_id    =   User::HR_ROLE_ID;
+        $this->user->employee_id    =   0000;
+        $this->user->name           =   'The Admin';
+        $this->user->email          =   'admin@onboarding.com';
+        $this->user->password       =   Hash::make('admin12345');
+        $this->user->role_id        =   User::HR_ROLE_ID;
         $this->user->save();
     }
 }

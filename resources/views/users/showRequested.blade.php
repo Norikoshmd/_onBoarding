@@ -34,8 +34,11 @@
                                 <td>
                                     {{-- $task_id:1 - Form1:Employee Information Form --}}
                                     @if($task->task_id == 1)
-                                        <a href="{{ route('doc.showForm1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                                            {{-- <a href="{{ route('doc.showSubmitForm1',$id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a> --}}
+                                        @if($doc->user_id = Auth::user()->id)
+                                            <a href="{{ route('doc.showSubmitF1',$user_id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a>
+                                        @else
+                                            <a href="{{ route('doc.showForm1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                        @endif
                                         {{-- $task_id:2 - Form2:Emergency Contact Form --}}
                                     @elseif($task->task_id == 2)
                                         <a href="{{ route('doc.showForm2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>

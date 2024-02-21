@@ -6,7 +6,7 @@
 
 <div class="container bg-white rounded-3 opacity-90 p-3">
     <div class="row mt-3 justify-content-center">
-            <p class="fw-bold fs-4"><i class="fa-solid fa-user fa-lg img-thumbnail rounded-circle text-secondary"></i> Registered Employees</p>
+            <p class="fw-bold fs-4"><i class="fa-solid fa-user fa-lg img-thumbnail rounded-circle text-secondary"></i> Registered New Employees</p>
     </div>
 
     <hr>
@@ -68,7 +68,7 @@
                 <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
                 <td>{{ $employee->workat }}</td>
                 <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
-                <td>{{ $employee->user->name}}</td>
+                <td>{{$employee->user->name}}</td>
                 
                 <td>
                     @if(Auth::user()->id == $employee->user_id )

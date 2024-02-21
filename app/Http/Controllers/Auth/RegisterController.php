@@ -75,6 +75,7 @@ class RegisterController extends Controller
         // Log::debug('register');
         // logger('register_create');
         $user = User::create([
+            'employee_id' => $data['employee_id'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
