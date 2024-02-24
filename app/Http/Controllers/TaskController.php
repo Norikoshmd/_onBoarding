@@ -77,17 +77,17 @@ class TaskController extends Controller
                 ->with('registered_users',$registered_users);
     }
 
-    public function storeUserID(Request $request,$id)
-    {
-        $request->validate([
-            'user_id'       => 'required|min:1|unique:users,id',
-        ]);
+    // public function storeUserID(Request $request,$id)
+    // {
+    //     $request->validate([
+    //         'user_id'       => 'required|min:1|unique:users,id',
+    //     ]);
 
-        $this->employee->user_id = $request->user_id;
-        $this->task->save();
+    //     $this->employee->user_id = $request->user_id;
+    //     $this->task->save();
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
     // ii : to show items endorsed by recruiter to each $employee
     public function showEndorsed($id)
