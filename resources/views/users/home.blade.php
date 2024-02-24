@@ -14,20 +14,17 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          @if($employee_tasks !== 0)
-            @foreach ($employee_tasks as $task)
-              {{-- @if($task->employee_id == $employees) --}}
-                <div class="alert alert-info" role="alert">
-                  <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->task->name }}</a>  &nbsp;&nbsp; </p>
-                </div>
-              {{-- @endif --}}
+            @foreach ($user_tasks as $task)
+              @if($task->user->id === Auth::user()->id)
+                  <div class="alert alert-info" role="alert">
+                    <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->task->name }}</a>  &nbsp;&nbsp; </p>
+                  </div>
+                  {{-- <div class="d-flex justify-content-center mt-1">
+                    {{ $task->links() }}
+                  </div> --}}
+              @endif
             @endforeach
-          @endif
-          <div class="d-flex justify-content-center mt-1">
-            {{ $employee_tasks->links() }}
-          </div>
         </div>
-       
       </div>
     </div>
     <div class="accordion-item">

@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/showRequested', [HomeController::class, 'showRequested'])->name('showRequested');
     Route::get('/showSubmitted', [HomeController::class, 'showSubmitted'])->name('showSubmitted');
+    Route::get('/{id}/showSubmitF1', [HomeController::class, 'showSubmitF1'])->name('showSubmitF1');
     
    
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){

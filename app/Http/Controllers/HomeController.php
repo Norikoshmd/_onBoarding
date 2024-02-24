@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Employee;
-use App\Models\EmployeeTask;
+use App\Models\UserTask;
 use App\Models\Doc;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-   
+    private $user;
     private $task;
     private $employee;
-    private $employeeTask;
+    private $userTask;
     private $doc;
 
     /**
@@ -24,12 +24,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Task $task,Employee $employee,EmployeeTask $employee_task, Doc $doc)
+    public function __construct(User $user,Task $task,Employee $employee,UserTask $user_task, Doc $doc)
     {
         $this->middleware('auth');
+        $this->user     = $user;
         $this->task     = $task;
         $this->employee = $employee;
-        $this->employee_task = $employee_task;
+        $this->user_task = $user_task;
         $this->doc = $doc;
     }
 
@@ -57,12 +58,15 @@ class HomeController extends Controller
                 // return redirect()->route('index');
                 // if(auth()->user()->has_seen_welcome){
 
+                $users = $this->user->all(); 
                 $tasks = $this->task->all(); 
                 $employees =$this->employee->all();
-                $employee_tasks = $this->employee_task->paginate(3);
+                $user_tasks = $this->user_task->paginate(3);
 
+               
                 return view('users.home')
-                ->with('employee_tasks',$employee_tasks)
+                ->with('users',$users)
+                ->with('user_tasks',$user_tasks)
                 ->with('employees',$employees)
                 ->with('tasks',$tasks);
             // }
@@ -70,6 +74,8 @@ class HomeController extends Controller
         }
         return redirect()->route('login');
     }
+
+
 
 //     public function markWelcomeAsSeen()
 // {
@@ -80,18 +86,30 @@ class HomeController extends Controller
 
     public function showRequested()
     {
-        $employee_tasks = $this->employee_task->paginate(10);
+        $user_tasks = $this->user_task->paginate(10);
         $doc = $this->doc->all();
+        $user =  $this->user->all();
 
         return view('users.showRequested')
-        ->with('employee_tasks',$employee_tasks)
-        ->with('doc',$doc);
+        ->with('user_tasks',$user_tasks)
+        ->with('doc',$doc)
+        ->with('user',$user);
     }
 
     public function showSubmitted()
     {
-        $employee_tasks = $this->employee_task->all();
-        return view('users.showSubmitted')->with('employee_tasks',$employee_tasks);
+        $user_tasks = $this->user_task->all();
+        return view('users.showSubmitted')->with('user_tasks',$user_tasks);
+    }
+
+    public function showSubmitF1($id)
+    {
+        $doc = $this->doc->all();
+        $user =  $this->user->all();
+
+        return view('users.form.submitF1')
+                ->with('doc',$doc)
+                ->with('user',$user);
     }
 
 
