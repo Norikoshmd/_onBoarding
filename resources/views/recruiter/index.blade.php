@@ -16,13 +16,13 @@
             <tr class="text-center table table-secondary">
                 <th>Status</th>
                 <th>id</th>
+                <th></th>
                 <th>Employee Name</th>
                 <th></th>
                 <th>Start Date</th>
                 <th>Visa Status</th>
                 <th>Work at</th>
                 <th>Registered on</th>
-                <th>Registered by</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -62,13 +62,22 @@
                    
                 </td>
                 <td>{{ $employee->id}}</td>
-                <td><a href="{{ route('recruiter.show',$employee->id)}}" class="text-decoration-none text-dark">{{ $employee->name }}</a></td>
+                <td>
+                    @if($employee->user != null)
+                        <span class="badge bg-primary p-2">User : {{ optional($employee->user)->id}}</span>
+                    @endif
+                </td>
                 <td><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></td>
                 <td>{{ $employee->startday }}</td>
-                <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
+                <td>
+                    <div class="col text-truncate"  style="max-width: 200px;">
+                       {{$employee->visa_status}}
+                    </div>
+                </td>
                 <td>{{ $employee->workat }}</td>
                 <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
-                <td>{{$employee->user->name}}</td>
+                 {{-- <td>{{ optional($employee->user_id)->name}}</td> --}}
+                {{-- <td>{{ optional($employee->user_id)->name }}</td> --}}
                 
                 <td>
                     @if(Auth::user()->id == $employee->user_id )

@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Doc;
 use App\Models\Employee;
-use App\Models\EmployeeTask;
+use App\Models\UserTask;
 use App\Models\User;
 use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\DocController;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
@@ -25,11 +26,11 @@ class TaskController extends Controller
     
 
 
-    public function __construct(Task $task, Employee $employee, EmployeeTask $employee_task, Doc $doc,User $user)
+    public function __construct(Task $task, Employee $employee, UserTask $user_task, Doc $doc,User $user)
     {
         $this->task = $task;
         $this->employee = $employee;
-        $this->employee_task = $employee_task;
+        $this->user_task = $user_task;
         $this->doc = $doc;
         $this->user = $user;
         // $this->registered_user = $registered_user;
@@ -58,7 +59,7 @@ class TaskController extends Controller
     public function employee()
     {
         $employees = $this->employee->withTrashed()->latest()->paginate(5);
-        $employee_tasks = $this->employee_task->all();
+        $user_tasks = $this->user_task->all();
         $users = $this->user->all();
 
         $registered_users = [];
@@ -70,11 +71,22 @@ class TaskController extends Controller
         }
         logger('registered_users',$registered_users);
 
+        $assigned_users = [];
+
+        foreach ($user_tasks as $task) {
+            if($task->user){
+                $assigned_users[] = $task->user_id;
+            }
+        }
+        logger('assigned_users',$assigned_users);
+
+
         return view('hr.employee')
                 ->with('employees',$employees)
-                ->with('employee_tasks',$employee_tasks)
+                ->with('employee_tasks',$user_tasks)
                 ->with('users',$users)
-                ->with('registered_users',$registered_users);
+                ->with('registered_users',$registered_users)
+                ->with('assigned_users',$assigned_users);
     }
 
     // public function storeUserID(Request $request,$id)
@@ -182,21 +194,28 @@ class TaskController extends Controller
     public function showAssigned()
     {
         $employees = $this->employee->all();
-        $employee_tasks = $this->employee_task->paginate(6);
+        $users = $this->user->all();
+        $user_tasks = $this->user_task->latest()->paginate(6);
+
     
         return view('hr.showAssigned')
                 ->with('employees',$employees)
-                ->with('employee_tasks',$employee_tasks);
+                ->with('users',$users)
+                ->with('user_tasks',$user_tasks);
     }
 
     public function showIndividuallyAssigned($id)
     {
-        $employee = $this->employee->findOrFail($id);
-        $employee_tasks = $this->employee_task->paginate(10);
+        $employee = $this->employee->all();
+        $user = $this->user->findOrFail($id);
+
+        $user_tasks = $user->userTasks()->paginate(10);
+        // $user_tasks = $this->user_task->paginate(10);
 
         return view('hr.showIndividuallyAssigned')
         ->with('employee',$employee)
-        ->with('employee_tasks',$employee_tasks);
+        ->with('user',$user)
+        ->with('user_tasks',$user_tasks);
     }
 
 

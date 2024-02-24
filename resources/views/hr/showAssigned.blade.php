@@ -10,25 +10,24 @@
 <table class="table table-hover align-middle bg-white border-text-secondary">
     <thead class="opacity-75">
         <tr class="text-center table table-secondary">
-            <th>Date Requested</th>
-            <th>Employee ID</th>
+            <th>Start Day</th>
+            <th>User ID</th>
             <th>Name</th>
             <th></th>
             <th>Requested Item</th>
-            <th>Assigned by</th>
+            {{-- <th>Assigned by</th> --}}
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @forelse ($employee_tasks as $task)
+        @forelse ($user_tasks as $task)
             <tr class="text-center">
-                <td>{{date('M d, Y', strtotime($task->created_at))}}</td>
-                <td>{{ $task->employee->id}}</td>
-                <td><a href="{{route('hr.showIndividuallyAssigned',$task->employee->id)}}" class="text-decoration-none text-dark">{{ $task->employee->name}}</a></td>
-                <td><img src="{{$task->employee->passport}}" alt="{{$task->employee->name}}" class="rounded-circle avatar-sm" ></td>
+                <td>{{date('M d, Y', strtotime($task->user->employee->startday))}}</td>
+                <td>{{ $task->user->id}}</td>
+                <td><a href="{{route('hr.showIndividuallyAssigned',$task->user->id)}}" class="text-decoration-none text-dark">{{ $task->user->name }}</a></td>
+                {{-- <td><a href="{{route('hr.showIndividuallyAssigned',$user->id)}}" class="text-decoration-none text-dark">{{ $task->employee->name}}</a></td> --}}
+                <td><img src="{{$task->user->employee->passport}}" alt="{{$task->user->employee->name}}" class="rounded-circle avatar-sm" ></td>
                 <td class="text-start ms-2">{{ $task->task->name }}</td>
-                <td>{{ $task->user->name }}</td>
-                <td></td>
             </tr>
          
 
@@ -43,7 +42,7 @@
 </div>
 
 <div class="d-flex justify-content-center mt-2">
-    {{ $employee_tasks->links() }}
+    {{ $user_tasks->links() }}
 </div>
 
 @endsection

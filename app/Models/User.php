@@ -8,8 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
-use App\Models\EmployeeTask;
-use App\Models\Employee;
+// use App\Models\EmployeeTask;
+// use App\Models\Employee;
+use App\Models\UserTask;
+use App\Models\Task;
 
 // use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -58,6 +60,16 @@ class User extends Authenticatable
     public function employee()
     {
         return $this->belongsTo(Employee::class,'employee_id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function userTasks()
+    {
+        return $this->hasMany(UserTask::class);
     }
 
     

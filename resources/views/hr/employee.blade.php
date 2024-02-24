@@ -16,7 +16,7 @@
                 <th>Visa Status</th>
                 <th>Work at</th>
                 <th>Registered at</th>
-                <th>Registered by</th>
+                {{-- <th>Registered by</th> --}}
                 <th>Account</th>
                 <th>Request</th>
             </tr>
@@ -52,51 +52,33 @@
                         @include('recruiter.modal.status')
                     </td>
                     <td>{{$employee->id}}</td>
-                    {{-- <td style="width:15%;">
-                        @if($employee->user_id="null")
-                            <form action="{{ route('hr.storeUserID')}}" method="post">
-                            @csrf
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="col-6 ms-0">
-                                    <button type="submit" class="btn btn-primary text-small p-2"><h1 class="h6 text-center">Save</h1></button>
-                                </div>
-                            </div>
-                            </form>
-                        @else
-                        {{$employee->user_id}}
-                        @endif          
-                    </td> --}}
+                   
                     <td>{{$employee->startday}}</td>
                     <td><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></td>
                     <td>
                         <a href="{{ route('hr.showEndorsed',$employee->id) }}" class="text-decoration-none text-dark">{{$employee->name}}</a>
                     </td>
                   
-                    <td>{{ Illuminate\Support\Str::limit($employee->visa_status,20, '...') }}</td>
+                    <td><span class="d-inline-block text-truncate" style="max-width:150px;">{{$employee->visa_status}}</span></td>
                     <td>{{$employee->workat}}</td>
                     {{-- <td>{{ \Carbon\Carbon::createFromTimeString($employee->created_at)->format('Y/m/d H:i') }}</td> --}}
                     <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
-                    <td>{{$employee->user->name}}</td>
+                    {{-- <td>{{$employee->user->name}}</td> --}}
                     <td>
-                        {{-- @foreach($registered_users as $registered_user)
-                            @if($employee == $registered_user) --}}
-                                <button class="btn btn-rounded-circle btn-primary p-2">user ID:{{$employee->user_id}}</button>
-                                {{-- @break --}}
-                            {{-- @else --}}
-                                <a href="{{ route('register', $employee->id)}}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus fa-lg text-center"></i> &nbsp;<h6 class="mt-2 text-center">Register</h6> </a></td>
-                                {{-- @break --}}
-                            {{-- @endif
-                        @endforeach --}}
+                        @if(in_array($employee->id,$registered_users))
+                            <span class="badge bg-primary p-2">User : {{ optional($employee->user)->id}}</span>
+                        @else
+                            <a href="{{ route('register', $employee->id)}}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning btn-sm"> <i class="fa-solid fa-user-plus fa-lg text-center"></i> &nbsp;<h6 class="mt-2 text-center">Register</h6> </a></td>
+                        @endif
                     </td>
                     <td>                  
-                        {{-- @if( $employee_task_assigned == $employee->id ) --}}
+                         {{-- @if( $employee_task_assigned == $employee->id ) --}}
+                        @if( in_array(optional($employee->user)->id, $assigned_users))
+                            <a href="{{ route('hr.showIndividuallyAssigned',$employee->user->id)}}" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
+                        @else
                             <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-                        {{-- @else --}}
                             <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-                        {{-- @endif --}}
+                        @endif
                     </td>
                    
                 </tr>

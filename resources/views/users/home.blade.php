@@ -14,8 +14,8 @@
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          @if($employee_tasks !== 0)
-            @foreach ($employee_tasks as $task)
+          @if($user_tasks !== 0)
+            @foreach ($user_tasks as $task)
               {{-- @if($task->employee_id == $employees) --}}
                 <div class="alert alert-info" role="alert">
                   <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->task->name }}</a>  &nbsp;&nbsp; </p>
@@ -24,7 +24,7 @@
             @endforeach
           @endif
           <div class="d-flex justify-content-center mt-1">
-            {{ $employee_tasks->links() }}
+            {{ $user_tasks->links() }}
           </div>
         </div>
        

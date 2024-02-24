@@ -17,27 +17,23 @@
                 <th>Requested Date</th>
                 <th>Name</th>
                 <th>Requested Item</th>
-                <th>Assigned by</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($employee_tasks as $task)
-                @if ($task->employee == $employee )
+            @forelse ($user_tasks as $task)
+            @if ($task->user_id == $user->id )
                     <tr class="text-center">
                         
                         <td>{{date('M d, Y', strtotime($task->created_at))}}</td>
-                        <td><a href="{{route('hr.showIndividuallyAssigned',$task->employee->id)}}" class="text-decoration-none text-dark">{{ $task->employee->name}}</a></td>
+                        <td><a href="{{route('hr.showIndividuallyAssigned',$task->user->id)}}" class="text-decoration-none text-dark">{{ $task->user->name}}</a></td>
                         <td class="text-start ms-2">{{ $task->task->name }}</td>
-                        <td>{{ $task->user->name }}</td>
                         <td>
-                            @if( $task->user->id == Auth::user()->id)
-                                <a href="{{ route('hr.assignTask', $employee->id) }}" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
-                                <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-request-{{ $task->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
-                            @endif
+                            <a href="{{ route('hr.addTask', $user->id) }}" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
+                            <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-request-{{ $task->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
                         </td>
                     </tr>
-                    @include('hr.modal.individualaction')
+                    @include('hr.modal.individual_action')
                     
                 @else
                 @endif
@@ -52,11 +48,12 @@
                
         </tbody>
     </table>
-    </div>
+
     
     <div class="d-flex justify-content-center mt-2">
-        {{ $employee_tasks->links() }}
+        {{ $user_tasks->links() }}
     </div>
+</div>
 
 
 @endsection

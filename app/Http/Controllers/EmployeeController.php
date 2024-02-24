@@ -11,6 +11,8 @@ class EmployeeController extends Controller
 {
     private $employee;
     private $user;
+    private $recruiterAssigned;
+
 
     public function __construct(Employee $employee, User $user)
     {
@@ -20,12 +22,24 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employees = $this->employee->withTrashed()->latest()->paginate(5);
+        $employees = $this->employee->with('user')->withTrashed()->latest()->paginate(5);
         $users = $this->user->all();
+
+        $recruiterAssigned = [];
+
+        foreach($employees as $employee)
+        { 
+            if($employee->user_id){
+            $recruiterAssigned[] = $employee->user_id;
+        }
+        }
+        logger('recruiter_assigned',$recruiterAssigned);
+
 
         return view('recruiter.index')
         ->with('employees',$employees)
-        ->with('users',$users);
+        ->with('users',$users)
+        ->with('recruiterAssigned',$recruiterAssigned);
     }
 
     public function create()

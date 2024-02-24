@@ -12,9 +12,9 @@ class UserTask extends Model
     use HasFactory;
 
     protected $table = 'user_task';
-    protected $fillable = ['task_id','user_id','asignee_id'];
-    public $timestamps = true;
-
+    protected $fillable = ['user_id','task_id'];
+    // public $timestamps = true;
+    
     public function task()
     {
         return $this->belongsTo(Task::class);

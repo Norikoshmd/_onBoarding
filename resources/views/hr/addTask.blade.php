@@ -4,30 +4,26 @@
 
 @section('content')
 
-{{-- <div class="container bg-white opacity-90 rounded p-3">
-    @include('hr.showEndorsed')
-</div> --}}
-{{-- {{ dd($tasks) }} --}}
 
 <div class="container bg-white opacity-90 rounded p-3 mb-3">
 <form action="{{ route('hr.taskStore')}}" method="post">
     @csrf
-    <p class="h5 fw-bold">Send Request to </p>
+    <p class="h5 fw-bold">Send Additional Request to </p>
     <div class="card">
         <div class="card-header bg-secondary-subtle">
             <div class="row">
                 <div class="col-auto">
-                   <img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm">
+                   <img src="{{$user->employee->passport}}" alt="{{$user->employee->name}}" class="rounded-circle avatar-sm">
                 </div>
                 <div class="col-auto">
-                    <input type="hidden" name="user_id" value="{{ optional($employee->user)->id}}">
+                    <input type="hidden" name="user_id" value="{{ optional($user)->id}}">
                     {{-- <input type="hidden" name="employee_id" value="{{$employee->id}}"> --}}
-                    <a href="{{route('hr.showEndorsed2',$employee->id)}}" class="text-decoration-none text-dark">
-                         <p class="h3 mt-3">{{$employee->name}}</p>
+                    <a href="{{route('hr.showEndorsed2',$user->employee->id)}}" class="text-decoration-none text-dark">
+                         <p class="h3 mt-3">{{$user->employee->name}}</p>
                     </a>
                 </div>
                 <div class="col-auto">
-                    @if($employee->dependent == "yes")
+                    @if($user->employee->dependent == "yes")
                         <span class="badge bg-danger p-2 fs-6 mt-3">Dependent</span>
                     @endif
                 </div>
@@ -63,9 +59,10 @@
                                             <div class="form-check">
                                                 <div class="row">
                                                     <div class="col-auto">
-                                                        <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->id }}" class="form-check">
+                                                        {{-- <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->id }}" class="form-check"> --}}
+                                                        <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->name }}" @if(in_array('$task->id',old('task',[]), true))  checked="checked" @endif>
                                                     </div>
-                
+
                                                     <div class="col-auto">
                                                         <label for="{{ $task->name }}" class="form-check-label">{{ $task->name }}</label>
                                                     </div>
@@ -107,9 +104,10 @@
                                             <div class="form-check">
                                                 <div class="row">
                                                     <div class="col-auto">
-                                                        <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->id }}" class="form-check">
+                                                        {{-- <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->id }}" class="form-check"> --}}
+                                                        <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->name }}" @if(in_array(' $task->name',old('task',[]), true))  checked="checked" @endif>
                                                     </div>
-                
+
                                                     <div class="col-auto">
                                                         <label for="{{ $task->name }}" class="form-check-label">{{ $task->name }}</label>
                                                     </div>
@@ -151,9 +149,10 @@
                                             <div class="form-check">
                                                 <div class="row">
                                                     <div class="col-auto">
-                                                        <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->id }}" class="form-check">
+                                                        {{-- <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->id }}" class="form-check"> --}}
+                                                        <input type="checkbox" name="task[]" id="{{ $task->name }}" value="{{ $task->name }}" @if(in_array(' $task->name',old('task',[]), true))  checked="checked" @endif>
                                                     </div>
-                
+
                                                     <div class="col-auto">
                                                         <label for="{{ $task->name }}" class="form-check-label">{{ $task->name }}</label>
                                                     </div>
@@ -181,7 +180,7 @@
             <a href="{{route('hr.employee')}}" class="mt-3 form-control btn btn-secondary">Cancel</a>
         </div>
         <div class="col-6">
-            <button type="submit" class="mt-3 form-control btn btn-primary" >Submit</button>
+            <button type="submit" class="mt-3 form-control btn btn-primary" >Add</button>
         </div>
     </div>
 
