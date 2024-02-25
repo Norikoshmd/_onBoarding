@@ -53,19 +53,26 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/storeDoc2', [DocController::class, 'storeDoc2'])->name('storeDoc2');//doc.storeDoc2
 
         Route::get('/showDoc3', [DocController::class, 'showDoc3'])->name('showDoc3');//doc.showDoc3
+        Route::post('/storeDoc3', [DocController::class, 'storeDoc3'])->name('storeDoc3');//doc.storeDoc3
       
    
         //Copy
         Route::get('/showDoc4', [DocController::class, 'showDoc4'])->name('showDoc4');//doc.showDoc4
-        // Route::post('/storeCopy1', [DocController::class, 'storeCopy1'])->name('storeCopy1');//doc.storeCopy1
+        Route::post('/storeDoc4', [DocController::class, 'storeDoc4'])->name('storeDoc4');//doc.storeDoc4
 
+        //Not functioning
         Route::get('/showDoc5', [DocController::class, 'showDoc5'])->name('showDoc5');//doc.showDoc5
+        Route::post('/storeDoc5', [DocController::class, 'storeDoc5'])->name('storeDoc5');//doc.storeDoc5
         
         Route::get('/showDoc6', [DocController::class, 'showDoc6'])->name('showDoc6');//doc.showDoc6
+        Route::post('/storeDoc6', [DocController::class, 'storeDoc6'])->name('storeDoc6');//doc.storeDoc6
 
         //Dependent
         Route::get('/showDoc7', [DocController::class, 'showDoc7'])->name('showDoc7');//doc.showDoc7
+        Route::post('/storeDoc7', [DocController::class, 'storeDoc7'])->name('storeDoc7');//doc.storeDoc7
+
         Route::get('/showDoc8', [DocController::class, 'showDoc8'])->name('showDoc8');//doc.showDoc8
+        Route::post('/storeDoc8', [DocController::class, 'storeDoc8'])->name('storeDoc8');//doc.storeDoc8
      
 
     });

@@ -22,20 +22,18 @@
         </thead>
         <tbody>
             @forelse ($user_tasks as $task)
-                    @if($task->user->name === Auth::user()->name)
-                        {{-- need to connect user info to employee --}}
+                    @if($task->user->id === Auth::user()->id)
                         <tr class="text-center h5">
-                        {{-- @if($task->daysUntilDue() <= 3) text-danger @else text-success @endif"> --}}
                             <td>{{$task->created_at}}</td>
                             <td hidden>{{ $task->task_id}}</td>
                             <td class="text-start">{{ $task->task->name}}</td> 
                         
-                            {{-- depending on the  $task_id differenciate the submitpage--}}
+                            {{-- display different form to submit up on the $task_id --}}
                             <td>
                                 {{-- $task_id:1 - Form1:Employee Information Form --}}
                                 @if($task->task_id == 1)
-                                    {{-- @if($doc->user_id = Auth::user()->id) --}}
-                                        <a href="#" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a>
+                                    {{-- @if(Auth::user()->id == !$doc_Submitted ) --}}
+                                        {{-- <a href="{{ route('doc.showFilledDoc1',$doc1->id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a> --}}
                                     {{-- @else --}}
                                         <a href="{{ route('doc.showDoc1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
                                     {{-- @endif --}}

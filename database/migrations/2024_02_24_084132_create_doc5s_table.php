@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doc3', function (Blueprint $table) {
+        Schema::create('doc5s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('how',50);     
-            $table->date('date');     
-            $table->time('time')->nullable();     
+            $table->longText('e_insurance');
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('doc3');
+        Schema::dropIfExists('doc5');
     }
 };

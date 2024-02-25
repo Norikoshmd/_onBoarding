@@ -57,13 +57,13 @@ class TaskSeeder extends Seeder
                 'updated_at'    => NOW()
             ],
             [
-                'name'          => 'Pension book/certificate for your Spouse',
+                'name'          => 'Pension book/certificate for your Spouse | 配偶者の年金手帳、基礎年金番号通知書',
                 'category'      => 'Dependent',
                 'created_at'    => NOW(),
                 'updated_at'    => NOW()
             ],
             [
-                'name'          => 'My Number Card of dependent spouse',
+                'name'          => 'My Number Card of dependent spouse  | 配偶者のマイナンバーカード',
                 'category'      => 'Dependent',
                 'created_at'    => NOW(),
                 'updated_at'    => NOW()

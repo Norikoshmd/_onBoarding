@@ -63,7 +63,6 @@
                     <td>{{$employee->workat}}</td>
                     {{-- <td>{{ \Carbon\Carbon::createFromTimeString($employee->created_at)->format('Y/m/d H:i') }}</td> --}}
                     <td>{{ date('M d, Y', strtotime($employee->created_at)) }}</td>
-                    {{-- <td>{{$employee->user->name}}</td> --}}
                     <td>
                         @if(in_array($employee->id,$registered_users))
                             <span class="badge bg-primary p-2">User : {{ optional($employee->user)->id}}</span>
@@ -72,7 +71,7 @@
                         @endif
                     </td>
                     <td>                  
-                         {{-- @if( $employee_task_assigned == $employee->id ) --}}
+                         
                         @if( in_array(optional($employee->user)->id, $assigned_users))
                             <a href="{{ route('hr.showIndividuallyAssigned',$employee->user->id)}}" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
                         @else
@@ -87,11 +86,12 @@
                 </div>
             @endforelse
         </tbody>
-        
     </table>
-    <div class="d-flex justify-content-center mt-2">
+
+    <div class="d-flex justify-content-center">
         {{ $employees->links() }}
     </div>
+  
 </div>
 
 @endsection

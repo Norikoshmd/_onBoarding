@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doc4', function (Blueprint $table) {
+        Schema::create('doc4s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->longText('pension');
-            $table->double('pensionnumber',10);
+            $table->longText('pension')->nullable();
+            $table->double('pensionnumber',10)->nullable();
 
 
             $table->timestamps();

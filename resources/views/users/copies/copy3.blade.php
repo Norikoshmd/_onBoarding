@@ -23,7 +23,7 @@
         <img src="{{asset('css/Gensenchoshu.jpg')}}" alt="IncomeTaxWithholingSlip" style="width:40%;">
     </div>
 
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="{{ route('doc.storeDoc6') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row mb-2 justify-content-center">
             <div class="col-7">

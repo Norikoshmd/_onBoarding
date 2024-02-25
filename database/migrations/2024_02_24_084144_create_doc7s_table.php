@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('doc7', function (Blueprint $table) {
+        Schema::create('doc7s', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->longText('pension_s');
+            $table->longText('pension')->nullable();
+            $table->double('pensionnumber',10)->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

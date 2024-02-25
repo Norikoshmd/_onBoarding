@@ -17,7 +17,7 @@
             <p class="h5 mb-4 mt-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>"</p>
         </div>
     </div>
-    <form action="#" method="post" enctype="multipart/form-data" >
+    <form action="{{route('doc.storeDoc4') }}" method="post" enctype="multipart/form-data" >
         @csrf
         <div class="row mb-2 justify-content-center">
             <div class="col-6">

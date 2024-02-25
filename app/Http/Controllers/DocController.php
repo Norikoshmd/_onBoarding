@@ -3,19 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Doc;
+use App\Models\Doc1;
+use App\Models\Doc2;
+use App\Models\Doc3;
+use App\Models\Doc4;
+use App\Models\Doc5;
+use App\Models\Doc6;
+use App\Models\Doc7;
+use App\Models\Doc8;
 // use App\Models\Form2;
 use App\Models\Employee;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DocController extends Controller
 {
-    private $doc;
+    private $doc1;
 
-    public function __construct(Doc $doc, Employee $employee,Task $task)
+    public function __construct(Doc1 $doc1, Doc2 $doc2, Doc3 $doc3, Doc4 $doc4, Doc5 $doc5, Doc6  $doc6, Doc7 $doc7, Doc8 $doc8,Employee $employee,Task $task)
     {
-       $this->doc = $doc;
+       $this->doc1 = $doc1;
+       $this->doc2 = $doc2;
+       $this->doc3 = $doc3;
+       $this->doc4 = $doc4;
+       $this->doc5 = $doc5;
+       $this->doc6 = $doc6;
+       $this->doc7 = $doc7;
+       $this->doc8 = $doc8;
        $this->employee =$employee;
        $this->task =$task;
 
@@ -68,23 +83,27 @@ class DocController extends Controller
         $this->doc1->save();
 
         return redirect()->route('showRequested');
+
+        logger('user_id',$user_id);
     }
 
-    public function showFilledDoc1($id)
-    {  
-        $doc1 = $this->doc1->findOrFail($id);
+    // public function showFilledDoc1($id)
+    // {  
+    //     $doc1 = $this->doc1->findOrFail($id);
+    //     $user = $this->user->all();
       
-        return view('users.form.filledDoc1')
-        ->with('doc1',$doc1);
+    //     return view('users.form.filledDoc1')
+    //     ->with('doc1',$doc1)
+    //     ->with('user',$user);
       
-    }
+    // }
 
     public function showDoc2()
     {
         return view('users.form.form2');
     }
 
-    //NOT WORKING
+   
     public function storeDoc2(Request $request)
     {
         $request->validate([
@@ -104,25 +123,24 @@ class DocController extends Controller
             'phone2'             => 'nullable|min:1|max:30',
         ]);
 
-        $doc2 =new Doc2();
-      
-        $doc2->firstname1 = $request->firstname1;
-        $doc2->lastname1 = $request->lastname1;
-        $doc2->relationship1 = $request->relationship1;
-        $doc2->postal1 = $request->postal1;
-        $doc2->address1 = $request->address1;
-        $doc2->email1 = $request->email1;
-        $doc2->phone1 = $request->phone1;
-        $doc2->firstname2 = $request->firstname2;
-        $doc2->lastname2 = $request->lastname2;
-        $doc2->relationship2 = $request->relationship2;
-        $doc2->postal2 = $request->postal2;
-        $doc2->address2 = $request->address2;
-        $doc2->email2 = $request->email2;
-        $doc2->phone2 = $request->phone2;
+        $this->doc2->user_id = Auth::user()->id;
+        $this->doc2->firstname1 = $request->firstname1;
+        $this->doc2->lastname1 = $request->lastname1;
+        $this->doc2->relationship1 = $request->relationship1;
+        $this->doc2->postal1 = $request->postal1;
+        $this->doc2->address1 = $request->address1;
+        $this->doc2->email1 = $request->email1;
+        $this->doc2->phone1 = $request->phone1;
+        $this->doc2->firstname2 = $request->firstname2;
+        $this->doc2->lastname2 = $request->lastname2;
+        $this->doc2->relationship2 = $request->relationship2;
+        $this->doc2->postal2 = $request->postal2;
+        $this->doc2->address2 = $request->address2;
+        $this->doc2->email2 = $request->email2;
+        $this->doc2->phone2 = $request->phone2;
 
      
-        $doc2->save();
+        $this->doc2->save();
 
         return redirect()->route('showRequested');
     }
@@ -141,9 +159,9 @@ class DocController extends Controller
         ]);
 
         $this->doc3->user_id = Auth::user()->id;
-        $this->doc3->how = $request->how;
-        $this->doc3->date = $request->date;
-        $this->doc3->time = $request->time;
+        $this->doc3->how     = $request->how;
+        $this->doc3->date    = $request->date;
+        $this->doc3->time    = $request->time;
 
         $this->doc3->save();
 
@@ -159,12 +177,12 @@ class DocController extends Controller
     public function storeDoc4(Request $request)
     {
         $request->validate([
-            'pension'         => 'mimes:jpg,png,jpeg,gif|max:1048',
-            'pensionnumber'   => 'required|min:1|max:10',
+            'pension'         =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
+            'pensionnumber'   =>'nullable|digits:10',
         ]);
 
-        $this->doc4->user_id = Auth::user()->id;
-        $this->doc4->pension = $request->pension;
+        $this->doc4->user_id        = Auth::user()->id;
+        $this->doc4->pension        ='data:pension/' . $request->pension->extension() . ';base64,' . base64_encode(file_get_contents($request->pension));
         $this->doc4->pensionnumber = $request->pensionnumber;
 
         $this->doc4->save();
@@ -180,11 +198,14 @@ class DocController extends Controller
     public function storeDoc5(Request $request)
     {
         $request->validate([
-            'e_insurance'         => 'mimes:jpg,png,jpeg,gif|max:1048',
+            'e_insurance'         =>'required|image|mimes:jpeg,jpg,png,gif|max:1048',
         ]);
 
         $this->doc5->user_id = Auth::user()->id;
-        $this->doc5->e_insurance = $request->e_insurance;
+        // $fileName = $request->file('e_insurance')->store('e_insurance', 'public');
+        
+        $this->doc5->e_insurance        ='data:e_insurance/' . $request->e_insurance->extension() . ';base64,' . base64_encode(file_get_contents($request->e_insurance));
+        // $this->doc5->e_insurance        ='data:e_insurance/' . $request->e_insurance->extension() . ';base64,' . base64_encode(file_get_contents($request->e_insurance));
 
         $this->doc5->save();
 
@@ -200,11 +221,12 @@ class DocController extends Controller
     public function storeDoc6(Request $request)
     {
         $request->validate([
-            'gensen'         => 'mimes:jpg,png,jpeg,gif|max:1048',
+            'gensen'         => 'required|mimes:jpeg,jpg,png,gif|max:1048',
         ]);
 
         $this->doc6->user_id = Auth::user()->id;
-        $this->doc6->gensen = $request->gensen;
+        $this->doc6->gensen        ='data:gensen/' . $request->gensen->extension() . ';base64,' . base64_encode(file_get_contents($request->gensen));
+        
 
         $this->doc6->save();
 
@@ -220,15 +242,19 @@ class DocController extends Controller
     public function storeDoc7(Request $request)
     {
         $request->validate([
-            'pension_s'         => 'mimes:jpg,png,jpeg,gif|max:1048',
+            'pension'       =>'nullable|mimes:jpeg,jpg,png,gif|max:1048' ,
+            'pensionnumber'   =>'nullable|digits:10',
         ]);
 
-        $this->doc7->user_id = Auth::user()->id;
-        $this->doc7->pension_s = $request->pension_s;
+        $this->doc7->user_id        = Auth::user()->id;
+
+        if($request->pension)
+        $this->doc7->pension        ='data:pension/' . $request->pension->extension() . ';base64,' . base64_encode(file_get_contents($request->pension));
+        $this->doc7->pensionnumber = $request->pensionnumber;
 
         $this->doc7->save();
-
         return redirect()->route('showRequested');
+        
     }
 
     public function showDoc8()
@@ -245,13 +271,14 @@ class DocController extends Controller
         ]);
 
         $this->doc8->user_id = Auth::user()->id;
-        $this->doc8->how = $request->how;
-        $this->doc8->date = $request->date;
-        $this->doc8->time = $request->time;
+        $this->doc8->how     = $request->how;
+        $this->doc8->date    = $request->date;
+        $this->doc8->time    = $request->time;
 
         $this->doc8->save();
 
         return redirect()->route('showRequested');
     }
+    
 
 }

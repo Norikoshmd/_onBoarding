@@ -83,18 +83,36 @@ class HomeController extends Controller
     public function showRequested()
     {
         $user_tasks = $this->user_task->paginate(10);
+        // $docs = $this->doc->all();
         $doc = $this->doc->all();
+        
+        // $doc_Submitted = [];
+
+        // foreach($docs as $doc){
+        //     if($doc->user_id){
+        //         $doc_submitted[] = $doc->user_id;
+        //     }
+        // }
+
+        // logger('doc_submitted',$doc_submitted);
 
         return view('users.showRequested')
         ->with('user_tasks',$user_tasks)
         ->with('doc',$doc);
+
+
+        // ->with('docs',$docs)
+        // ->with('doc_submitted',$doc_submitted);
     }
 
     public function showSubmitted()
     {
-        $user_tasks = $this->user_task->all();
-        return view('users.showSubmitted')->with('user_tasks',$user_tasks);
-    }
+        $user_tasks = $this->user_task->paginate(10);
+        // $doc_Submitted = $this->docSubmitted->all();
 
+        return view('users.showSubmitted')
+        ->with('user_tasks',$user_tasks);
+
+    }
 
 }

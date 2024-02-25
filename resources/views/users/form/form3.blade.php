@@ -33,7 +33,7 @@
         <div class="bg-secondary-subtle rounded p-3 mb-3">
             <p class="h5 fw-bold"> Please inform us by selecting submit method </p>
         </div>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="{{route('doc.storeDoc3')}}" method="post" enctype="multipart/form-data">
     @csrf
         <div class="row">
                 <div class="col-3">

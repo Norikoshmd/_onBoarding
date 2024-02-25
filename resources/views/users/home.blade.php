@@ -8,7 +8,7 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <i class="fa-solid fa-bullhorn fa-2x"></i>&nbsp;&nbsp; <p class="h5 mt-1 fw-bold">Announcements</p> &nbsp;&nbsp;
+          <i class="fa-solid fa-bullhorn fa-2x"></i>&nbsp;&nbsp; <p class="h4 mt-1">Announcements</p> &nbsp;&nbsp;
            
         </button>
       </h2>
@@ -33,7 +33,7 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          <i class="fa-solid fa-circle-exclamation fa-2x"></i>&nbsp;&nbsp; <p class="h5 mt-1 fw-bold">Notification</p> &nbsp;&nbsp; &nbsp;
+          <i class="fa-solid fa-circle-exclamation fa-2x"></i>&nbsp;&nbsp; <p class="h4 mt-1">Notification</p> &nbsp;&nbsp; &nbsp;
         </button>
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -52,7 +52,7 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
-          <i class="fa-solid fa-circle-info fa-2x"></i>&nbsp;&nbsp; <p class="h5 mt-1 fw-bold">Info</p> &nbsp;&nbsp;
+          <i class="fa-solid fa-circle-info fa-2x"></i>&nbsp;&nbsp; <p class="h4 mt-1">Info</p> &nbsp;&nbsp;
         </button>
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

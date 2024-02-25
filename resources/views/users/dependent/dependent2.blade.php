@@ -33,12 +33,12 @@
         <div class="bg-secondary-subtle rounded p-3 mb-3">
             <p class="h5 fw-bold"> Please inform us by selecting submit method </p>
         </div>
-    <form action="#" method="post">
+    <form action="{{ route('doc.storeDoc8') }}" method="post">
     @csrf
         <div class="row">
                 <div class="col-3">
                     <label for="how" class="label-control fw-bold ms-2 mb-2">How to submit</label>
-                    <select name="if_submitted" id="if_submitted" class="form-select">
+                    <select name="how" id="if_submitted" class="form-select">
                         <option value=""hidden>Select</option>
                         <option value="post">Posted</option>
                         <option value="office-visit">Scheduled visit to office</option>

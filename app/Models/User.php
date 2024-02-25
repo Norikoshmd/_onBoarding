@@ -72,5 +72,46 @@ class User extends Authenticatable
         return $this->hasMany(UserTask::class);
     }
 
+    public function doc1()
+    {
+        return $this->hasMany(Doc1::class);
+    }
+
+    public function doc2()
+    {
+        return $this->hasMany(Doc2::class);
+    }
+
+    public function doc3()
+    {
+        return $this->hasMany(Doc3::class);
+    }
+
+    public function doc4()
+    {
+        return $this->hasMany(Doc4::class);
+    }
+
+    public function doc5()
+    {
+        return $this->hasMany(Doc5::class);
+    }
+
+    public function doc6()
+    {
+        return $this->hasMany(Doc6::class);
+    }
+
+    public function doc7()
+    {
+        return $this->hasMany(Doc7::class);
+    }
+
+    public function doc8()
+    {
+        return $this->hasMany(Doc8::class);
+    }
+
+
     
 }
