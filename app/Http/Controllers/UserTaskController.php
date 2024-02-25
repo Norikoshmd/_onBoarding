@@ -56,22 +56,43 @@ class UserTaskController extends Controller
     }
 
     public function addTask($id)
-    {
-        $user = $this->user->findOrFail($id);
-        $employee = $this->employee->all();
-        // $employee = $this->employee->findOrFail($id);
-        $tasks = $this->task->all();
-
-        // $employee = showEndorsed($id);
+    {  
+        $task = $this->task->all();
+        $user_task = $this->user_task->all();
+        $user= $this->user->findOrFail($id);
 
         return view('hr.addTask')
                 ->with('employee',$employee)
                 ->with('user',$user)
                 ->with('tasks',$tasks);
-
     }
 
-    ###reference for addTask
+
+    public function postAdditionalTask(Request $request,$id)
+    {  
+        $request->validate([
+            'user_id'       => 'required',
+            'task'          => 'required|array|between:1,30',
+    
+           ]);
+
+        $user_id         = $request->user_id;
+        $tasks           = $request->task;
+
+        $task->userTask()->delete();
+
+        foreach($request->task as $task)
+        {
+            $user_task[] = ['task_id' => $task_id];
+        }
+        $task->taskPost()->createMany($task_id);
+
+        return view('hr.addTask');
+                // ->with('employee',$employee)
+                // ->with('user',$user)
+                // ->with('tasks',$tasks);
+    }
+    ###reference for postAdditionalTask
     // public function update(Request $request,$id)
     // {
     //     $request->validate([

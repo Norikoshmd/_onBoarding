@@ -67,6 +67,7 @@
                         <span class="badge bg-primary p-2">User : {{ optional($employee->user)->id}}</span>
                     @endif
                 </td>
+                <td>{{$employee->name}}</td>
                 <td><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></td>
                 <td>{{ $employee->startday }}</td>
                 <td>

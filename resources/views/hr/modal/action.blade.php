@@ -41,7 +41,8 @@
                     </h3>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete <span class="fw-bold">{{ optional($user->task)->name }}</span> ?</p>
+                    <p>Are you sure you want to delete <span class="fw-bold"></span> ?</p>
+                    {{-- {{ optional($user->task)->name }} --}}
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal">Cancel</button>

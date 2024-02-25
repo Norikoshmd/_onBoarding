@@ -15,6 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('doc1_id')->nullable();
+            $table->unsignedBigInteger('doc2_id')->nullable();
+            $table->unsignedBigInteger('doc3_id')->nullable();
+            $table->unsignedBigInteger('doc4_id')->nullable();
+            $table->unsignedBigInteger('doc5_id')->nullable();
+            $table->unsignedBigInteger('doc6_id')->nullable();
+            $table->unsignedBigInteger('doc7_id')->nullable();
+            $table->unsignedBigInteger('doc8_id')->nullable();
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users');

@@ -12,7 +12,7 @@
                     </h3>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete <span class="fw-bold">{{ $employee->task }}</span> ?</p>
+                    <p>Are you sure you want to delete <span class="fw-bold">{{ $user->task }}</span> ?</p>
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal">Cancel</button>

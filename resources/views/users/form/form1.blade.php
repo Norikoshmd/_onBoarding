@@ -11,16 +11,18 @@
     <hr>
 
     <div class="px-3">
-        <form action="{{ route('doc.storeForm1')}}" method="post">
+        <form action="{{ route('doc.storeDoc1')}}" method="post">
             @csrf
+           
             <div class="container bg-secondary-subtle rounded shadow-sm p-3 mb-2">
+                <label for="alphabetic_name" class="fw-bold mb-0">Name in Alphabet </label>
                 <div class="row justify-content-center mb-3">
                     <div class="col-4">
                         <label for="firstname" class="form-label mb-0 ms-1">First Name</label>
                         <input type="text" name="firstname" class="form-control" value="{{old('firstname')}}">
                     </div>
                     <div class="col-4">
-                        <label for="middlename" class="form-label mb-0 ms-1">Middle Name <span class="text-secondary">*</span></label>
+                        <label for="middlename" class="form-label mb-0 ms-1">Middle Name <span class="text-secondary">* in case it's printed on your ID</span></label>
                         <input type="text" name="middlename" class="form-control" value="{{old('middlename')}}">
                     </div>
                     <div class="col-4">
@@ -29,14 +31,14 @@
                     </div>
                 </div>
                 
-                <label for="kana_name" class="fw-bold mb-0">Katakana <span class="text-danger">*if you can</span></label>
+                <label for="kana_name" class="fw-bold mb-0">Name in Japanese Katakana <span class="text-secondary">*if you can type</span></label>
                 <div class="row justify-content-center mb-3">
                     <div class="col-4">
                         <label for="namae" class="form-label mb-0 ms-1">First Name</label>
                         <input type="text" name="namae" class="form-control" value="{{old('namae')}}">
                     </div>
                     <div class="col-4">
-                        <label for="middlename_kana" class="form-label mb-0 ms-1">Middle Name <span class="text-secondary">*</span></label>
+                        <label for="middlename_kana" class="form-label mb-0 ms-1">Middle Name <span class="text-secondary">* in case it's printed on your ID</span></label>
                         <input type="text" name="middlename_kana" class="form-control" value="{{old('middlename_kana')}}">
                     </div>
                     <div class="col-4">
@@ -45,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container bg-white rounded shadow-sm p-3 mb-2">
+            <div class="container bg-primary-subtle rounded shadow-sm p-3 mb-2">
                 <div class="row mb-3">
                     <div class="col-3">
                         <label for="dob" class="form-label mb-0 ms-1"> Date of Birth</label>
@@ -66,7 +68,7 @@
                         <input type="text" name="phone" class="form-control" value="{{old('phone')}}">
                     </div>
                     <div class="col-4">
-                        <label for="email" class="form-label mb-0 ms-1">Email Address <span class="text-danger">Personal</span></label>
+                        <label for="email" class="form-label mb-0 ms-1">Email Address <span class="text-danger">*Personal, not company's </span></label>
                         <input type="email" name="email" class="form-control" value="{{old('email')}}">
                     </div>
                 </div>

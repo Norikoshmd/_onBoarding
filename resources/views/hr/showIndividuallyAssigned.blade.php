@@ -7,7 +7,7 @@
     <p class="h3 p-3"><i class="fa-regular fa-folder-open fa-lg text-secondary"></i>&nbsp;&nbsp; Item(s) requested to</p>
 
     <div class="bg-primary-subtle rounded p-3 mb-3">
-        <p class="h3 p-3">&nbsp;&nbsp;<img src="{{$employee->passport}}" alt=" {{$employee->name}}" class="rounded-circle avatar-sm"> {{$employee->name}} <span class="h5">(Employee ID : {{ $employee->id}})</span></p>
+        <p class="h3 p-3">&nbsp;&nbsp;<img src="{{$user->employee->passport}}" alt=" {{$user->employee->name}}" class="rounded-circle avatar-sm">&nbsp; {{$user->employee->name}} &nbsp;<span class="badge bg-primary">User ID : {{ $user->id}}</span></p>
     </div>
    
     
@@ -29,7 +29,7 @@
                         <td><a href="{{route('hr.showIndividuallyAssigned',$task->user->id)}}" class="text-decoration-none text-dark">{{ $task->user->name}}</a></td>
                         <td class="text-start ms-2">{{ $task->task->name }}</td>
                         <td>
-                            <a href="{{ route('hr.addTask', $user->id) }}" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
+                            <a href="{{ route('hr.addTask',$task->user_id) }}" class="btn btn-outline-primary"><i class="fa-solid fa-plus"></i></a>
                             <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-request-{{ $task->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
                         </td>
                     </tr>

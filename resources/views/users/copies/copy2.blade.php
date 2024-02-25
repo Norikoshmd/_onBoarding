@@ -23,7 +23,7 @@
         <img src="{{asset('css/employmentinsurancecard.png')}}" alt="employmentinsurancecard" style="width:50%;">
     </div>
 
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row mb-2 justify-content-center">
             <div class="col-7">
@@ -33,7 +33,7 @@
         </div>
         <div class="row mb-5 justify-content-center">
             <div class="col-3">
-                <input type="file" name="pension" id="pension" class="form-control">
+                <input type="file" name="e_insurance" id="e_insurance" class="form-control">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Submit</button>

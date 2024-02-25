@@ -17,7 +17,7 @@
     </div>
 
     <div class="px-3">
-        <form action="{{ route('doc.storeForm2')}}" method="post">
+        <form action="{{ route('doc.storeDoc2')}}" method="post">
             @csrf
         {{-- Emergency Contact 1 --}}
             <div class="container rounded bg-secondary-subtle shadow-sm p-3 mb-2">

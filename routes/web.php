@@ -45,27 +45,27 @@ Route::group(['middleware' => 'auth'], function(){
     
    
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
-        Route::get('/showForm1', [DocController::class, 'showForm1'])->name('showForm1');//doc.showForm1
-        Route::post('/storeForm1', [DocController::class, 'storeForm1'])->name('storeForm1');//doc.storeForm1
-        Route::get('/{id}/showSubmitForm1', [DocController::class, 'showSubmitForm1'])->name('showSubmitForm1');//doc.showSubmitForm1
+        Route::get('/showDoc1', [DocController::class, 'showDoc1'])->name('showDoc1');//doc.Doc1
+        Route::post('/storeDoc1', [DocController::class, 'storeDoc1'])->name('storeDoc1');//doc.storeDoc1
+        Route::get('/{id}/showFilledDoc1', [DocController::class, 'showFilledDoc1'])->name('showFilledDoc1');//doc.showFilledDoc1
 
-        Route::get('/showForm2', [DocController::class, 'showForm2'])->name('showForm2');//doc.showForm2
-        Route::post('/storeForm2', [DocController::class, 'storeForm2'])->name('storeForm2');//doc.storeForm2
+        Route::get('/showDoc2', [DocController::class, 'showDoc2'])->name('showDoc2');//doc.showDoc2
+        Route::post('/storeDoc2', [DocController::class, 'storeDoc2'])->name('storeDoc2');//doc.storeDoc2
 
-        Route::get('/showForm3', [DocController::class, 'showForm3'])->name('showForm3');//doc.showForm3
+        Route::get('/showDoc3', [DocController::class, 'showDoc3'])->name('showDoc3');//doc.showDoc3
       
    
         //Copy
-        Route::get('/showCopy1', [DocController::class, 'showCopy1'])->name('showCopy1');//doc.showCopy1
+        Route::get('/showDoc4', [DocController::class, 'showDoc4'])->name('showDoc4');//doc.showDoc4
         // Route::post('/storeCopy1', [DocController::class, 'storeCopy1'])->name('storeCopy1');//doc.storeCopy1
 
-        Route::get('/showCopy2', [DocController::class, 'showCopy2'])->name('showCopy2');//doc.showCopy2
+        Route::get('/showDoc5', [DocController::class, 'showDoc5'])->name('showDoc5');//doc.showDoc5
         
-        Route::get('/showCopy3', [DocController::class, 'showCopy3'])->name('showCopy3');//doc.showCopy3
+        Route::get('/showDoc6', [DocController::class, 'showDoc6'])->name('showDoc6');//doc.showDoc6
 
         //Dependent
-        Route::get('/showDependent1', [DocController::class, 'showDependent1'])->name('showDependent1');//doc.showDependent1
-        Route::get('/showDependent2', [DocController::class, 'showDependent2'])->name('showDependent2');//doc.showDependent2
+        Route::get('/showDoc7', [DocController::class, 'showDoc7'])->name('showDoc7');//doc.showDoc7
+        Route::get('/showDoc8', [DocController::class, 'showDoc8'])->name('showDoc8');//doc.showDoc8
      
 
     });

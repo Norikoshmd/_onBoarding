@@ -6,7 +6,7 @@
 
 <div class="container bg-white opacity-90 rounded p-3 shadow-lg">
     <div class="h1 h4 mt-2 fw-bold">
-        Pension book/certificate for dependent spouse
+        <i class="fa-solid fa-pen-to-square fa-lg"></i>  Pension book/certificate for your spouse
     </div>
     <hr>
     <div class="bg-secondary-subtle rounded p-3">
@@ -15,7 +15,7 @@
 
     <div class="row justify-content-center">
         <div class="col-11">
-            <p class="h5 mb-4 mt-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>" of your spouse, dependent(s).
+            <p class="h5 mb-4 mt-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>" of your spouse.</p>
         </div>
     </div>
 
@@ -38,12 +38,12 @@
         </div>
     </div>
 
-    <form action="#" method="post">
+    <form action="#" method="post" enctype="multipart/form-data">
         @csrf
        
         <div class="row mb-3 justify-content-center">
             <div class="col-3">
-                <input type="file" name="pension" id="pension" class="form-control">
+                <input type="file" name="pension_s" id="pension" class="form-control">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Submit</button>

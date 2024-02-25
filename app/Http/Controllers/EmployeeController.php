@@ -74,7 +74,7 @@ class EmployeeController extends Controller
         $this->employee->visa_b      = 'data:visa_b/' . $request->visa_b->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_b));
         $this->employee->passport    = 'data:passport/' . $request->passport->extension() . ';base64,' . base64_encode(file_get_contents($request->passport));
         $this->employee->remarks     = $request->remarks;
-        $this->employee->user_id     = Auth::user()->id;
+        // $this->employee->user_id     = Auth::user()->id;
 
         $this->employee->save();
 

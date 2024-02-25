@@ -77,7 +77,6 @@
                             <a href="{{ route('hr.showIndividuallyAssigned',$employee->user->id)}}" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
                         @else
                             <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-                            <a href="#" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
                         @endif
                     </td>
                    

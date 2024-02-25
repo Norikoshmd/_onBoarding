@@ -57,7 +57,7 @@ class TaskSeeder extends Seeder
                 'updated_at'    => NOW()
             ],
             [
-                'name'          => 'Pension book/certificate for dependent spouse',
+                'name'          => 'Pension book/certificate for your Spouse',
                 'category'      => 'Dependent',
                 'created_at'    => NOW(),
                 'updated_at'    => NOW()
