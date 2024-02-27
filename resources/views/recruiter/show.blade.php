@@ -4,13 +4,12 @@
 
 @section('content')
 <div class="container bg-white rounded-3 opacity-90 p-3">
+    <p class="text-muted text-end"><i class="fa-solid fa-list fa-"></i>&nbsp;&nbsp;>>&nbsp;&nbsp;{{$employee->name}}</p>
     <div class="row mt-3">
         <div class="col-8">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; {{ $employee->name }}</p>
         </div>
-        <div class="col-auto ms-auto">
-          <a href="{{ route('recruiter.index')}}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> back to the list</a>
-         </div>
+      
     </div>
        
     <hr>
@@ -18,6 +17,7 @@
             <div class="col-auto">
                 <label for="name" class="form-label">Name</label>
                 <p class="fs-bold fs-4">{{ $employee->name }}</p>
+                
             </div>
             <div class="col-auto">
                 <label for="gender" class="form-label">Gender</label>
@@ -72,6 +72,7 @@
         </div>
         <hr>
         <div class="row">
-              <a href="{{ route('recruiter.index')}}" class="btn btn-outline-warning btn-sm mx-auto" style="width:20%;"> BACK</a>
+              <a href="{{ route('recruiter.index')}}" class="btn btn-secondary btn-sm mx-auto" style="width:20%;"> BACK</a>
         </div>
+
 @endsection

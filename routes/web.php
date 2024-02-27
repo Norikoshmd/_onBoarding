@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\EmployeeTaskController;
+use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\DocController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 
@@ -20,7 +22,18 @@ use App\Http\Controllers\DocController;
 |
 */
 
-Auth::routes();
+// Auth::routes();
+// Route::get('register',[RegisterController::class,'showRegisterationForm'])->name('register');
+Route::post('register',[RegisterController::class,'register']);
+// Route::post('register2',[RegisterController::class,'register2']);
+Route::get('login', [LoginController::class,'showLoginForm'])->name('login'); // view は auth.login
+Route::post('login', [LoginController::class,'login']);
+Route::post('logout', [LoginController::class,'logout'])->name('logout');
+
+
+Route::group(['middleware' => ['auth', 'can:hr']], function () {
+    Route::get('/register',[TaskController::class, 'register'])->name('register'); //2-iii. hr.register
+  });
 
 Route::group(['middleware' => 'auth'], function(){
     #User
@@ -29,29 +42,37 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/showRequested', [HomeController::class, 'showRequested'])->name('showRequested');
     Route::get('/showSubmitted', [HomeController::class, 'showSubmitted'])->name('showSubmitted');
-  
-
+    
+   
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
-        Route::get('/showForm1', [DocController::class, 'showForm1'])->name('showForm1');//doc.showForm1
-        Route::post('/storeForm1', [DocController::class, 'storeForm1'])->name('storeForm1');//doc.storeForm1
+        Route::get('/{id}/showDoc1', [DocController::class, 'showDoc1'])->name('showDoc1');//doc.Doc1
+        Route::post('/storeDoc1', [DocController::class, 'storeDoc1'])->name('storeDoc1');//doc.storeDoc1
+        Route::get('/{id}/showSubmittedDoc1', [DocController::class, 'showSubmittedDoc1'])->name('showSubmittedDoc1');//doc.showSubmittedDoc1
 
-        Route::get('/showForm2', [DocController::class, 'showForm2'])->name('showForm2');//doc.showForm2
-        Route::post('/storeForm2', [DocController::class, 'storeForm2'])->name('storeForm2');//doc.storeForm2
+        Route::get('/showDoc2', [DocController::class, 'showDoc2'])->name('showDoc2');//doc.showDoc2
+        Route::post('/storeDoc2', [DocController::class, 'storeDoc2'])->name('storeDoc2');//doc.storeDoc2
 
-        Route::get('/showForm3', [DocController::class, 'showForm3'])->name('showForm3');//doc.showForm3
+        Route::get('/showDoc3', [DocController::class, 'showDoc3'])->name('showDoc3');//doc.showDoc3
+        Route::post('/storeDoc3', [DocController::class, 'storeDoc3'])->name('storeDoc3');//doc.storeDoc3
       
    
         //Copy
-        Route::get('/showCopy1', [DocController::class, 'showCopy1'])->name('showCopy1');//doc.showCopy1
-        // Route::post('/storeCopy1', [DocController::class, 'storeCopy1'])->name('storeCopy1');//doc.storeCopy1
+        Route::get('/showDoc4', [DocController::class, 'showDoc4'])->name('showDoc4');//doc.showDoc4
+        Route::post('/storeDoc4', [DocController::class, 'storeDoc4'])->name('storeDoc4');//doc.storeDoc4
 
-        Route::get('/showCopy2', [DocController::class, 'showCopy2'])->name('showCopy2');//doc.showCopy2
+        //Not functioning
+        Route::get('/showDoc5', [DocController::class, 'showDoc5'])->name('showDoc5');//doc.showDoc5
+        Route::post('/storeDoc5', [DocController::class, 'storeDoc5'])->name('storeDoc5');//doc.storeDoc5
         
-        Route::get('/showCopy3', [DocController::class, 'showCopy3'])->name('showCopy3');//doc.showCopy3
+        Route::get('/showDoc6', [DocController::class, 'showDoc6'])->name('showDoc6');//doc.showDoc6
+        Route::post('/storeDoc6', [DocController::class, 'storeDoc6'])->name('storeDoc6');//doc.storeDoc6
 
         //Dependent
-        Route::get('/showDependent1', [DocController::class, 'showDependent1'])->name('showDependent1');//doc.showDependent1
-        Route::get('/showDependent2', [DocController::class, 'showDependent2'])->name('showDependent2');//doc.showDependent2
+        Route::get('/showDoc7', [DocController::class, 'showDoc7'])->name('showDoc7');//doc.showDoc7
+        Route::post('/storeDoc7', [DocController::class, 'storeDoc7'])->name('storeDoc7');//doc.storeDoc7
+
+        Route::get('/showDoc8', [DocController::class, 'showDoc8'])->name('showDoc8');//doc.showDoc8
+        Route::post('/storeDoc8', [DocController::class, 'storeDoc8'])->name('storeDoc8');//doc.storeDoc8
      
 
     });
@@ -75,26 +96,35 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/index',[TaskController::class, 'index'])->name('index'); //1.hr.index
 
         Route::get('/employee',[TaskController::class, 'employee'])->name('employee'); //2-i.hr.employee
+        Route::post('/storeUserID',[TaskController::class, 'storeUserID'])->name('storeUserID'); //2-i.hr.storeUserID
         Route::get('/{id}/showEndorsed',[TaskController::class, 'showEndorsed'])->name('showEndorsed'); //2-ii.hr.showEndorsed
         Route::get('/{id}/showEndorsed2',[TaskController::class, 'showEndorsed2'])->name('showEndorsed2'); //2-ii.hr.showEndorsed2
         Route::get('/{id}/showEndorsed3',[TaskController::class, 'showEndorsed3'])->name('showEndorsed3'); //2-ii.hr.showEndorsed3
-        Route::get('/register',[TaskController::class, 'register'])->name('register'); //2-iii. hr.register
+        
+        // Route::get('/showRegisteredAccount',[TaskController::class,'showRegisteredAccount'])->name('showRegisteredAccount'); //2-iv.hr.showRegisteredAccount
         // Route::get('/registerUser',[TaskController::class, 'registerUser'])->name('registerUser'); //2-iii. hr.registerUser
         Route::get('/{id}/assignTask',[TaskController::class, 'assignTask'])->name('assignTask'); //2-iv.hr.assignTask
         //2-v.
 
       
         Route::get('/showAssigned',[TaskController::class, 'showAssigned'])->name('showAssigned'); //3. hr.showAssigned
+        Route::get('/{id}/showIndividuallyAssigned',[TaskController::class, 'showIndividuallyAssigned'])->name('showIndividuallyAssigned'); //3. hr.showIndividuallyAssigned
         Route::get('/showSubmitted',[TaskController::class, 'showSubmitted'])->name('showSubmitted'); //4. hr.showSubmitted
         Route::get('/showConfirmed',[TaskController::class, 'showConfirmed'])->name('showConfirmed'); //5. hr.showConfirmed
         Route::post('/store',[TaskController::class, 'store'])->name('store'); //6. hr.store
         Route::patch('/{id}/update', [TaskController::class, 'update'])->name('update');//6-1 hr.update
         Route::delete('/{id}/destroy', [TaskController::class, 'destroy'])->name('destroy');//6-2 hr.destroy
 
-       #HR EmployeeTaskController
-        Route::get('/employeeTask',[EmployeeTaskController::class, 'EmployeeTask'])->name('employeeTask'); //hr.employeeTask
-        Route::post('/taskStore',[EmployeeTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
-        Route::delete('/{id}/destroy',[EmployeeTaskController::class, 'destroy'])->name('task.destroy'); //hr.task.destroy
+       #HR UserTaskController
+       Route::get('/userTask',[UserTaskController::class, 'userTask'])->name('userTask'); //hr.userTask
+       Route::post('/taskStore',[UserTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
+       Route::get('/{id}/addTask',[UserTaskController::class, 'addTask'])->name('addTask'); //2-iv.hr.addTask
+       //2-v.
+       Route::delete('/{id}/destroyAssigned',[UserController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
+
+        // Route::get('/employeeTask',[EmployeeTaskController::class, 'employeeTask'])->name('employeeTask'); //hr.EmployeeTask
+        // Route::post('/taskStore',[EmployeeTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
+        Route::delete('/{id}/destroyAssigned',[UserTaskController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
         
     });
 

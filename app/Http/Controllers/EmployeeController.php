@@ -11,6 +11,8 @@ class EmployeeController extends Controller
 {
     private $employee;
     private $user;
+    private $recruiterAssigned;
+
 
     public function __construct(Employee $employee, User $user)
     {
@@ -20,12 +22,24 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $employees = $this->employee->withTrashed()->latest()->paginate(5);
+        $employees = $this->employee->with('user')->withTrashed()->latest()->paginate(5);
         $users = $this->user->all();
+
+        $recruiterAssigned = [];
+
+        foreach($employees as $employee)
+        { 
+            if($employee->user_id){
+            $recruiterAssigned[] = $employee->user_id;
+        }
+        }
+        logger('recruiter_assigned',$recruiterAssigned);
+
 
         return view('recruiter.index')
         ->with('employees',$employees)
-        ->with('users',$users);
+        ->with('users',$users)
+        ->with('recruiterAssigned',$recruiterAssigned);
     }
 
     public function create()
@@ -60,7 +74,7 @@ class EmployeeController extends Controller
         $this->employee->visa_b      = 'data:visa_b/' . $request->visa_b->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_b));
         $this->employee->passport    = 'data:passport/' . $request->passport->extension() . ';base64,' . base64_encode(file_get_contents($request->passport));
         $this->employee->remarks     = $request->remarks;
-        $this->employee->user_id     = Auth::user()->id;
+        // $this->employee->user_id     = Auth::user()->id;
 
         $this->employee->save();
 
@@ -106,23 +120,26 @@ class EmployeeController extends Controller
         $employee->startday    = $request->startday;
         $employee->workat      = $request->workat;
         $employee->remarks     = $request->remarks;
-       
 
-        if($request->hasFile('visa_f')){
-            $this->employee->visa_f = 'data:image/' . $request->file('visa_f')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('visa_f')));
+
+       if($request->visa_f){
+            $employee->visa_f = 'data:image/' . $request->visa_f->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_f));
         }
-        if($request->hasFile('visa_b')){
-            $this->employee->visa_b = 'data:image/' . $request->file('visa_b')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('visa_b')));
+
+        if($request->visa_b){
+            $employee->visa_b = 'data:image/' . $request->visa_b->extension() . ';base64,' . base64_encode(file_get_contents($request->visa_b));
         }
-        if($request->hasFile('passport')){
-            $this->employee->passport = 'data:image/' . $request->file('passport')->extension() . ';base64,' . base64_encode(file_get_contents($request->file('passport')));
+
+        if($request->passport){
+            $employee->passport = 'data:image/' . $request->passport->extension() . ';base64,' . base64_encode(file_get_contents($request->passport));
         }
-               
+
         $employee->save();
 
         return redirect()->route('recruiter.index');
     }
 
+    
     public function destroy($id)
     {
         $employee = $this->employee->findOrFail($id);

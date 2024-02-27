@@ -44,7 +44,6 @@
                     <td class="text-start">{{$task->name}}</td>
                     <td>{{$task->category}}</td>
                     <td>{{date('M d, Y', strtotime($task->updated_at))}}</td>
-                    <td></td>
                     <td>
                         {{-- Edit Button --}}
                         <button class="btn btn-outline-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#edit-request-{{ $task->id }}" title="Edit">
@@ -56,13 +55,15 @@
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </td>
+                    <td></td>
                 </tr>
                 @include('hr.modal.action')
                 @endforeach
-                
             </tbody>
         </table>
-
+        <div class="d-flex justify-content-center mt-2">
+            {{ $all_tasks->links() }}
+        </div>
 </div>
 
 @endsection

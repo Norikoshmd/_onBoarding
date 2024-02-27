@@ -12,10 +12,16 @@ class Task extends Model
 
    
 
-    public function employeeTask()
+   
+    public function userTask()
     {
-        return $this->hasMany(EmployeeTask::class);
+        return $this->hasMany(UserTask::class);
     }
+
+     // public function employeeTask()
+    // {
+    //     return $this->hasMany(EmployeeTask::class);
+    // }
 
     public function employees()
     {
@@ -25,6 +31,11 @@ class Task extends Model
     public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function docs()
+    {
+        return $this->belongsTo(Doc::class);
     }
 
 }

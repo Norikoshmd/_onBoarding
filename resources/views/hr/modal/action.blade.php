@@ -31,8 +31,7 @@
 {{-- Delete --}}
 <div class="modal fade" id="delete-request-{{ $task->id }}">
     <div class="modal-dialog">
-        <form action="#" method="post">
-            {{-- {{ route('hr.destroy', $task->id)}} --}}
+        <form action="{{ route('hr.destroy',$task->id) }}" method="post">
             @csrf
             @method('DELETE')
             <div class="modal-content border-danger">
@@ -42,7 +41,8 @@
                     </h3>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete <span class="fw-bold">{{ $task->name }}</span> ?</p>
+                    <p>Are you sure you want to delete <span class="fw-bold"></span> ?</p>
+                    {{-- {{ optional($user->task)->name }} --}}
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-outline-danger btn-sm" data-bs-dismiss="modal">Cancel</button>

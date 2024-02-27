@@ -7,37 +7,42 @@
 <div class="container bg-white opacity-90 p-3 rounded">
     <p class="h3 p-3"><i class="fa-regular fa-folder-open fa-lg text-secondary"></i>&nbsp;&nbsp;Requested items</p>
 
-
 <table class="table table-hover align-middle bg-white border-text-secondary">
     <thead class="opacity-75">
         <tr class="text-center table table-secondary">
-            <th>No.</th>
-            <th>Employee ID</th>
+            <th>Start Day</th>
+            <th>User ID</th>
             <th>Name</th>
             <th></th>
             <th>Requested Item</th>
-            <th>Assigned by</th>
+            {{-- <th>Assigned by</th> --}}
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @forelse ($employee_tasks as $task)
+        @forelse ($user_tasks as $task)
             <tr class="text-center">
-                <td></td>
-                <td>{{ $task->employee->id}}</td>
-                <td>{{ $task->employee->name}}</td>
-                <td><img src="{{$task->employee->passport}}" alt="{{$task->employee->name}}" class="rounded-circle avatar-sm" ></td>
+                <td>{{date('M d, Y', strtotime($task->user->employee->startday))}}</td>
+                <td>{{ $task->user->id}}</td>
+                <td><a href="{{route('hr.showIndividuallyAssigned',$task->user->id)}}" class="text-decoration-none text-dark">{{ $task->user->name }}</a></td>
+                {{-- <td><a href="{{route('hr.showIndividuallyAssigned',$user->id)}}" class="text-decoration-none text-dark">{{ $task->employee->name}}</a></td> --}}
+                <td><img src="{{$task->user->employee->passport}}" alt="{{$task->user->employee->name}}" class="rounded-circle avatar-sm" ></td>
                 <td class="text-start ms-2">{{ $task->task->name }}</td>
-                {{-- <td>{{ $task->user_id->name }}</td> --}}
-                {{-- <td>{{$task->user->name}}</td> --}}
-                <td></td>
             </tr>
+         
+
         @empty
-            <div class="bg-info-subtle rounded p-3 mt-2 mb-2 ">
-                <p class="text-muted h5 text-center">No Task has Assigned yet.</p>
+            <div class="bg-secondary-subtle rounded p-3 mt-2 mb-3 ">
+                <p class="text-muted h5 ms-3 mt-2">No Task has Assigned yet.</p>
             </div>
         @endforelse
+           
     </tbody>
 </table>
+</div>
+
+<div class="d-flex justify-content-center mt-2">
+    {{ $user_tasks->links() }}
+</div>
 
 @endsection

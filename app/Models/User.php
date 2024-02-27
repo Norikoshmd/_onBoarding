@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
+// use App\Models\EmployeeTask;
+// use App\Models\Employee;
+use App\Models\UserTask;
+use App\Models\Task;
+
 // use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
@@ -25,6 +30,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'employee_id',
         'name',
         'email',
         'password',
@@ -51,15 +57,60 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // public function getHasSeenWelcomeAttribute()
-    // {
-    //     return $this->attributes['has_seen_welcome'];
-    // }
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class,'employee_id');
+    }
 
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 
-    
+    public function userTasks()
+    {
+        return $this->hasMany(UserTask::class);
+    }
 
-   
+    public function doc1()
+    {
+        return $this->hasOne(Doc1::class);
+    }
+
+    public function doc2()
+    {
+        return $this->hasMany(Doc2::class);
+    }
+
+    public function doc3()
+    {
+        return $this->hasMany(Doc3::class);
+    }
+
+    public function doc4()
+    {
+        return $this->hasMany(Doc4::class);
+    }
+
+    public function doc5()
+    {
+        return $this->hasMany(Doc5::class);
+    }
+
+    public function doc6()
+    {
+        return $this->hasMany(Doc6::class);
+    }
+
+    public function doc7()
+    {
+        return $this->hasMany(Doc7::class);
+    }
+
+    public function doc8()
+    {
+        return $this->hasMany(Doc8::class);
+    }
 
 
     

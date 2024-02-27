@@ -13,21 +13,24 @@ return new class extends Migration
     {
         Schema::create('form2', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('firstname1',30);
             $table->string('lastname1',30);
             $table->string('relationship1',100);
             $table->string('postal1')->nullable();
             $table->string('address1')->nullable();
-            $table->string('email1',50);
+            $table->string('email1',255);
             $table->string('phone1',30)->nullable();
-            $table->string('firstname2',30);
-            $table->string('lastname2',30);
-            $table->string('relationship2',100);
+            $table->string('firstname2',30)->nullable();
+            $table->string('lastname2',30)->nullable();
+            $table->string('relationship2',100)->nullable();
             $table->string('postal2',30)->nullable();
             $table->string('address2',30)->nullable();
-            $table->string('email2',50);
+            $table->string('email2',255)->nullable();
             $table->string('phone2',30)->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
