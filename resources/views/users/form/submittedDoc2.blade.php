@@ -8,7 +8,7 @@
 
     <div class="container bg-white opacity-90 rounded p-3 shadow-lg">
         <div class="h1 h5 mt-2 fw-bold">
-            <i class="fa-solid fa-pen-to-square fa-lg"></i> &nbsp;&nbsp;Emergency Contact Form
+            <i class="fa-solid fa-pen-to-square fa-lg"></i> &nbsp;&nbsp;Submitted : Emergency Contact Form of {{ $doc2->name }}
         </div>
         <hr>
     
@@ -27,63 +27,42 @@
                         <p class="h5 fw-bold mb-3">Emergency Contact 1 (in Japan) </p>
                         <div class="col-3">
                             <label for="firstname1" class="form-label mb-0 ms-1">First Name</label>
-                            <input type="text" name="firstname1" class="form-control" value="{{old('firstname1')}}">
-                                @error('firstname1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="firstname1" class="form-control" value="{{ $doc2->firstname1}}">
                         </div>
                            
                         <div class="col-3">
                             <label for="lastname1" class="form-label mb-0 ms-1">Last Name</label>
-                            <input type="text" name="lastname1" class="form-control" value="{{old('lastname1')}}">
-                                @error('lastname1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="lastname1" class="form-control" value="{{ $doc2->lastname1 }}">
                         </div>
                            
                         <div class="col-4">
                             <label for="relationship1" class="form-label mb-0 ms-1">Relationship with you</label>
-                            <input type="text" name="relationship1" class="form-control" value="{{old('relationship1')}}">
-                                @error('relationship1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="relationship1" class="form-control" value="{{ $doc2->relationship1 }}">
                         </div>
                            
                     </div>
                     <div class="row mb-3">
                         <div class="col-2">
                             <label for="postal1" class="form-label mb-0 ms-1">Postal Code</label>
-                            <input type="text" name="postal1" class="form-control" value="{{old('postal1')}}">
-                                @error('postal1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="postal1" class="form-control" value="{{ $doc2->postal1 }}">
                         </div>
                        
     
                         <div class="col-4">
                             <label for="address1" class="form-label mb-0 ms-1">Home Address</label>
-                            <input type="text" name="address1" class="form-control" value="{{old('address1')}}">
-                                @error('address1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="address1" class="form-control" value="{{ $doc2->address1 }}">
                         </div>
                        
     
                         <div class="col-3">
                             <label for="email1" class="form-label mb-0 ms-1">Email Address</label>
-                            <input type="email1" name="email1" class="form-control" value="{{old('email1')}}">
-                                @error('email1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="email1" name="email1" class="form-control" value="{{ $doc2->email1 }}">
         
                         </div>
                       
                         <div class="col-3">
                             <label for="phone1" class="form-label mb-0 ms-1">Phone Number</label>
-                            <input type="text" name="phone1" class="form-control" value="{{old('phone1')}}">
-                                @error('phone1')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="phone1" class="form-control" value="{{ $doc2->phone1 }}">
                         </div>
                        
     
@@ -97,62 +76,41 @@
                         <p class="h5 fw-bold mb-3">Emergency Contact 2 </p>
                         <div class="col-3">
                             <label for="firstname2" class="form-label mb-0 ms-1">First Name</label>
-                            <input type="text" name="firstname2" class="form-control" value="{{old('firstname2')}}">
-                                @error('firstname2')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="firstname2" class="form-control" value="{{ $doc2->firstname2 }}">
                         </div>
                            
                       
                         <div class="col-3">
                             <label for="lastname2" class="form-label mb-0 ms-1">Last Name</label>
-                            <input type="text" name="lastname2" class="form-control" value="{{old('lastname2')}}">
-                                @error('lastname2')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="lastname2" class="form-control" value="{{ $doc2->lastname2 }}">
                         </div>
                          
     
                         <div class="col-4">
                             <label for="relationship2" class="form-label mb-0 ms-1">Relationship with you</label>
-                            <input type="text" name="relationship2" class="form-control" value="{{old('relationship2')}}">
-                                @error('relationship2')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="relationship2" class="form-control" value="{{ $doc2->relationship2 }}">
                         </div>
                            
                     </div>
                     <div class="row mb-3">
                         <div class="col-2">
                             <label for="postal2" class="form-label mb-0 ms-1">Postal Code</label>
-                            <input type="text" name="postal2" class="form-control" value="{{old('postal2')}}">
-                                @error('postal2')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="postal2" class="form-control" value="{{ $doc2->postal2 }}">
                         </div>
                           
                         <div class="col-4">
                             <label for="address2" class="form-label mb-0 ms-1">Home Address</label>
-                            <input type="text" name="address2" class="form-control" value="{{old('address2')}}">
-                                @error('address2')
-                                    <div class="text-danger text-small">{{$message}}</div>
-                                @enderror
+                            <input type="text" name="address2" class="form-control" value="{{ $doc2->address2 }}">
                         </div>
                             
                         <div class="col-3">
                             <label for="email2" class="form-label mb-0 ms-1">Email Address</label>
-                            <input type="email2" name="email2" class="form-control" value="{{old('email2')}}">
-                            @error('email2')
-                                <div class="text-danger text-small">{{$message}}</div>
-                            @enderror
+                            <input type="email2" name="email2" class="form-control" value="{{ $doc2->email2 }}">
                         </div>
                            
                         <div class="col-3">
                             <label for="phone2" class="form-label mb-0 ms-1">Phone Number</label>
-                            <input type="text" name="phone2" class="form-control" value="{{old('phone2')}}">
-                            @error('phone2')
-                                <div class="text-danger text-small">{{$message}}</div>
-                            @enderror
+                            <input type="text" name="phone2" class="form-control" value="{{ $doc2->phone2 }}">
                         </div>
                     </div>
                 </div>

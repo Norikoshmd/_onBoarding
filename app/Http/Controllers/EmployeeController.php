@@ -139,6 +139,7 @@ class EmployeeController extends Controller
         return redirect()->route('recruiter.index');
     }
 
+    
     public function destroy($id)
     {
         $employee = $this->employee->findOrFail($id);

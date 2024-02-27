@@ -32,8 +32,8 @@
                             <td>
                                 {{-- $task_id:1 - Form1:Employee Information Form --}}
                                 @if($task->task_id == 1)
-                                    {{-- @if(Auth::user()->id == !$doc_Submitted ) --}}
-                                        {{-- <a href="{{ route('doc.showFilledDoc1',$doc1->id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a> --}}
+                                    {{-- @if(!$doc1->user->isEmpty()) --}}
+                                        {{-- <a href="{{ route('doc.showFilledDoc1',$user->id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a> --}}
                                     {{-- @else --}}
                                         <a href="{{ route('doc.showDoc1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
                                     {{-- @endif --}}
@@ -43,7 +43,7 @@
                                     <a href="#" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a>
                                 {{-- @else --}}
                                     <a href="{{ route('doc.showDoc2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                                {{-- @endif --}}
+                                    {{-- @endif --}}
 
 
                                     {{-- <a href="{{ route('doc.showDoc2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>

@@ -127,28 +127,28 @@
                         {{-- HR side bar --}}
                         @elseif (Auth::user()->role_id == 1)
                                 <div class="col-1">
-                                    <div class="list-group">
-                                        <a href="{{ route('hr.index')}}" class="py-3 text-center list-group-item {{ request()->is('hr/index') ? 'active' : '' }}">
+                                    <div class="list-group shadow-lg">
+                                        <a href="{{ route('hr.index')}}" class="py-3 text-center list-group-item custom-link {{ request()->is('hr/index') ? 'active' : '' }}">
                                             <i class="fa-solid fa-bell fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.employee')}}" class="py-3 text-center list-group-item {{ request()->is('hr/employee') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.employee')}}" class="py-3 text-center list-group-item custom-link  {{ request()->is('hr/employee') ? 'active' : '' }}">
                                             <i class="fa-regular fa-user fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.showAssigned')}}" class="py-3 text-center list-group-item {{ request()->is('hr/show') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.showAssigned')}}" class="py-3 text-center list-group-item custom-link {{ request()->is('hr/showAssigned') ? 'active' : '' }}">
                                             <i class="fa-solid fa-clipboard-list fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.showSubmitted')}}" class="py-3 text-center list-group-item {{ request()->is('hr/submitted') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.showSubmitted')}}" class="py-3 text-center list-group-item custom-link   {{ request()->is('hr/showSubmitted') ? 'active' : '' }}">
                                             &nbsp;<i class="fa-solid fa-file-circle-exclamation fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.showConfirmed')}}" class="py-3 text-center list-group-item {{ request()->is('hr/requested') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.showConfirmed')}}" class="py-3 text-center list-group-item custom-link {{ request()->is('hr/showConfirmed') ? 'active' : '' }}">
                                             <i class="fa-solid fa-clipboard-check fa-2x"></i>
                                         </a>
 
-                                        <a href="{{ route('hr.userTask')}}" class="py-3 text-center list-group-item {{ request()->is('hr/taskPost') ? 'active' : '' }}">
+                                        <a href="{{ route('hr.userTask')}}" class="py-3 text-center list-group-item custom-link {{ request()->is('hr/userTask') ? 'active' : '' }}">
                                             <i class="fa-solid fa-file-import fa-2x"></i>
                                         </a>
 

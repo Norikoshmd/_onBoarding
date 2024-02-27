@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Task;
 use App\Models\Employee;
 use App\Models\UserTask;
-use App\Models\Doc;
+use App\Models\Doc1;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -18,21 +18,21 @@ class HomeController extends Controller
     private $employee;
     private $user;
     private $userTask;
-    private $doc;
+    private $doc1;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(Task $task,Employee $employee,User $user,UserTask $user_task, Doc $doc)
+    public function __construct(Task $task,Employee $employee,User $user,UserTask $user_task, Doc1 $doc1)
     {
         $this->middleware('auth');
         $this->task     = $task;
         $this->employee = $employee;
         $this->user = $user;
         $this->user_task = $user_task;
-        $this->doc = $doc;
+        $this->doc1 = $doc1;
     }
 
     /**
@@ -56,13 +56,12 @@ class HomeController extends Controller
 
         } 
         elseif($role_id === User::USER_ROLE_ID){
-                // return redirect()->route('index');
-                // if(auth()->user()->has_seen_welcome){
+                $user_id = Auth::user()->id;
 
                 $tasks = $this->task->all(); 
                 $employees =$this->employee->all();
-                $user_tasks = $this->user_task->paginate(3);
-
+                $user_tasks = $this->user_task->where('user_id',$user_id)->paginate(4);
+                
                 return view('users.home')
                 ->with('user_tasks',$user_tasks)
                 ->with('employees',$employees)
@@ -80,11 +79,14 @@ class HomeController extends Controller
 //     return redirect()->route('users.home'); 
 // }
 
+ 
+
+
     public function showRequested()
     {
         $user_tasks = $this->user_task->paginate(10);
-        // $docs = $this->doc->all();
-        $doc = $this->doc->all();
+        $user = $this->user->all();
+        $doc1 = $this->doc1->all();
         
         // $doc_Submitted = [];
 
@@ -98,7 +100,8 @@ class HomeController extends Controller
 
         return view('users.showRequested')
         ->with('user_tasks',$user_tasks)
-        ->with('doc',$doc);
+        ->with('user',$user)
+        ->with('doc1',$doc1);
 
 
         // ->with('docs',$docs)
@@ -108,11 +111,13 @@ class HomeController extends Controller
     public function showSubmitted()
     {
         $user_tasks = $this->user_task->paginate(10);
+        // $user = $this->user->all();
         // $doc_Submitted = $this->docSubmitted->all();
 
         return view('users.showSubmitted')
-        ->with('user_tasks',$user_tasks);
+        // ->with('user_tasks',$user_tasks)
+        ->with('user',$user);
 
     }
 
-}
+   }

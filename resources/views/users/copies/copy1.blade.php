@@ -14,7 +14,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-11">
-            <p class="h5 mb-4 mt-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>"</p>
+            <p class="h5 mb-4 mt-3">Please submit the copy of "<span class="fw-bold">1.Basic Pension Number Notice</span>" or "<span class="fw-bold">2. Basic Pension Number Book</span>" (Max data size : 1048 kb)</p>
         </div>
     </div>
     <form action="{{route('doc.storeDoc4') }}" method="post" enctype="multipart/form-data" >

@@ -87,16 +87,17 @@ class DocController extends Controller
         logger('user_id',$user_id);
     }
 
-    // public function showFilledDoc1($id)
-    // {  
-    //     $doc1 = $this->doc1->findOrFail($id);
-    //     $user = $this->user->all();
+    public function showSubmittedDoc1($id)
+    {  
+        // $doc1 = $this->doc1->findOrFail($id);
+        $user = $this->user->findOrFail($id);
+        $doc1 = $user->get();
       
-    //     return view('users.form.filledDoc1')
-    //     ->with('doc1',$doc1)
-    //     ->with('user',$user);
+        return view('users.form.submittedDoc1')
+        ->with('doc1',$doc1)
+        ->with('user',$user);
       
-    // }
+    }
 
     public function showDoc2()
     {
@@ -279,6 +280,7 @@ class DocController extends Controller
 
         return redirect()->route('showRequested');
     }
-    
+
+
 
 }

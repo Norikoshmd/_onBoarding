@@ -74,7 +74,7 @@ class User extends Authenticatable
 
     public function doc1()
     {
-        return $this->hasMany(Doc1::class);
+        return $this->hasOne(Doc1::class);
     }
 
     public function doc2()

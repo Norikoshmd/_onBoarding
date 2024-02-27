@@ -4,7 +4,11 @@
 
 @section('content')
 <div class="container bg-white rounded-3 opacity-90 p-3">
-    <p class="h3 p-3"><i class="fa-regular fa-folder-open fa-lg text-secondary"></i>&nbsp;&nbsp; Item(s) requested to</p>
+    <p class="text-muted text-end"><i class="fa-solid fa-clipboard-list fa-lg"></i> Requested Items >> {{$user->name}}</p>
+
+    <p class="h3 p-2">
+        <i class="fa-regular fa-folder-open fa-lg text-secondary"></i>&nbsp;&nbsp; Items requested to
+    </p>
 
     <div class="bg-primary-subtle rounded p-3 mb-3">
         <p class="h3 p-3">&nbsp;&nbsp;<img src="{{$user->employee->passport}}" alt=" {{$user->employee->name}}" class="rounded-circle avatar-sm">&nbsp; {{$user->employee->name}} &nbsp;<span class="badge bg-primary">User ID : {{ $user->id}}</span></p>

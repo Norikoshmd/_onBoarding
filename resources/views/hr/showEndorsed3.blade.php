@@ -6,6 +6,7 @@
 <div class="container bg-white rounded-3 opacity-90 p-3">
     <div class="row mt-3">
         <div class="text-center">
+            <p class="text-muted text-end"> <i class="fa-solid fa-bell fa-lg"></i>&nbsp;&nbsp;>>&nbsp;&nbsp;{{$employee->name}}</p>
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; Info from Recruit Team</p>
             <hr>
             {{-- @foreach($users as $user)
@@ -84,7 +85,7 @@
         </div>
     </div>
     <div class="text-center p-3">
-        <a href="{{ route('hr.index')}}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> BACK</a>
+        <a href="{{ route('hr.index')}}" class="btn btn-secondary btn-sm"> BACK</a>
     </div>
         
 

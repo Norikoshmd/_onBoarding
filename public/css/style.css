@@ -14,11 +14,23 @@
     background-attachment: fixed;
   }
 
-.list-group-item :active {
-    background-color: rgb(228, 223, 223);
-    color: rgb(8, 5, 5);
-    border-color: rgb(158, 157, 157); 
-  }
+
+
+ .custom-link {
+  /* background-color: rgb(233, 230, 230)!important; */
+  color: rgb(8, 5, 5)!important;
+  /* border-color: rgb(137, 137, 137)!important;  */
+  /* background-color: rgb(233, 230, 230)!important;
+  color: rgb(8, 5, 5)!important;
+  border-color: rgb(158, 157, 157)!important;  */
+}
+
+.custom-link.active {
+  background-color: rgb(233, 230, 230)!important;
+  color: rgb(8, 5, 5)!important;
+  border-color: rgb(158, 157, 157)!important; 
+}
+
 
 
 .uploaded-image{
@@ -48,6 +60,17 @@
   border-radius: 8px; /* Set border radius */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
 }
+
+/* pagination */
+/* .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: gray!important;
+  color: #fff;
+  text-decoration: none;
+  border-color:  #f2f2f3!important;
+} */
 
 
 

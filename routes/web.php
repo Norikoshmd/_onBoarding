@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
         Route::get('/showDoc1', [DocController::class, 'showDoc1'])->name('showDoc1');//doc.Doc1
         Route::post('/storeDoc1', [DocController::class, 'storeDoc1'])->name('storeDoc1');//doc.storeDoc1
-        Route::get('/{id}/showFilledDoc1', [DocController::class, 'showFilledDoc1'])->name('showFilledDoc1');//doc.showFilledDoc1
+        Route::get('/{id}/showSubmittedDoc1', [DocController::class, 'showSubmittedDoc1'])->name('showSubmittedDoc1');//doc.showSubmittedDoc1
 
         Route::get('/showDoc2', [DocController::class, 'showDoc2'])->name('showDoc2');//doc.showDoc2
         Route::post('/storeDoc2', [DocController::class, 'storeDoc2'])->name('storeDoc2');//doc.storeDoc2

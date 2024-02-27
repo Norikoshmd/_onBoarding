@@ -67,8 +67,8 @@
                         <span class="badge bg-primary p-2">User : {{ optional($employee->user)->id}}</span>
                     @endif
                 </td>
-                <td>{{$employee->name}}</td>
-                <td><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></td>
+                <td><a href="{{ route('recruiter.show',$employee->id)}}" class="text-decoration-none fw-bold text-dark">{{$employee->name}}</a></td>
+                <td><a href="{{ route('recruiter.show',$employee->id)}}"><img src="{{$employee->passport}}" alt="{{$employee->name}}" class="rounded-circle avatar-sm" ></a></td>
                 <td>{{ $employee->startday }}</td>
                 <td>
                     <div class="col text-truncate"  style="max-width: 200px;">
