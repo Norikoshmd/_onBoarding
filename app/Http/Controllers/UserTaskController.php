@@ -43,14 +43,16 @@ class UserTaskController extends Controller
 
        foreach($tasks as $task_id){
 
-        $user_task[] = [
+        $user_task = [
             // 'employee_id' => $employee_id,
             'user_id' => $user_id,
             'task_id' => $task_id,
         ];
-       }
+        $user_task_obj = new UserTask();
+        $user_task_obj->fill($user_task)->save();
 
-       UserTask::insert($user_task);
+       }
+      
 
        return redirect()->route('hr.employee');
     }

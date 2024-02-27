@@ -35,7 +35,7 @@
                                     {{-- @if(!$doc1->user->isEmpty()) --}}
                                         {{-- <a href="{{ route('doc.showFilledDoc1',$user->id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a> --}}
                                     {{-- @else --}}
-                                        <a href="{{ route('doc.showDoc1')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                        <a href="{{ route('doc.showDoc1',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
                                     {{-- @endif --}}
                                     {{-- $task_id:2 - Form2:Emergency Contact Form --}}
                                 @elseif($task->task_id == 2)

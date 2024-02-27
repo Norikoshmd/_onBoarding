@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container bg-white rounded-3 opacity-90 p-3">
-    <p class="text-muted text-end"> <i class="fa-regular fa-user fa-lg"></i>&nbsp;&nbsp;>>&nbsp;&nbsp;{{$employee->name}}</p>
+    <p class="text-muted text-end"><i class="fa-solid fa-list fa-"></i>&nbsp;&nbsp;>>&nbsp;&nbsp;{{$employee->name}}</p>
     <div class="row mt-3">
         <div class="col-8">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; {{ $employee->name }}</p>

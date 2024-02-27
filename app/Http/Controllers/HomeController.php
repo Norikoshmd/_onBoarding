@@ -115,8 +115,8 @@ class HomeController extends Controller
         // $doc_Submitted = $this->docSubmitted->all();
 
         return view('users.showSubmitted')
-        // ->with('user_tasks',$user_tasks)
-        ->with('user',$user);
+        ->with('user_tasks',$user_tasks);
+        // ->with('user',$user);
 
     }
 

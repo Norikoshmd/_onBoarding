@@ -14,8 +14,10 @@ use App\Models\Doc8;
 // use App\Models\Form2;
 use App\Models\Employee;
 use App\Models\Task;
+use App\Models\UserTask;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\UserTaskController;
 
 class DocController extends Controller
 {
@@ -36,14 +38,16 @@ class DocController extends Controller
 
     }
 
-    public function showDoc1()
+    public function showDoc1($id)
     {
-        return view('users.form.form1');
+        return view('users.form.form1')
+                ->with('user_task_id', $id);
     }
 
     public function storeDoc1(Request $request)
     {
         $request->validate([
+            'user_task_id'      => 'required',
             'firstname'         => 'required|min:1|max:50',
             'middlename'        => 'nullable|min:1|max:50',
             'lastname'          => 'required|min:1|max:50',
@@ -81,6 +85,14 @@ class DocController extends Controller
         $this->doc1->h_postal = $request->h_postal;
     
         $this->doc1->save();
+
+        // $task_id = $request->input('task_id');
+        // $user_task = 
+
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc1_id = $this->doc1->id; // Update doc1_id with the ID of the newly created doc1 record
+        $userTask->save();
 
         return redirect()->route('showRequested');
 

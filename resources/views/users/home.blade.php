@@ -1,30 +1,30 @@
 @extends('layouts.app');
 
-@section('title', 'Welcome');
+@section('title', 'index');
 
 @section('content')
 
-<div class="accordion" id="accordionExample">
+<div class="container opacity-100 rounded p-3">
+  <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           <i class="fa-solid fa-bullhorn fa-2x"></i>&nbsp;&nbsp; <p class="h4 mt-1">Announcements</p> &nbsp;&nbsp;
-           
+          
         </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-          @foreach ($user_tasks as $task)
-            @if($task->user->id === Auth::user()->id)
-              <div class="alert alert-info" role="alert">
-                <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->task->name }}</a>  &nbsp;&nbsp; </p>
-              </div>
-            @endif
-          @endforeach
-        </div>
-        <div class="d-flex justify-content-center mt-1">
-          {{ $user_tasks->links() }}
-        </div>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        @foreach ($user_tasks as $task)
+          @if($task->user->id === Auth::user()->id)
+            <div class="alert alert-info" role="alert">
+              <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->task->name }}</a>  &nbsp;&nbsp; </p>
+            </div>
+          @endif
+        @endforeach
+      </div>
+      <div class="d-flex justify-content-center mt-1">
+        {{ $user_tasks->links() }}
       </div>
     </div>
     <div class="accordion-item">
@@ -72,60 +72,56 @@
             <div class="accordion-body">
               <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
-
-                  <div class="h4 fw-bold mt-2 ms-3">
-                   
-                  </div>
                   <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                       <h5 class="fw-bold">Company Rules #1</h5>
                     </button>
                   </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">
-                      <div class="card mb-3">
-                        <div class="card-header fw-bold bg-secondary-subtle">
-                          Code of Conduct/Ethics:
-                        </div>
-                        <div class="card-body">
-                          <p class="h6">
-                            Employees are expected to adhere to the highest standards of honesty, integrity, and ethical behavior in all aspects of their work. <br>This includes avoiding conflicts of interest, maintaining confidentiality, and treating colleagues, clients, and customers with respect. 
-                            </p>
-                        </div>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <div class="card mb-3">
+                      <div class="card-header fw-bold bg-secondary-subtle">
+                        Code of Conduct/Ethics:
                       </div>
-
-                      <div class="card mb-3">
-                        <div class="card-header fw-bold bg-secondary-subtle">
-                          Dress Code:
-                        </div>
-                        <div class="card-body">
-                          <p class="h6">
-                            Employees are expected to dress appropriately for the workplace. <br> The company may have specific guidelines regarding attire, such as business casual or formal dress. <br>Confidentiality: Employees are expected to maintain the confidentiality of sensitive company information, including proprietary data, customer information, and trade secrets. Unauthorized disclosure of confidential information is strictly prohibited.
-                            </p>
-                        </div>
-                      </div>
-                       
-                      <div class="card mb-3">
-                        <div class="card-header fw-bold bg-secondary-subtle">
-                          Confidentiality:
-                        </div>
-                        <div class="card-body">
-                          <p class="h6">
-                            Employees are expected to maintain the confidentiality of sensitive company information, including proprietary data, customer information, and trade secrets. Unauthorized disclosure of confidential information is strictly prohibited.
+                      <div class="card-body">
+                        <p class="h6">
+                          Employees are expected to adhere to the highest standards of honesty, integrity, and ethical behavior in all aspects of their work. <br>This includes avoiding conflicts of interest, maintaining confidentiality, and treating colleagues, clients, and customers with respect. 
                           </p>
-                        </div>
                       </div>
+                    </div>
 
-                      <div class="card mb-3">
-                        <div class="card-header fw-bold bg-secondary-subtle">
-                          Use of Company Property/Resources: 
-                        </div>
-                        <div class="card-body">
-                          <p class="h6">
-                            Company property, including equipment, vehicles, and electronic devices, should be used responsibly and only for legitimate business purposes. <br> Personal use of company resources should be kept to a minimum. 
-                          </p>
-                        </div>
+                    <div class="card mb-3">
+                      <div class="card-header fw-bold bg-secondary-subtle">
+                        Dress Code:
                       </div>
+                      <div class="card-body">
+                        <p class="h6">
+                          Employees are expected to dress appropriately for the workplace. <br> The company may have specific guidelines regarding attire, such as business casual or formal dress. <br>Confidentiality: Employees are expected to maintain the confidentiality of sensitive company information, including proprietary data, customer information, and trade secrets. Unauthorized disclosure of confidential information is strictly prohibited.
+                          </p>
+                      </div>
+                    </div>
+                    
+                    <div class="card mb-3">
+                      <div class="card-header fw-bold bg-secondary-subtle">
+                        Confidentiality:
+                      </div>
+                      <div class="card-body">
+                        <p class="h6">
+                          Employees are expected to maintain the confidentiality of sensitive company information, including proprietary data, customer information, and trade secrets. Unauthorized disclosure of confidential information is strictly prohibited.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="card mb-3">
+                      <div class="card-header fw-bold bg-secondary-subtle">
+                        Use of Company Property/Resources: 
+                      </div>
+                      <div class="card-body">
+                        <p class="h6">
+                          Company property, including equipment, vehicles, and electronic devices, should be used responsibly and only for legitimate business purposes. <br> Personal use of company resources should be kept to a minimum. 
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="accordion-item">
@@ -223,43 +219,13 @@
                         </div>
                       </div>
                     </div>
-
-                    </div>
                   </div>
                 </div>
               </div>
-
-                
-                  <div class="p-3">
-                    <div class="h6">
-                    
-
-      
-      
-
-     
-
-    
-      
-
-     
-
-      
-
-    
-
-      
-                    </div>
-                  </div>
-
-                  
-              </div>
             </div>
         </div>
-
-    
+    </div>
+  </div>
 </div>
-
-
 
 @endsection
