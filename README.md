@@ -2,6 +2,8 @@
 Thank you for reading!
 
 # DEMO
+![admin1](https://github.com/Norikoshmd/_onBoarding/assets/147987462/c9801257-8096-4581-b818-c9d0d7d0f265)
+
 
 You can
 
