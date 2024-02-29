@@ -9,15 +9,6 @@
             <p class="text-muted text-end"> <i class="fa-solid fa-bell fa-lg"></i>&nbsp;&nbsp;>>&nbsp;&nbsp;{{$employee->name}}</p>
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-check"></i>&nbsp; Info from Recruit Team</p>
             <hr>
-            {{-- @foreach($users as $user)
-                @if($employee->id = $employee->id)
-                    <button class=" btn btn-secondary btn-sm p-3"><i class="fa-solid fa-user-check fa-2x text-white"></i> &nbsp;<h5 class="mt-2 text-center">Registered!</h5><p class="mt-1 h6">User ID : {{$employee->user}}</p></button>
-                    @break
-                @else
-                    <a href="{{ route('register', $employee->id)}}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning btn-sm p-3 "> <i class="fa-solid fa-user-plus fa-2x text-center"></i> &nbsp;<h5 class="mt-2 text-center">Register <br>Account</h5> </a></td>
-                    @break
-                @endif
-            @endforeach --}}
         </div>
     </div>
          <div class="container bg-secondary-subtle p-3 rounded">

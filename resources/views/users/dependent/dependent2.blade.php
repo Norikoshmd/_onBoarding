@@ -35,6 +35,7 @@
         </div>
     <form action="{{ route('doc.storeDoc8') }}" method="post">
     @csrf
+    <input type="hidden" name="user_task_id" value="{{$user_task_id}}">
         <div class="row">
                 <div class="col-3">
                     <label for="how" class="label-control fw-bold ms-2 mb-2">How to submit</label>

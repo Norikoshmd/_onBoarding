@@ -12,7 +12,7 @@
                 <th>Requested Date</th>
                {{-- hidden task id in td--}}
                 <th>Document Name</th>
-                <th></th>
+                <th>Status</th>
                 <th></th>
                 {{-- <th>Due Date</th>
                 <th>Day(s) to Due Date</th> --}}
@@ -21,58 +21,93 @@
             </tr>
         </thead>
         <tbody>
+            {{--reference  --}}
+            {{-- @if( in_array(optional($employee->user)->id, $assigned_users))
+            <a href="{{ route('hr.showIndividuallyAssigned',$employee->user->id)}}" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
+        @else
+            <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
+        @endif --}}
+
+
+
+            {{--  --}}
+
+
+
+
             @forelse ($user_tasks as $task)
                     @if($task->user->id === Auth::user()->id)
                         <tr class="text-center h5">
-                            <td>{{$task->created_at}}</td>
+                            <td>{{date('M d, Y', strtotime($task->created_at))}}</td>
                             <td hidden>{{ $task->task_id}}</td>
                             <td class="text-start">{{ $task->task->name}}</td> 
-                        
                             {{-- display different form to submit up on the $task_id --}}
                             <td>
                                 {{-- $task_id:1 - Form1:Employee Information Form --}}
                                 @if($task->task_id == 1)
-                                    {{-- @if(!$doc1->user->isEmpty()) --}}
-                                        {{-- <a href="{{ route('doc.showFilledDoc1',$user->id) }}" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a> --}}
-                                    {{-- @else --}}
-                                        <a href="{{ route('doc.showDoc1',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                                    {{-- @endif --}}
-                                    {{-- $task_id:2 - Form2:Emergency Contact Form --}}
+                                    @if(!$task->getIsSubmitted())
+                                            <a href="{{ route('doc.showDoc1',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted </button>
+                                        {{-- <a href="{{ route('doc.showSubmittedDoc1',$task->id) }}" class="text-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i> </a> --}}
+                                    @endif
+                                {{-- $task_id:2 - Form2:Emergency Contact Form --}}
                                 @elseif($task->task_id == 2)
-                                    {{-- @if($doc->user_id = Auth::user()->id) --}}
-                                    <a href="#" class="text-secondary p-2"><i class="fa-solid fa-circle-check fa-2x"></i></a>
-                                {{-- @else --}}
-                                    <a href="{{ route('doc.showDoc2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                                    {{-- @endif --}}
+                                    @if(!$task->getIsSubmitted())
+                                        <a href="{{ route('doc.showDoc2',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
 
-
-                                    {{-- <a href="{{ route('doc.showDoc2')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                                --}}
-                                    {{-- $task_id:3 - Form3: My Number Card--}}
+                                {{-- $task_id:3 - Form3: My Number Card--}}
                                 @elseif($task->task_id == 3)
-                                    <a href="{{ route('doc.showDoc3')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
-                            
+                                    @if(!$task->getIsSubmitted())
+                                        <a href="{{ route('doc.showDoc3',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
+
+                                  
                                 {{-- $task_id:4 - Copy1:Pension Book / Pension Certificate | 年金手帳、基礎年金番号通知書 --}}
                                 @elseif($task->task_id == 4)
-                                    <a href="{{ route('doc.showDoc4')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @if(!$task->getIsSubmitted())
+                                        <a href="{{ route('doc.showDoc4',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
 
                                 {{-- $task_id:5 - Copy2:Employment Insurance Card | 雇用保険被保険者証 --}}
                                 @elseif($task->task_id == 5)
-                                    <a href="{{ route('doc.showDoc5')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @if(!$task->getIsSubmitted())
+                                        <a href="{{ route('doc.showDoc5',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
 
                                 {{-- $task_id:6 - Copy3: Income Tax Withholing Slip | 給与所得者の源泉徴収票 --}}
                                 @elseif($task->task_id == 6)
-                                    <a href="{{ route('doc.showDoc6')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @if(!$task->getIsSubmitted())
+                                        <a href="{{ route('doc.showDoc6',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
 
                                 {{-- $task_id:7 - Dependent1: Income Tax Withholing Slip | 給与所得者の源泉徴収票 --}}
                                 @elseif($task->task_id == 7)
-                                    <a href="{{ route('doc.showDoc7')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @if(!$task->getIsSubmitted())
+                                    <a href="{{ route('doc.showDoc7',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
 
                                 {{-- $task_id:8 - Dependent2: Dependent/spouse ID copy --}}
                                 @elseif($task->task_id == 8)
-                                <a href="{{ route('doc.showDoc8')}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @if(!$task->getIsSubmitted())
+                                        <a href="{{ route('doc.showDoc8',$task->id)}}" class="btn btn-primary p-2"><i class="fa-solid fa-file-signature fa-lg"></i></a>
+                                    @else
+                                        <button class="btn btn-primary p-2">Submitted</button>
+                                    @endif
                                 @endif
-                                
                     @endif
                             </td>
                         </tr>

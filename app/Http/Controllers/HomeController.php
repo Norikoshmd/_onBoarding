@@ -66,18 +66,9 @@ class HomeController extends Controller
                 ->with('user_tasks',$user_tasks)
                 ->with('employees',$employees)
                 ->with('tasks',$tasks);
-            // }
-            // return view('users.welcome');
         }
         return redirect()->route('login');
     }
-
-//     public function markWelcomeAsSeen()
-// {
-//     auth()->user()->update(['has_seen_welcome' => true]);
-
-//     return redirect()->route('users.home'); 
-// }
 
  
 
@@ -88,36 +79,19 @@ class HomeController extends Controller
         $user = $this->user->all();
         $doc1 = $this->doc1->all();
         
-        // $doc_Submitted = [];
-
-        // foreach($docs as $doc){
-        //     if($doc->user_id){
-        //         $doc_submitted[] = $doc->user_id;
-        //     }
-        // }
-
-        // logger('doc_submitted',$doc_submitted);
-
         return view('users.showRequested')
         ->with('user_tasks',$user_tasks)
         ->with('user',$user)
         ->with('doc1',$doc1);
-
-
-        // ->with('docs',$docs)
-        // ->with('doc_submitted',$doc_submitted);
     }
 
     public function showSubmitted()
     {
         $user_tasks = $this->user_task->paginate(10);
-        // $user = $this->user->all();
-        // $doc_Submitted = $this->docSubmitted->all();
-
+       
         return view('users.showSubmitted')
         ->with('user_tasks',$user_tasks);
-        // ->with('user',$user);
-
+     
     }
 
    }

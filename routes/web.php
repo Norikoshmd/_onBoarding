@@ -45,34 +45,41 @@ Route::group(['middleware' => 'auth'], function(){
     
    
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
-        Route::get('/{id}/showDoc1', [DocController::class, 'showDoc1'])->name('showDoc1');//doc.Doc1
+        Route::get('/{id}/showDoc1', [DocController::class, 'showDoc1'])->name('showDoc1');//doc.showDoc1
         Route::post('/storeDoc1', [DocController::class, 'storeDoc1'])->name('storeDoc1');//doc.storeDoc1
         Route::get('/{id}/showSubmittedDoc1', [DocController::class, 'showSubmittedDoc1'])->name('showSubmittedDoc1');//doc.showSubmittedDoc1
 
-        Route::get('/showDoc2', [DocController::class, 'showDoc2'])->name('showDoc2');//doc.showDoc2
+        Route::get('/{id}/showDoc2', [DocController::class, 'showDoc2'])->name('showDoc2');//doc.showDoc2
         Route::post('/storeDoc2', [DocController::class, 'storeDoc2'])->name('storeDoc2');//doc.storeDoc2
+        Route::get('/{id}/showSubmittedDoc2', [DocController::class, 'showSubmittedDoc2'])->name('showSubmittedDoc2');//doc.
 
-        Route::get('/showDoc3', [DocController::class, 'showDoc3'])->name('showDoc3');//doc.showDoc3
+        Route::get('/{id}/showDoc3', [DocController::class, 'showDoc3'])->name('showDoc3');//doc.showDoc3
         Route::post('/storeDoc3', [DocController::class, 'storeDoc3'])->name('storeDoc3');//doc.storeDoc3
+        Route::get('/{id}/showSubmittedDoc3', [DocController::class, 'showSubmittedDoc3'])->name('showSubmittedDoc3');//doc.showSubmittedDoc3
       
    
         //Copy
-        Route::get('/showDoc4', [DocController::class, 'showDoc4'])->name('showDoc4');//doc.showDoc4
+        Route::get('/{id}/showDoc4', [DocController::class, 'showDoc4'])->name('showDoc4');//doc.showDoc4
         Route::post('/storeDoc4', [DocController::class, 'storeDoc4'])->name('storeDoc4');//doc.storeDoc4
+        Route::get('/{id}/showSubmittedDoc4', [DocController::class, 'showSubmittedDoc4'])->name('showSubmittedDoc4');//doc.showSubmittedDoc4
 
         //Not functioning
-        Route::get('/showDoc5', [DocController::class, 'showDoc5'])->name('showDoc5');//doc.showDoc5
+        Route::get('/{id}/showDoc5', [DocController::class, 'showDoc5'])->name('showDoc5');//doc.showDoc5
         Route::post('/storeDoc5', [DocController::class, 'storeDoc5'])->name('storeDoc5');//doc.storeDoc5
+        Route::get('/{id}/showSubmittedDoc5', [DocController::class, 'showSubmittedDoc5'])->name('showSubmittedDoc5');//doc.showSubmittedDoc5
         
-        Route::get('/showDoc6', [DocController::class, 'showDoc6'])->name('showDoc6');//doc.showDoc6
+        Route::get('/{id}/showDoc6', [DocController::class, 'showDoc6'])->name('showDoc6');//doc.showDoc6
         Route::post('/storeDoc6', [DocController::class, 'storeDoc6'])->name('storeDoc6');//doc.storeDoc6
+        Route::get('/{id}/showSubmittedDoc6', [DocController::class, 'showSubmittedDoc6'])->name('showSubmittedDoc6');//doc.showSubmittedDoc6
 
         //Dependent
-        Route::get('/showDoc7', [DocController::class, 'showDoc7'])->name('showDoc7');//doc.showDoc7
+        Route::get('/{id}/showDoc7', [DocController::class, 'showDoc7'])->name('showDoc7');//doc.showDoc7
         Route::post('/storeDoc7', [DocController::class, 'storeDoc7'])->name('storeDoc7');//doc.storeDoc7
+        Route::get('/{id}/showSubmittedDoc7', [DocController::class, 'showSubmittedDoc7'])->name('showSubmittedDoc7');//doc.showSubmittedDoc7
 
-        Route::get('/showDoc8', [DocController::class, 'showDoc8'])->name('showDoc8');//doc.showDoc8
+        Route::get('/{id}/showDoc8', [DocController::class, 'showDoc8'])->name('showDoc8');//doc.showDoc8
         Route::post('/storeDoc8', [DocController::class, 'storeDoc8'])->name('storeDoc8');//doc.storeDoc8
+        Route::get('/{id}/showSubmittedDoc8', [DocController::class, 'showSubmittedDoc8'])->name('showSubmittedDoc8');//doc.showSubmittedDoc8
      
 
     });
@@ -118,6 +125,7 @@ Route::group(['middleware' => 'auth'], function(){
        #HR UserTaskController
        Route::get('/userTask',[UserTaskController::class, 'userTask'])->name('userTask'); //hr.userTask
        Route::post('/taskStore',[UserTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
+       Route::post('/taskStore2',[UserTaskController::class, 'taskStore2'])->name('taskStore2'); //hr.taskStore2
        Route::get('/{id}/addTask',[UserTaskController::class, 'addTask'])->name('addTask'); //2-iv.hr.addTask
        //2-v.
        Route::delete('/{id}/destroyAssigned',[UserController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned

@@ -24,10 +24,8 @@ return new class extends Migration
             $table->longText('visa_b')->nullable();
             $table->longText('passport')->nullable();;
             $table->string('remarks')->nullable();
-            // $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
-            // $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 

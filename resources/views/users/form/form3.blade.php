@@ -33,8 +33,9 @@
         <div class="bg-secondary-subtle rounded p-3 mb-3">
             <p class="h5 fw-bold"> Please inform us by selecting submit method </p>
         </div>
-    <form action="{{route('doc.storeDoc3')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('doc.storeDoc3',$user_task_id)}}" method="post" enctype="multipart/form-data">
     @csrf
+        <input type="hidden" name="user_task_id" value="{{$user_task_id}}">
         <div class="row">
                 <div class="col-3">
                     <label for="how" class="label-control fw-bold ms-2 mb-2">How to submit</label>
