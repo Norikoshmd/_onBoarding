@@ -17,7 +17,7 @@
         
                             <div class="col-md-6">
                                 @if("value=")
-                                    <input id="employee_id" type="text" class="form-control @error('name') is-invalid @enderror" name="employee_id" value="{{ old('employee_id') }}" required autocomplete="employee_id" placeholder="Please copy from endorsed info" autofocus>
+                                    <input id="employee_id" type="text" class="form-control @error('name') is-invalid @enderror" name="employee_id" value="{{ old('employee_id') }}" required autocomplete="employee_id" placeholder="Pls copy from endorsed info ('0000'-Recruiter,HR)" autofocus>
                                 @endif
         
                                 @error('employee_id')

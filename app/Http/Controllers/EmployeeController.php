@@ -112,7 +112,7 @@ class EmployeeController extends Controller
 
         $employee = $this->employee->findOrFail($id);
 
-        $employee->user_id     = Auth::user()->id;
+        // $employee->user_id     = Auth::user()->id;
         $employee->name        = $request->name;
         $employee->gender      = $request->gender;
         $employee->email       = $request->email;
