@@ -84,7 +84,11 @@ class User extends Authenticatable
 
     public function doc3()
     {
-        return $this->hasMany(Doc3::class);
+        // return $this->hasMany(Doc3::class);
+
+    return $this->hasOne(Doc3::class);
+
+
     }
 
     public function doc4()

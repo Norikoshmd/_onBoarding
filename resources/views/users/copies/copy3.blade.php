@@ -25,6 +25,7 @@
 
     <form action="{{ route('doc.storeDoc6') }}" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="user_task_id" value="{{$user_task_id}}">
         <div class="row mb-2 justify-content-center">
             <div class="col-7">
                 <p class="h6 text-danger ms-5 fw-bold">* You will be receiving this from your previous(current) employer after you have resigned. </p>

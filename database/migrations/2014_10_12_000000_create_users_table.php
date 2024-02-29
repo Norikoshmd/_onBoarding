@@ -20,8 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id')
                     ->default(2)
                     ->comment('1:HR, 2:User, 3:Recruiter');
-            // $table->rememberToken();
-            // $table->boolean('has_seen_welcome')->default(false);
+           
             $table->timestamps();
         });
     }

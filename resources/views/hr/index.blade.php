@@ -30,13 +30,15 @@
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion">
         <div class="accordion-body">
-            @if($employees !== 0)
-            @foreach ($employees as $employee)
+          @if($user_tasks !== 0)
+            @foreach ($user_tasks as $task)
+              @if($task->getIsSubmitted())
                 <div class="alert alert-warning" role="alert">
-                  <p class="h5 p-2">Document submitted from <a href="{{ route('hr.showEndorsed',$employee->id)}}" class="alert-link"> {{ $employee->name }}</a>.  &nbsp;&nbsp; <span class="h6 text-muted">{{ date('M d, Y', strtotime($employee->created_at)) }}</span></p>
+                  <p class="h5 p-2"><a href="#" class="alert-link">{{ $task->user->name }} </a> submitted <span class="fw-bold"> {{ $task->task->name }}</span>  &nbsp;&nbsp; <span class="h6 text-muted">{{ date('M d, Y', strtotime($task->updated_at)) }}</span></p>
                 </div>
+              @endif
             @endforeach
-        @endif
+          @endif
         </div>
       </div>
     </div>

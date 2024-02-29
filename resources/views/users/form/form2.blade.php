@@ -20,6 +20,7 @@
         <form action="{{ route('doc.storeDoc2')}}" method="post">
             @csrf
         {{-- Emergency Contact 1 --}}
+        <input type="hidden" name="user_task_id" value="{{$user_task_id}}">
             <div class="container rounded bg-secondary-subtle shadow-sm p-3 mb-2">
                 <div class="row mb-3">
                     <p class="h5 fw-bold mb-3">Emergency Contact 1 (in Japan) </p>

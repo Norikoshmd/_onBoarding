@@ -39,8 +39,9 @@
     </div>
 
     <div class="container p-3">
-        <form action="{{ route('doc.storeDoc7') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('doc.storeDoc7',$user_task_id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        <input type="hidden" name="user_task_id" value="{{$user_task_id}}">
             <div class="row mb-5 justify-content-center">
                 <div class="col-3">
                     <label for="data" class="label-control fw-bold mb-2">1. Data Submission</label>

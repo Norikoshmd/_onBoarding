@@ -15,18 +15,32 @@
       </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        @foreach ($user_tasks as $task)
-          @if($task->user->id === Auth::user()->id)
-            <div class="alert alert-info" role="alert">
-              <p class="h5 p-2">Requested to submit <a href="#" class="alert-link"> {{ $task->task->name }}</a>  &nbsp;&nbsp; </p>
-            </div>
-          @endif
-        @endforeach
-      </div>
-      <div class="d-flex justify-content-center mt-1">
-        {{ $user_tasks->links() }}
+         {{-- welcome message --}}
+         <div class="container-fluid position-relative bg-white shadow-lg" style="min-height: 50vh;">
+          <img src="/css/welcome.jpg" alt="Overlay Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
+          <div class="d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
+              <div class="text-center mt-5">
+                  <h1 class="display-5 mb-3">
+                      Welcome to the team, {{Auth::user()->name}}!
+                  </h1>
+                  <p class="fs-5 mb-4">
+                      Our HR team will be informing you of the required documents for your onboarding process.
+                      <br> Please utilize your account to submit the required information.
+                  </p>
+              </div>
+              <div class="text-end mb-5">
+                  <h1 class="display-6">
+                      We are excited to have you on board,
+                      <br>and looking forward to achieving great things together!
+                  </h1>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
+    </div>
+        {{-- end of welcome message --}}
+
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -35,28 +49,16 @@
       </h2>
       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-              {{-- welcome message --}}
-              <div class="container-fluid position-relative bg-white shadow-lg" style="min-height: 50vh;">
-                <img src="/css/welcome.jpg" alt="Overlay Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
-                <div class="d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
-                    <div class="text-center mt-5">
-                        <h1 class="display-5 mb-3">
-                            Welcome to the team, {{Auth::user()->name}}!
-                        </h1>
-                        <p class="fs-5 mb-4">
-                            Our HR team will be informing you of the required documents for your onboarding process.
-                            <br> Please utilize your account to submit the required information.
-                        </p>
-                    </div>
-                    <div class="text-end mb-5">
-                        <h1 class="display-6">
-                            We are excited to have you on board,
-                            <br>and looking forward to achieving great things together!
-                        </h1>
-                    </div>
-                </div>
+            @foreach ($user_tasks as $task)
+            @if($task->user->id === Auth::user()->id)
+              <div class="alert alert-info" role="alert">
+                <p class="h5 p-2">Requested to submit <span class="alert fw-bold"> {{ $task->task->name }}</span>  &nbsp;&nbsp; {{ $task->created_at }}</p>
               </div>
-              {{-- end of welcome message --}}
+            @endif
+          @endforeach
+        </div>
+        <div class="d-flex justify-content-center mt-1">
+          {{ $user_tasks->links() }}
         </div>
       </div>
     </div>

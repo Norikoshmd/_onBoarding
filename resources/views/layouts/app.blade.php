@@ -49,7 +49,7 @@
                                     <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            {{-- need to unable user acccess --}}
+                            {{-- limiting user acccess --}}
                             {{-- @if (Route::has('register'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -143,10 +143,6 @@
 
                                         <a href="{{ route('hr.showSubmitted')}}" class="py-3 text-center list-group-item custom-link   {{ request()->is('hr/showSubmitted') ? 'active' : '' }}">
                                             &nbsp;<i class="fa-solid fa-file-circle-exclamation fa-2x mt-2"></i> <br> <h6 class="mt-2">Submitted</h6>
-                                        </a>
-
-                                        <a href="{{ route('hr.showConfirmed')}}" class="py-3 text-center list-group-item custom-link {{ request()->is('hr/showConfirmed') ? 'active' : '' }}">
-                                            <i class="fa-solid fa-clipboard-check fa-2x mt-2"></i> <br> <h6 class="mt-2">Completed</h6>
                                         </a>
 
                                         <a href="{{ route('hr.userTask')}}" class="py-3 text-center list-group-item custom-link {{ request()->is('hr/userTask') ? 'active' : '' }}">

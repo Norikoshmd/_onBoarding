@@ -11,10 +11,10 @@ use App\Models\Doc5;
 use App\Models\Doc6;
 use App\Models\Doc7;
 use App\Models\Doc8;
-// use App\Models\Form2;
 use App\Models\Employee;
 use App\Models\Task;
 use App\Models\UserTask;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\UserTaskController;
@@ -23,7 +23,7 @@ class DocController extends Controller
 {
     private $doc1;
 
-    public function __construct(Doc1 $doc1, Doc2 $doc2, Doc3 $doc3, Doc4 $doc4, Doc5 $doc5, Doc6  $doc6, Doc7 $doc7, Doc8 $doc8,Employee $employee,Task $task)
+    public function __construct(Doc1 $doc1, Doc2 $doc2, Doc3 $doc3, Doc4 $doc4, Doc5 $doc5, Doc6  $doc6, Doc7 $doc7, Doc8 $doc8,Employee $employee,Task $task,User $user)
     {
        $this->doc1 = $doc1;
        $this->doc2 = $doc2;
@@ -35,6 +35,7 @@ class DocController extends Controller
        $this->doc8 = $doc8;
        $this->employee =$employee;
        $this->task =$task;
+       $this->user =$user;
 
     }
 
@@ -91,7 +92,7 @@ class DocController extends Controller
 
         $user_task_id = $request->input('user_task_id');
         $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
-        $userTask->doc1_id = $this->doc1->id; // Update doc1_id with the ID of the newly created doc1 record
+        $userTask->doc1_id = $this->doc1->id; 
         $userTask->save();
 
         return redirect()->route('showRequested');
@@ -99,27 +100,18 @@ class DocController extends Controller
         logger('user_id',$user_id);
     }
 
-    public function showSubmittedDoc1($id)
-    {  
-        // $doc1 = $this->doc1->findOrFail($id);
-        $user = $this->user->findOrFail($id);
-        $doc1 = $user->get();
-      
-        return view('users.form.submittedDoc1')
-        ->with('doc1',$doc1)
-        ->with('user',$user);
-      
-    }
 
-    public function showDoc2()
+    public function showDoc2($id)
     {
-        return view('users.form.form2');
+        return view('users.form.form2')
+               ->with('user_task_id', $id);
     }
 
    
     public function storeDoc2(Request $request)
     {
         $request->validate([
+            'user_task_id'       => 'required',
             'firstname1'         => 'required|min:1|max:30',
             'lastname1'          => 'required|min:1|max:30',
             'relationship1'      => 'required|min:1|max:100',
@@ -155,12 +147,21 @@ class DocController extends Controller
      
         $this->doc2->save();
 
+
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc2_id = $this->doc2->id;
+        $userTask->save();
+
         return redirect()->route('showRequested');
     }
 
-    public function showDoc3()
+
+
+    public function showDoc3($id)
     {
-        return view('users.form.form3');
+        return view('users.form.form3')
+                ->with('user_task_id', $id);
     }
 
     public function storeDoc3(Request $request)
@@ -178,13 +179,20 @@ class DocController extends Controller
 
         $this->doc3->save();
 
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc3_id = $this->doc3->id;
+        $userTask->save();
+
         return redirect()->route('showRequested');
     }
 
+
     // copy
-    public function showDoc4()
+    public function showDoc4($id)
     {
-        return view('users.copies.copy1');
+        return view('users.copies.copy1')
+                 ->with('user_task_id', $id);
     }
 
     public function storeDoc4(Request $request)
@@ -200,12 +208,20 @@ class DocController extends Controller
 
         $this->doc4->save();
 
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc4_id = $this->doc4->id;
+        $userTask->save();
+
         return redirect()->route('showRequested');
     }
 
-    public function showDoc5()
+
+
+    public function showDoc5($id)
     {
-        return view('users.copies.copy2');
+        return view('users.copies.copy2')
+                ->with('user_task_id', $id);
     }
 
     public function storeDoc5(Request $request)
@@ -222,13 +238,19 @@ class DocController extends Controller
 
         $this->doc5->save();
 
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc5_id = $this->doc5->id;
+        $userTask->save();
+
+
         return redirect()->route('showRequested');
     }
 
-
-    public function showDoc6()
+    public function showDoc6($id)
     {
-        return view('users.copies.copy3');
+        return view('users.copies.copy3')
+                ->with('user_task_id',$id);
     }
 
     public function storeDoc6(Request $request)
@@ -243,13 +265,19 @@ class DocController extends Controller
 
         $this->doc6->save();
 
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc6_id = $this->doc6->id;
+        $userTask->save();
+
         return redirect()->route('showRequested');
     }
 
     //Dependent
-    public function showDoc7()
+    public function showDoc7($id)
     {
-        return view('users.dependent.dependent1');
+        return view('users.dependent.dependent1')
+                    ->with('user_task_id',$id);
     }
 
     public function storeDoc7(Request $request)
@@ -266,13 +294,20 @@ class DocController extends Controller
         $this->doc7->pensionnumber = $request->pensionnumber;
 
         $this->doc7->save();
+
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc7_id = $this->doc7->id;
+        $userTask->save();
+
         return redirect()->route('showRequested');
         
     }
 
-    public function showDoc8()
+    public function showDoc8($id)
     {
-        return view('users.dependent.dependent2');
+        return view('users.dependent.dependent2')
+                    ->with('user_task_id',$id);
     }
 
     public function storeDoc8(Request $request)
@@ -290,9 +325,12 @@ class DocController extends Controller
 
         $this->doc8->save();
 
+        $user_task_id = $request->input('user_task_id');
+        $userTask = UserTask::where('id',$user_task_id)->firstOrFail();
+        $userTask->doc8_id = $this->doc8->id;
+        $userTask->save();
+
         return redirect()->route('showRequested');
     }
-
-
 
 }
