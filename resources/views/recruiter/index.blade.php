@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container bg-white rounded-3 opacity-90 p-3">
+<div class="container bg-white rounded-3 opacity-90 p-3 shadow-lg">
     <div class="row mt-3 justify-content-center">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user fa-lg img-thumbnail rounded-circle text-secondary"></i> Registered New Employees</p>
     </div>
@@ -81,11 +81,11 @@
                 {{-- <td>{{ optional($employee->user_id)->name }}</td> --}}
                 
                 <td>
-                    @if(Auth::user()->id == $employee->user_id )
+                    {{-- @if(Auth::user()->id == $user->id ) --}}
                         <a href="{{ route('recruiter.edit',$employee->id)}}" class="btn btn-outline-warning"><i class="fa-solid fa-pen"></i></a>
                         <button class="text-danger btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-employee-{{ $employee->id }}"><i class="fa-regular fa-trash-can"></i></button></td>
-                    @endif
-                    
+                    {{-- @endif
+                     --}}
                 <td>
                     @Include('recruiter.modal.delete')
             </tr>

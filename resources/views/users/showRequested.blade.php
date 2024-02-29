@@ -113,7 +113,7 @@
                         </tr>
             @empty
                     <div class="mb-3 bg-info-subtle rounded p-3">
-                        <p class="h5 text-muted">All documents are submitted!<br>Thank you very much <i class="fa-solid fa-face-smile"></i></p>
+                        <p class="h5 text-muted">Has not assigned any request Yet.</p>
                     </div>
                 
             @endforelse

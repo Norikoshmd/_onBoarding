@@ -3,7 +3,7 @@
 @section('title','Edit')
 
 @section('content')
-<div class="container bg-white rounded-3 opacity-90 p-3">
+<div class="container bg-white rounded-3 opacity-90 p-3 shadow-lg">
     <div class="row mt-3">
         <div class="col-8">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-plus text-secondary fa-lg img-thumbnail rounded-circle"></i>&nbsp; Edit </p>

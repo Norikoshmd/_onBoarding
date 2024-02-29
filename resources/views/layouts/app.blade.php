@@ -95,7 +95,7 @@
                     @auth
                         @if (Auth::user()->role_id == 2)
                             <div class="col-md-1">
-                                <div class="list-group text-center">
+                                <div class="list-group text-center shadow-sm">
                                     <a href="{{ route('index') }}" class="list-group-item custom-link {{ request()->is('/') ? 'active' : '' }}">
                                         <i class="fa-solid fa-bell fa-2x mt-2"></i> <br> <h6 class="mt-2">Info</h6>
                                     </a>
@@ -114,7 +114,7 @@
                          {{-- Recruiter side bar --}}
                         @elseif (Auth::user()->role_id == 3)
                             <div class="col-md-1">
-                                <div class="list-group text-center">
+                                <div class="list-group text-center shadow-sm">
                                     <a href="{{ route('recruiter.index')}}" class="list-group-item custom-link {{ request()->is('recruiter/index') ? 'active' : '' }}">
                                         <i class="fa-solid fa-list fa-2x mt-2"></i> <br> <h6 class="mt-2"> New Employee List</h6>
                                     </a>
