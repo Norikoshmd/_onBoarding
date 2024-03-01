@@ -218,16 +218,9 @@ class TaskController extends Controller
         ->with('user_tasks',$user_tasks);
     }
 
-      
-
-// 5: Confirmed items List
-    public function showConfirmed()
-    {
-        return view('hr.confirmed');
-    }
 
 
-// 6: Assignment List(create)
+// 5: Assignment List(create)
     public function store(Request $request)
     {
         $request->validate([

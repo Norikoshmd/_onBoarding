@@ -47,39 +47,35 @@ Route::group(['middleware' => 'auth'], function(){
     Route::group(['prefix' => 'doc', 'as' => 'doc.'], function(){
         Route::get('/{id}/showDoc1', [DocController::class, 'showDoc1'])->name('showDoc1');//doc.showDoc1
         Route::post('/storeDoc1', [DocController::class, 'storeDoc1'])->name('storeDoc1');//doc.storeDoc1
-        Route::get('/{id}/showSubmittedDoc1', [DocController::class, 'showSubmittedDoc1'])->name('showSubmittedDoc1');//doc.showSubmittedDoc1
+       
 
         Route::get('/{id}/showDoc2', [DocController::class, 'showDoc2'])->name('showDoc2');//doc.showDoc2
         Route::post('/storeDoc2', [DocController::class, 'storeDoc2'])->name('storeDoc2');//doc.storeDoc2
-        Route::get('/{id}/showSubmittedDoc2', [DocController::class, 'showSubmittedDoc2'])->name('showSubmittedDoc2');//doc.
-
+       
         Route::get('/{id}/showDoc3', [DocController::class, 'showDoc3'])->name('showDoc3');//doc.showDoc3
         Route::post('/storeDoc3', [DocController::class, 'storeDoc3'])->name('storeDoc3');//doc.storeDoc3
-        Route::get('/{id}/showSubmittedDoc3', [DocController::class, 'showSubmittedDoc3'])->name('showSubmittedDoc3');//doc.showSubmittedDoc3
       
-   
         //Copy
         Route::get('/{id}/showDoc4', [DocController::class, 'showDoc4'])->name('showDoc4');//doc.showDoc4
         Route::post('/storeDoc4', [DocController::class, 'storeDoc4'])->name('storeDoc4');//doc.storeDoc4
-        Route::get('/{id}/showSubmittedDoc4', [DocController::class, 'showSubmittedDoc4'])->name('showSubmittedDoc4');//doc.showSubmittedDoc4
+    
 
         //Not functioning
         Route::get('/{id}/showDoc5', [DocController::class, 'showDoc5'])->name('showDoc5');//doc.showDoc5
         Route::post('/storeDoc5', [DocController::class, 'storeDoc5'])->name('storeDoc5');//doc.storeDoc5
-        Route::get('/{id}/showSubmittedDoc5', [DocController::class, 'showSubmittedDoc5'])->name('showSubmittedDoc5');//doc.showSubmittedDoc5
+     
         
         Route::get('/{id}/showDoc6', [DocController::class, 'showDoc6'])->name('showDoc6');//doc.showDoc6
         Route::post('/storeDoc6', [DocController::class, 'storeDoc6'])->name('storeDoc6');//doc.storeDoc6
-        Route::get('/{id}/showSubmittedDoc6', [DocController::class, 'showSubmittedDoc6'])->name('showSubmittedDoc6');//doc.showSubmittedDoc6
+     
 
         //Dependent
         Route::get('/{id}/showDoc7', [DocController::class, 'showDoc7'])->name('showDoc7');//doc.showDoc7
         Route::post('/storeDoc7', [DocController::class, 'storeDoc7'])->name('storeDoc7');//doc.storeDoc7
-        Route::get('/{id}/showSubmittedDoc7', [DocController::class, 'showSubmittedDoc7'])->name('showSubmittedDoc7');//doc.showSubmittedDoc7
+      
 
         Route::get('/{id}/showDoc8', [DocController::class, 'showDoc8'])->name('showDoc8');//doc.showDoc8
         Route::post('/storeDoc8', [DocController::class, 'storeDoc8'])->name('storeDoc8');//doc.storeDoc8
-        Route::get('/{id}/showSubmittedDoc8', [DocController::class, 'showSubmittedDoc8'])->name('showSubmittedDoc8');//doc.showSubmittedDoc8
      
 
     });
@@ -117,8 +113,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/showAssigned',[TaskController::class, 'showAssigned'])->name('showAssigned'); //3. hr.showAssigned
         Route::get('/{id}/showIndividuallyAssigned',[TaskController::class, 'showIndividuallyAssigned'])->name('showIndividuallyAssigned'); //3. hr.showIndividuallyAssigned
         Route::get('/showSubmitted',[TaskController::class, 'showSubmitted'])->name('showSubmitted'); //4. hr.showSubmitted
-        Route::get('/showConfirmed',[TaskController::class, 'showConfirmed'])->name('showConfirmed'); //5. hr.showConfirmed
-        Route::post('/store',[TaskController::class, 'store'])->name('store'); //6. hr.store
+        Route::post('/store',[TaskController::class, 'store'])->name('store'); //5. hr.store
         Route::patch('/{id}/update', [TaskController::class, 'update'])->name('update');//6-1 hr.update
         Route::delete('/{id}/destroy', [TaskController::class, 'destroy'])->name('destroy');//6-2 hr.destroy
 
@@ -130,8 +125,7 @@ Route::group(['middleware' => 'auth'], function(){
        //2-v.
        Route::delete('/{id}/destroyAssigned',[UserController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
 
-        // Route::get('/employeeTask',[EmployeeTaskController::class, 'employeeTask'])->name('employeeTask'); //hr.EmployeeTask
-        // Route::post('/taskStore',[EmployeeTaskController::class, 'taskStore'])->name('taskStore'); //hr.taskStore
+       
         Route::delete('/{id}/destroyAssigned',[UserTaskController::class, 'destroyAssigned'])->name('task.destroyAssigned'); //hr.task.destroyAssigned
         
     });
