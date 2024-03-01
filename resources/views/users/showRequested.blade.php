@@ -21,20 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            {{--reference  --}}
-            {{-- @if( in_array(optional($employee->user)->id, $assigned_users))
-            <a href="{{ route('hr.showIndividuallyAssigned',$employee->user->id)}}" class="b-0"><i class="fa-solid fa-check fa-2x"></i></a>
-        @else
-            <a href="{{ route('hr.assignTask', $employee->id) }}" class="b-0"><i class="fa-solid fa-circle-plus fa-2x"></i></a>
-        @endif --}}
-
-
-
-            {{--  --}}
-
-
-
-
+           
             @forelse ($user_tasks as $task)
                     @if($task->user->id === Auth::user()->id)
                         <tr class="text-center h5">

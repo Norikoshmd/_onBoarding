@@ -7,7 +7,7 @@
 
 
 <div class="container bg-white opacity-90 rounded p-3">
-    <h1 class="h4 mb-3 mt-2 fw-bold">Submitted Documents/Data</h1>
+    <h1 class="h3 mb-3 mt-2 fw-bold">Submitted Documents/Data</h1>
     <table class="table table-hover align-middle bg-white border-text-secondary">
         <thead class="opacity-75 ">
             <tr class="text-center table table-secondary h5">
@@ -30,7 +30,7 @@
                     @endif
                 @empty
                     <div class="mb-3">
-                        <p class="h3">All documents are submitted!</p>
+                        <p class="h3 mt-3 ms-3">No submissions yet:(</p>
                     </div>
                 @endforelse
         </tbody>
