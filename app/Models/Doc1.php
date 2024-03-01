@@ -15,16 +15,6 @@ class Doc1 extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function confirms()
-    {
-        return $this->hasMany(Confirm::class);
-    }
-
-    
-
-    public function isConfirmed()
-    {
-        return $this->confirms()->where('user_id', Auth::user()->id)->exists();
-    }
+  
     
 }
