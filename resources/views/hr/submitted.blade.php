@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container bg-white opacity-90 p-3">
+<div class="container bg-white opacity-90 p-3 rounded">
     <p class="h3 p-3"><i class="fa-solid fa-file-circle-exclamation fa-lg text-secondary"></i>&nbsp;&nbsp;Submitted items</p>
     <table class="table table-hover align-middle border-text-secondary">
         <thead class="table table-secondary">
