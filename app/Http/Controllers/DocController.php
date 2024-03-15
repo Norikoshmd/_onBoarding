@@ -203,6 +203,8 @@ class DocController extends Controller
         ]);
 
         $this->doc4->user_id        = Auth::user()->id;
+
+        if($request->pension)
         $this->doc4->pension        ='data:pension/' . $request->pension->extension() . ';base64,' . base64_encode(file_get_contents($request->pension));
         $this->doc4->pensionnumber = $request->pensionnumber;
 
