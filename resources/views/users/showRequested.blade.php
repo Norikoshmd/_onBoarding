@@ -14,10 +14,6 @@
                 <th>Document Name</th>
                 <th>Status</th>
                 <th></th>
-                {{-- <th>Due Date</th>
-                <th>Day(s) to Due Date</th> --}}
-                {{-- <th></th>
-                <th></th> --}}
             </tr>
         </thead>
         <tbody>

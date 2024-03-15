@@ -7,7 +7,7 @@
 <div class="container bg-white opacity-90 p-3 rounded">
     <p class="h3 p-3"><i class="fa-regular fa-folder-open fa-lg text-secondary"></i>&nbsp;&nbsp;Requested items</p>
 
-<table class="table table-hover align-middle bg-white border-text-secondary">
+<table class="table table-hover align-middle bg-white border-text-secondary rounded">
     <thead class="opacity-75">
         <tr class="text-center table table-secondary">
             <th>Requested on</th>

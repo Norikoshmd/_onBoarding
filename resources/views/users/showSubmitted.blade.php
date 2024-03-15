@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
 <div class="container bg-white opacity-90 rounded p-3">
     <h1 class="h3 mb-3 mt-2 fw-bold">Submitted Documents/Data</h1>
     <table class="table table-hover align-middle bg-white border-text-secondary">
