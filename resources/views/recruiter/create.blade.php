@@ -8,9 +8,6 @@
         <div class="col-8">
             <p class="fw-bold fs-4"><i class="fa-solid fa-user-plus text-secondary fa-lg img-thumbnail rounded-circle"></i> Register New Employee</p>
         </div>
-        <div class="col-auto ms-auto">
-          <a href="{{ route('recruiter.index')}}" class="btn btn-outline-secondary btn-sm"><i class="fa-solid fa-angles-right"></i> back to the list</a>
-         </div>
     </div>
        
     <hr>
