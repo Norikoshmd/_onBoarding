@@ -1,10 +1,10 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
-@section('title', 'index');
+@section('title','index')
 
 @section('content')
 
-<div class="container opacity-100 rounded p-3">
+<div class="container bg-white opacity-90 rounded p-3">
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header">
@@ -16,25 +16,26 @@
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div class="accordion-body">
          {{-- welcome message --}}
-         <div class="container-fluid position-relative bg-white shadow-lg" style="min-height: 50vh;">
-          <img src="/css/welcome.jpg" alt="Overlay Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
+         <div class="container-fluid position-relative bg-white shadow-lg" style="min-height: 75vh;">
+          <img src="/css/welcome.jpg" alt="Overlay Image" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5;" class="shadow-lg rounded">
           <div class="d-flex flex-column justify-content-between align-items-center" style="height: 100%;">
               <div class="text-center mt-5">
                   <h1 class="display-5 mb-3">
                       Welcome to the team, {{Auth::user()->name}}!
                   </h1>
-                  <p class="fs-5 mb-4">
+                  <p class="fs-5 mb-5">
                       Our HR team will be informing you of the required documents for your onboarding process.
                       <br> Please utilize your account to submit the required information.
                   </p>
               </div>
-              <div class="text-end mb-5">
-                  <h1 class="display-6">
-                      We are excited to have you on board,
-                      <br>and looking forward to achieving great things together!
-                  </h1>
-              </div>
           </div>
+          <div class="mt-5 position-absolute bottom-0 end-0">
+            <h1 class="display-6">
+                We are excited to have you on board,
+                <br>and looking forward to achieving great things together!
+            </h1>
+        </div>
+         
         </div>
       </div>
     </div>
