@@ -4,7 +4,8 @@
  <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">&nbsp;&nbsp;8.2.12 &nbsp;
  <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">&nbsp;&nbsp;10.4.32-MariaDB
 
-![admin1](https://github.com/Norikoshmd/_onBoarding/assets/147987462/c9801257-8096-4581-b818-c9d0d7d0f265)
+
+![top](https://github.com/Norikoshmd/_onBoarding/assets/147987462/d220e9a9-cb6a-40b3-8a47-8fea3dd3740f)
 
 OnBoarding is a simple system enable <br>
 <b>
@@ -13,9 +14,9 @@ OnBoarding is a simple system enable <br>
 * New employee(s)
 </b>
 to submit/receive required information for onboarding process.
-<br>
+<br><br>
 
-## What you can do
+# What you can do
 
 Onboarding has 3 roles(3 types of accounts)
 
