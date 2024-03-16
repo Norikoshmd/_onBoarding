@@ -1,27 +1,38 @@
 # OnBoarding
+
+ <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">&nbsp;&nbsp;10.x &nbsp;
+ <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">&nbsp;&nbsp;8.2.12 &nbsp;
+ <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">&nbsp;&nbsp;10.4.32-MariaDB
+
 ![admin1](https://github.com/Norikoshmd/_onBoarding/assets/147987462/c9801257-8096-4581-b818-c9d0d7d0f265)
-* <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">&nbsp;&nbsp;10.x 
-* <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">&nbsp;&nbsp;8.2.12 
-* <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">&nbsp;&nbsp;10.4.32-MariaDB
 
-You can
+OnBoarding is a simple system enable <br>
+<b>
+* Recruiter(s)
+* HR Operator(s)
+* New employee(s)
+</b>
+to submit/receive required information for onboarding process.
+<br>
 
-**Recruiters**
-* endorse new employee information to your HR
+## What you can do
 
-**HR Operators**
-*  register new employees accounts
-*  request all required documents with clear explanation with image
+Onboarding has 3 roles(3 types of accounts)
 
-**Users - New Employee**
-* Receive submission requests and explanation on each items
-* Submit required documents via data updates(except My Number Card)
 
- 
-## Requirement
-* <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">&nbsp;&nbsp;10.x 
-* <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">&nbsp;&nbsp;8.2.12 
-* <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">&nbsp;&nbsp;10.4.32-MariaDB
+## 1. Recruiters
+* initiate new employee
+* edit/delete employee initiated
+* activate/Deactivate employee initiated
+
+## 2. HR Operators
+* register new user accounts to new employees
+* request all required documents/ID copies
+
+## 3. Users - New Employee
+* receive submission requests from HR and explanation on each items
+* submit required documents via data updates(except My Number Card)
+
 
 ## About this App / このアプリについて
 
