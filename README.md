@@ -1,9 +1,8 @@
-ご拝読ありがとうございます！<br>
-Thank you for reading!
-
-# DEMO
+# OnBoarding
 ![admin1](https://github.com/Norikoshmd/_onBoarding/assets/147987462/c9801257-8096-4581-b818-c9d0d7d0f265)
-
+* <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">&nbsp;&nbsp;10.x 
+* <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">&nbsp;&nbsp;8.2.12 
+* <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">&nbsp;&nbsp;10.4.32-MariaDB
 
 You can
 
@@ -19,10 +18,10 @@ You can
 * Submit required documents via data updates(except My Number Card)
 
  
-# Requirement
-* Laravel 10.x
-* PHP 8.2.12
-* my sql 10.4.32-MariaDB
+## Requirement
+* <img src="https://img.shields.io/badge/-Laravel-E74430.svg?logo=laravel&style=plastic">&nbsp;&nbsp;10.x 
+* <img src="https://img.shields.io/badge/-Php-777BB4.svg?logo=php&style=plastic">&nbsp;&nbsp;8.2.12 
+* <img src="https://img.shields.io/badge/-Mysql-4479A1.svg?logo=mysql&style=plastic">&nbsp;&nbsp;10.4.32-MariaDB
 
 ## About this App / このアプリについて
 
