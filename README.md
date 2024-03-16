@@ -22,9 +22,20 @@ Onboarding has 3 roles(3 types of accounts)
 
 
 ## 1. Recruiters
+
 * initiate new employee
+  
+[https://github.com/Norikoshmd/_onBoarding/assets/147987462/e8e401df-6be8-4889-a9e0-da2d20f3c8ce](https://github.com/Norikoshmd/_onBoarding/assets/147987462/79eb43d1-67fd-45bf-ad12-b48627de4f89)
+
+
 * edit/delete employee initiated
-* activate/Deactivate employee initiated
+
+https://github.com/Norikoshmd/_onBoarding/assets/147987462/c10863a0-92e3-4968-8547-9348d8c808d7
+
+  
+* activate/deactivate employee initiated
+  
+https://github.com/Norikoshmd/_onBoarding/assets/147987462/cc4e15ca-c6f8-4768-954d-46bf8cb253d9
 
 ## 2. HR Operators
 * register new user accounts to new employees
