@@ -45,17 +45,19 @@ https://github.com/Norikoshmd/_onBoarding/assets/147987462/cc4e15ca-c6f8-4768-95
   
 https://github.com/Norikoshmd/_onBoarding/assets/147987462/7201690d-47ed-4629-91e2-7dfebf9b39f2
 
-## 3. Users - New Employee
-* receive submission requests from HR and explanation on each items
+## 3. 新入社員（一般ユーザー）
+* HRから設定された必要提出書類を確認
 
   https://github.com/Norikoshmd/_onBoarding/assets/147987462/7d3bbb14-bb74-4697-84ea-5d50a8f06cba
   
-
  https://github.com/Norikoshmd/_onBoarding/assets/147987462/760b9eba-fc34-4c51-a892-03c3c59b3c18
  
-* submit required documents via data updates(except My Number Card)
+* 必要フォームに一つずつ入力→提出する。（提出するとステータスが提出済になる-＞HRの画面で提出されたアイテムが確認できる）
 
 https://github.com/Norikoshmd/_onBoarding/assets/147987462/6737ef4c-188e-44f5-b1ff-f8f3ed5a8700
+
+HR画面
+![hr-submitted](https://github.com/Norikoshmd/_onBoarding/assets/147987462/da4e1505-a43a-4afa-84a7-e6c17e1d775a)
 
 ## 工夫した点
 
